@@ -1,0 +1,592 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Inventory</ID>
+  <Name>Inventory</Name>
+  <CreatedTimestamp>2017-05-22T00:07:17.913333Z</CreatedTimestamp>
+  <LastSchemaUpdate>2017-05-22T00:07:17.913333Z</LastSchemaUpdate>
+  <LastProcessed>2017-06-08T18:38:37.406667Z</LastProcessed>
+  <State>Processed</State>
+  <Source xsi:type="DataSourceViewBinding">
+    <DataSourceViewID>Tripod DW</DataSourceViewID>
+  </Source>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration>
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Language>1033</Language>
+  <Collation>Latin1_General_CI_AS</Collation>
+  <UnknownMemberName>Unknown</UnknownMemberName>
+  <Attributes>
+    <Attribute>
+      <ID>Inventory Fact Key</ID>
+      <Name>Inventory Fact Key</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>BigInt</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>fact_Inventory</TableID>
+            <ColumnID>InventoryFactKey</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>fact_Inventory</TableID>
+          <ColumnID>InventoryFactKey</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship>
+          <AttributeID>Finished Goods Qty</AttributeID>
+          <Name>Finished Goods Qty</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>Raw Goods Qty</AttributeID>
+          <Name>Raw Goods Qty</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>WIP Qty</AttributeID>
+          <Name>WIP Qty</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>Assigned Qty</AttributeID>
+          <Name>Assigned Qty</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>Raw Assigned Qty</AttributeID>
+          <Name>Raw Assigned Qty</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>Packed Qty</AttributeID>
+          <Name>Packed Qty</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>Reserved Qty</AttributeID>
+          <Name>Reserved Qty</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>On Order Qty</AttributeID>
+          <Name>On Order Qty</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>Pulled To WO Qty</AttributeID>
+          <Name>Pulled To WO Qty</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>YTD Shipped Qty</AttributeID>
+          <Name>YTD Shipped Qty</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>YTD Assigned Qty</AttributeID>
+          <Name>YTD Assigned Qty</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>Available Qty</AttributeID>
+          <Name>Available Qty</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>SPR Category</AttributeID>
+          <RelationshipType>Rigid</RelationshipType>
+          <Name>SPR Category</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>Inventory Date Key</AttributeID>
+          <RelationshipType>Rigid</RelationshipType>
+          <Name>Inventory Date Key</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Finished Goods Qty</ID>
+      <Name>Finished Goods Qty</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>fact_Inventory</TableID>
+            <ColumnID>FinishedGoodsQty</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>fact_Inventory</TableID>
+          <ColumnID>FinishedGoodsQty</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Raw Goods Qty</ID>
+      <Name>Raw Goods Qty</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>fact_Inventory</TableID>
+            <ColumnID>RawGoodsQty</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>fact_Inventory</TableID>
+          <ColumnID>RawGoodsQty</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>WIP Qty</ID>
+      <Name>WIP Qty</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>fact_Inventory</TableID>
+            <ColumnID>WIPQty</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>fact_Inventory</TableID>
+          <ColumnID>WIPQty</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Assigned Qty</ID>
+      <Name>Assigned Qty</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>fact_Inventory</TableID>
+            <ColumnID>AssignedQty</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>fact_Inventory</TableID>
+          <ColumnID>AssignedQty</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Raw Assigned Qty</ID>
+      <Name>Raw Assigned Qty</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>fact_Inventory</TableID>
+            <ColumnID>RawAssignedQty</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>fact_Inventory</TableID>
+          <ColumnID>RawAssignedQty</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Packed Qty</ID>
+      <Name>Packed Qty</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>fact_Inventory</TableID>
+            <ColumnID>PackedQty</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>fact_Inventory</TableID>
+          <ColumnID>PackedQty</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Reserved Qty</ID>
+      <Name>Reserved Qty</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>fact_Inventory</TableID>
+            <ColumnID>ReservedQty</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>fact_Inventory</TableID>
+          <ColumnID>ReservedQty</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>On Order Qty</ID>
+      <Name>On Order Qty</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>fact_Inventory</TableID>
+            <ColumnID>OnOrderQty</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>fact_Inventory</TableID>
+          <ColumnID>OnOrderQty</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Pulled To WO Qty</ID>
+      <Name>Pulled To WO Qty</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>fact_Inventory</TableID>
+            <ColumnID>PulledToWOQty</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>fact_Inventory</TableID>
+          <ColumnID>PulledToWOQty</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>YTD Shipped Qty</ID>
+      <Name>YTD Shipped Qty</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>fact_Inventory</TableID>
+            <ColumnID>YTDShippedQty</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>fact_Inventory</TableID>
+          <ColumnID>YTDShippedQty</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>YTD Assigned Qty</ID>
+      <Name>YTD Assigned Qty</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>fact_Inventory</TableID>
+            <ColumnID>YTDAssignedQty</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>fact_Inventory</TableID>
+          <ColumnID>YTDAssignedQty</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Available Qty</ID>
+      <Name>Available Qty</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>fact_Inventory</TableID>
+            <ColumnID>AvailableQty</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>fact_Inventory</TableID>
+          <ColumnID>AvailableQty</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Part Key</ID>
+      <Name>Part Key</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>BigInt</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding">
+            <TableID>dimension_Part</TableID>
+            <ColumnID>PartKey</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <NullProcessing>ZeroOrBlank</NullProcessing>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dimension_Part</TableID>
+          <ColumnID>PartKey</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship>
+          <AttributeID>SPRNUM</AttributeID>
+          <RelationshipType>Rigid</RelationshipType>
+          <Name>SPRNUM</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>SPR Description</AttributeID>
+          <RelationshipType>Rigid</RelationshipType>
+          <Name>SPR Description</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>Is Gun Part</AttributeID>
+          <RelationshipType>Rigid</RelationshipType>
+          <Name>Is Gun Part</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>SPRNUM</ID>
+      <Name>SPRNUM</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>WChar</DataType>
+          <DataSize>20</DataSize>
+          <Source xsi:type="ColumnBinding">
+            <TableID>dimension_Part</TableID>
+            <ColumnID>SPRNUM</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <DataSize>20</DataSize>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dimension_Part</TableID>
+          <ColumnID>SPRNUM</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>SPR Description</ID>
+      <Name>SPR Description</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>WChar</DataType>
+          <DataSize>35</DataSize>
+          <Source xsi:type="ColumnBinding">
+            <TableID>dimension_Part</TableID>
+            <ColumnID>SPRDescription</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <DataSize>35</DataSize>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dimension_Part</TableID>
+          <ColumnID>SPRDescription</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>SPR Category</ID>
+      <Name>SPR Category</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>WChar</DataType>
+          <DataSize>30</DataSize>
+          <Source xsi:type="ColumnBinding">
+            <TableID>dimension_Part</TableID>
+            <ColumnID>SPRCategory</ColumnID>
+          </Source>
+        </KeyColumn>
+        <KeyColumn>
+          <DataType>BigInt</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>dimension_Part</TableID>
+            <ColumnID>PartKey</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <DataSize>30</DataSize>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dimension_Part</TableID>
+          <ColumnID>SPRCategory</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Is Gun Part</ID>
+      <Name>Is Gun Part</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>WChar</DataType>
+          <DataSize>1</DataSize>
+          <Source xsi:type="ColumnBinding">
+            <TableID>dimension_Part</TableID>
+            <ColumnID>IsGunPart</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <DataSize>1</DataSize>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dimension_Part</TableID>
+          <ColumnID>IsGunPart</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Inventory Date Key</ID>
+      <Name>Inventory Date Key</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>BigInt</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>fact_Inventory</TableID>
+            <ColumnID>InventoryDateKey</ColumnID>
+          </Source>
+        </KeyColumn>
+        <KeyColumn>
+          <DataType>BigInt</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>fact_Inventory</TableID>
+            <ColumnID>PartKey</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>fact_Inventory</TableID>
+          <ColumnID>InventoryDateKey</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship>
+          <AttributeID>Part Key</AttributeID>
+          <RelationshipType>Rigid</RelationshipType>
+          <Name>Part Key</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <Hierarchies>
+    <Hierarchy>
+      <ID>Hierarchy</ID>
+      <Name>Parts By Date</Name>
+      <Levels>
+        <Level>
+          <ID>Inventory Date Key</ID>
+          <Name>Inventory Date Key</Name>
+          <SourceAttributeID>Inventory Date Key</SourceAttributeID>
+        </Level>
+        <Level>
+          <ID>Part Key</ID>
+          <Name>Part Key</Name>
+          <SourceAttributeID>Part Key</SourceAttributeID>
+        </Level>
+      </Levels>
+    </Hierarchy>
+  </Hierarchies>
+  <ProactiveCaching>
+    <SilenceInterval>-PT1S</SilenceInterval>
+    <Latency>-PT1S</Latency>
+    <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+    <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+    <Source xsi:type="ProactiveCachingInheritedBinding" />
+  </ProactiveCaching>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

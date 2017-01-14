@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Description />
+  <DataSet Name="SPRNUMPartKeyXrfef">
+    <Query>
+      <DataSourceReference>TripodDW</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="@pSPRNUM">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>String</rd:DbType>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandText>SELECT        SPRNUM, PartKey, '[Part].[By Category].[Part Key].&amp;[' + CONVERT(VARCHAR(20), PartKey) + ']' AS PartKeyFormatted
+FROM            dimension.Part
+WHERE        (SPRNUM = @pSPRNUM)</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="SPRNUM">
+        <DataField>SPRNUM</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="PartKey">
+        <DataField>PartKey</DataField>
+        <rd:TypeName>System.Int64</rd:TypeName>
+      </Field>
+      <Field Name="PartKeyFormatted">
+        <DataField>PartKeyFormatted</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="TripodDW"
+  DTS:DTSID="{606ED0FF-D927-47C2-B063-BBDC7AEB79E3}"
+  DTS:CreationName="OLEDB">
+  <DTS:PropertyExpression
+    DTS:Name="InitialCatalog">@[$Project::TripodDW_InitialCatalog]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="ServerName">@[$Project::SpringfieldServer]</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=CA-UNUA\SQL2014;Initial Catalog=TripodDW_Dev;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Packet Size=32767;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>TripodDW</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{533dea0a-f529-43b9-ad4b-2a7d2338ed82}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>TripodDW</RootNamespace>
+    <AssemblyName>TripodDW</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <IncludeSchemaNameInFileName>True</IncludeSchemaNameInFileName>
+    <PageVerify>CHECKSUM</PageVerify>
+    <AllowSnapshotIsolation>True</AllowSnapshotIsolation>
+    <ReadCommittedSnapshot>True</ReadCommittedSnapshot>
+    <Trustworthy>False</Trustworthy>
+    <IsBrokerPriorityHonored>True</IsBrokerPriorityHonored>
+    <ServiceBrokerOption>NewBroker</ServiceBrokerOption>
+    <Parameterization>FORCED</Parameterization>
+    <GenerateCreateScript>True</GenerateCreateScript>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AI</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <SqlTargetName>TripodDW</SqlTargetName>
+    <TreatTSqlWarningsAsErrors>True</TreatTSqlWarningsAsErrors>
+    <OutputPath>.\bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'LocalDev|AnyCPU' ">
+    <SqlTargetName>TripodDW</SqlTargetName>
+    <TreatTSqlWarningsAsErrors>True</TreatTSqlWarningsAsErrors>
+    <OutputPath>bin\LocalDev\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ServerDev|AnyCPU' ">
+    <SqlTargetName>TripodDW</SqlTargetName>
+    <TreatTSqlWarningsAsErrors>True</TreatTSqlWarningsAsErrors>
+    <OutputPath>.\bin\ServerDev\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>.\bin\Release\</OutputPath>
+    <SqlTargetName>TripodDW</SqlTargetName>
+    <TreatTSqlWarningsAsErrors>True</TreatTSqlWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Local|AnyCPU' ">
+    <OutputPath>bin\Local\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'CA-LAB|AnyCPU' ">
+    <OutputPath>bin\CA-LAB\</OutputPath>
+    <TreatTSqlWarningsAsErrors>True</TreatTSqlWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'SFA-QA-SQL|AnyCPU' ">
+    <OutputPath>bin\SFA-QA-SQL\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'SFARMORYSQL-Test|AnyCPU' ">
+    <OutputPath>bin\SFARMORYSQL-Test\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'SFARMORYSQL-Prod|AnyCPU' ">
+    <OutputPath>bin\SFARMORYSQL-Prod\</OutputPath>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="stage\" />
+    <Folder Include="stage\Tables\" />
+    <Folder Include="archive\" />
+    <Folder Include="archive\Tables\" />
+    <Folder Include="dimension\" />
+    <Folder Include="dimension\Tables\" />
+    <Folder Include="fact\" />
+    <Folder Include="fact\Tables\" />
+    <Folder Include="dbo\" />
+    <Folder Include="Security\" />
+    <Folder Include="fact\Functions\" />
+    <Folder Include="stage\Functions\" />
+    <Folder Include="stage\Stored Procedures\" />
+    <Folder Include="fact\Stored Procedures\" />
+    <Folder Include="scripts" />
+    <Folder Include="Post-Deployment Scripts" />
+    <Folder Include="dimension\Views" />
+    <Folder Include="reporting" />
+    <Folder Include="reporting\Stored Procedures" />
+    <Folder Include="dimension\Stored Procedures" />
+    <Folder Include="dbo\Tables" />
+    <Folder Include="dbo\Views" />
+    <Folder Include="PublishScripts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="stage\Tables\stage.DoNotReportPart.sql" />
+    <Build Include="archive\Tables\archive.Customer.sql" />
+    <Build Include="dimension\Tables\dimension.Customer.sql" />
+    <Build Include="stage\Tables\stage.PartAssembly.sql" />
+    <Build Include="dimension\Tables\dimension.Date.sql" />
+    <Build Include="dimension\Tables\dimension.Location.sql" />
+    <Build Include="fact\Tables\fact.Inventory.sql" />
+    <Build Include="stage\Tables\stage.CMASTER.sql" />
+    <Build Include="stage\Tables\stage.CUSTINFO.sql" />
+    <Build Include="stage\Tables\stage.Customer.sql" />
+    <Build Include="stage\Tables\stage.CustomerOrder.sql" />
+    <Build Include="stage\Tables\stage.LastChangeTrackingVersion.sql" />
+    <Build Include="stage\Tables\stage.MASTERLN.sql" />
+    <Build Include="stage\Tables\stage.Part.sql" />
+    <Build Include="stage\Tables\stage.parts.sql" />
+    <Build Include="archive\Tables\archive.CustomerOrder.sql" />
+    <Build Include="archive\Tables\archive.Part.sql" />
+    <Build Include="dimension\Tables\dimension.Part.sql" />
+    <Build Include="fact\Tables\fact.CustomerOrder.sql" />
+    <Build Include="fact\Functions\fact.tvf_GetInventoryData.sql" />
+    <Build Include="stage\Functions\stage.tvf_GetPartData.sql" />
+    <Build Include="stage\Functions\stage.tvf_GetCustomerData.sql" />
+    <Build Include="stage\Stored Procedures\stage.sp_MergeSpringfieldCMASTER.sql" />
+    <Build Include="stage\Stored Procedures\stage.sp_GetCustomerOrderFromMASTERLN.sql" />
+    <Build Include="stage\Stored Procedures\stage.sp_GetLocationData.sql" />
+    <Build Include="stage\Stored Procedures\stage.sp_UpdateCustomerOrderFromCUSTINFO.sql" />
+    <Build Include="stage\Stored Procedures\stage.sp_UpdateCustomerOrderFromCustomer.sql" />
+    <Build Include="stage\Stored Procedures\stage.sp_UpdateCustomerOrderFromLocation.sql" />
+    <Build Include="fact\Stored Procedures\fact.sp_InsertCustomerOrder.sql" />
+    <Build Include="fact\Stored Procedures\fact.sp_UpdateCustomerOrder.sql" />
+    <Build Include="stage\Stored Procedures\stage.sp_GetUpdatedFactInventoryData.sql" />
+    <Build Include="stage\Stored Procedures\stage.sp_GetDailyFactInventoryData.sql" />
+    <Build Include="stage\Stored Procedures\stage.sp_GetNewPartData.sql" />
+    <Build Include="stage\Stored Procedures\stage.sp_MergeSpringfieldparts.sql" />
+    <Build Include="stage\Stored Procedures\stage.sp_MergeSpringfieldMASTERLN.sql" />
+    <Build Include="stage\Stored Procedures\stage.sp_MergeSpringfieldCUSTINFO.sql" />
+    <Build Include="Security\archive.sql" />
+    <Build Include="Security\stage.sql" />
+    <None Include="scripts\UpdateSpringfieldProd.sql" />
+    <PostDeploy Include="Post-Deployment Scripts\Script.PostDeployment001.sql" />
+    <Build Include="reporting\Stored Procedures\reporting.BudgetVActuals.sql" />
+    <Build Include="Security\reporting.sql" />
+    <Build Include="dimension\Stored Procedures\dimension.sp_InsertCustomer.sql" />
+    <Build Include="dimension\Stored Procedures\dimension.sp_InsertPart.sql" />
+    <Build Include="dimension\Stored Procedures\dimension.sp_UpdateCustomer.sql" />
+    <Build Include="dimension\Stored Procedures\dimension.sp_UpdatePart.sql" />
+    <Build Include="dbo\Views\dbo.vwAllCustomerOrders.sql" />
+    <Build Include="dbo\Views\dbo.vwAllCustomers.sql" />
+    <Build Include="dbo\Views\dbo.vwAllParts.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SpringfieldProd_Shared\SpringfieldProd_Shared.sqlproj">
+      <Name>SpringfieldProd_Shared</Name>
+      <Project>{98ea8823-7199-403a-ad79-1b14cbf4f192}</Project>
+      <Private>True</Private>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseSqlCmdVariable>SpringfieldProd</DatabaseSqlCmdVariable>
+    </ProjectReference>
+    <ProjectReference Include="..\TripodDW_Shared\TripodDW_Shared.sqlproj">
+      <Name>TripodDW_Shared</Name>
+      <Project>{dc86490f-2232-4064-832f-421ea1bfd420}</Project>
+      <Private>True</Private>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="SpringfieldProd">
+      <DefaultValue>SpringfieldProd</DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PublishScripts\TripodDW.localdb.publish.xml" />
+    <None Include="PublishScripts\TripodDW.CA-LAB.publish.xml" />
+  </ItemGroup>
+</Project>

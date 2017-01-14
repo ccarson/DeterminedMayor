@@ -1,0 +1,15 @@
+*.jfm
+*.suo
+*.*proj.user
+*.dbmdl
+AdventureWorks/*.*
+OrdersCube/*.*
+OrdersReports/*.*
+**/bin/*
+**/obj/*
+*.rdl.data
+*.rds
+Project.params
+*.conmgr
+TripodOrders/TripodOrders.database
+TripodOrders/TripodOrders.partitions

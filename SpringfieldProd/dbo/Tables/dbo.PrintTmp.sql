@@ -1,0 +1,19 @@
+﻿CREATE TABLE [dbo].[PrintTmp] (
+    [Recnum]   BIGINT          IDENTITY (1, 1) NOT NULL,
+    [ORDNUM]   DECIMAL (10, 2) DEFAULT ((0)) NOT NULL,
+    [TYPE]     VARCHAR (1)     DEFAULT (' ') NOT NULL,
+    [PRINTED]  VARCHAR (1)     DEFAULT (' ') NOT NULL,
+    [CustName] VARCHAR (36)    DEFAULT (' ') NOT NULL,
+    CONSTRAINT [PrintTmp_INDEX01] PRIMARY KEY CLUSTERED ([ORDNUM] ASC, [Recnum] ASC) WITH (FILLFACTOR = 70)
+);
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [PrintTmp_INDEX00]
+    ON [dbo].[PrintTmp]([Recnum] ASC) WITH (FILLFACTOR = 70);
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [PrintTmp_INDEX02]
+    ON [dbo].[PrintTmp]([CustName] ASC, [ORDNUM] ASC, [Recnum] ASC) WITH (FILLFACTOR = 70);
+

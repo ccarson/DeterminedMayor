@@ -1,0 +1,23 @@
+﻿CREATE TABLE [dbo].[AudDet] (
+    [Recnum]    BIGINT        IDENTITY (1, 1) NOT NULL,
+    [AudInfoID] DECIMAL (8)   DEFAULT ((0)) NOT NULL,
+    [Num]       DECIMAL (4)   DEFAULT ((0)) NOT NULL,
+    [FieldName] VARCHAR (32)  DEFAULT (' ') NULL,
+    [OldValue]  VARCHAR (255) DEFAULT (' ') NOT NULL,
+    [NewValue]  VARCHAR (255) DEFAULT (' ') NOT NULL,
+    CONSTRAINT [AudDet_INDEX01] PRIMARY KEY CLUSTERED ([AudInfoID] ASC, [Num] ASC) WITH (FILLFACTOR = 70),
+    CONSTRAINT [FK_AudDet_AudInfoID] FOREIGN KEY ([AudInfoID]) REFERENCES [dbo].[AudInfo] ([ID])
+);
+
+
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [AudDet_INDEX00]
+    ON [dbo].[AudDet]([Recnum] ASC) WITH (FILLFACTOR = 70);
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [AudDet_INDEX02]
+    ON [dbo].[AudDet]([AudInfoID] ASC, [FieldName] ASC, [Num] ASC) WITH (FILLFACTOR = 70);
+

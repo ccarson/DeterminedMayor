@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="TripodOrders SSAS"
+  DTS:DTSID="{94A54F04-E6EE-4FE8-9F4C-2CD966763451}"
+  DTS:CreationName="MSOLAP100">
+  <DTS:PropertyExpression
+    DTS:Name="InitialCatalog">@[$Project::TripodOrders_InitialCatalog]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="ServerName">@[$Project::SpringfieldServer]</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=CA-UNUA\SQL2014;Initial Catalog=TripodOrders_dev;Provider=MSOLAP;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

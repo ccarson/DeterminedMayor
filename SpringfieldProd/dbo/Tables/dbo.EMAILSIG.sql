@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[EMAILSIG] (
+    [Recnum]     BIGINT        IDENTITY (1, 1) NOT NULL,
+    [Signature]  VARCHAR (MAX) NULL,
+    [Disclaimer] VARCHAR (MAX) NULL,
+    CONSTRAINT [EMAILSIG_INDEX00] PRIMARY KEY CLUSTERED ([Recnum] ASC) WITH (FILLFACTOR = 70)
+);
+

@@ -1,0 +1,29 @@
+﻿CREATE TABLE [dbo].[AltPart] (
+    [Recnum]         BIGINT       IDENTITY (1, 1) NOT NULL,
+    [SprNum]         VARCHAR (20) DEFAULT (' ') NOT NULL,
+    [Vendor_ID]      VARCHAR (8)  DEFAULT (' ') NOT NULL,
+    [Vendor_PartNum] VARCHAR (20) DEFAULT (' ') NOT NULL,
+    CONSTRAINT [AltPart_INDEX01] PRIMARY KEY CLUSTERED ([SprNum] ASC, [Vendor_ID] ASC) WITH (FILLFACTOR = 70)
+);
+
+
+GO
+ALTER TABLE [dbo].[AltPart] ENABLE CHANGE_TRACKING WITH (TRACK_COLUMNS_UPDATED = OFF);
+
+
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [AltPart_INDEX00]
+    ON [dbo].[AltPart]([Recnum] ASC) WITH (FILLFACTOR = 70);
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [AltPart_INDEX02]
+    ON [dbo].[AltPart]([Vendor_ID] ASC, [SprNum] ASC) WITH (FILLFACTOR = 70);
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [AltPart_INDEX03]
+    ON [dbo].[AltPart]([Vendor_PartNum] ASC, [Vendor_ID] ASC, [SprNum] ASC) WITH (FILLFACTOR = 70);
+

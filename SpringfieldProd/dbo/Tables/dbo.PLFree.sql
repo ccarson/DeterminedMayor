@@ -1,0 +1,14 @@
+﻿CREATE TABLE [dbo].[PLFree] (
+    [ID]        BIGINT       IDENTITY (1, 1) NOT NULL,
+    [SPRNum]    VARCHAR (20) NULL,
+    [Desc]      VARCHAR (35) NULL,
+    [SortOrder] INT          CONSTRAINT [DF__PLFree__SortOrde__12E1FC6F] DEFAULT ((0)) NOT NULL,
+    CONSTRAINT [PLFree_INDEX01] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [FK_PLFree_SPRNum] FOREIGN KEY ([SPRNum]) REFERENCES [dbo].[parts] ([SPRNUM])
+);
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [PLFree_INDEX02]
+    ON [dbo].[PLFree]([SortOrder] ASC, [ID] ASC);
+

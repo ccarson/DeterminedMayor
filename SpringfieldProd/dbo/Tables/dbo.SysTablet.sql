@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[SysTablet] (
+    [RECNUM]    BIGINT        IDENTITY (1, 1) NOT NULL,
+    [Type]      VARCHAR (1)   NULL,
+    [URL_Local] VARCHAR (100) NULL,
+    [URL_Dev]   VARCHAR (100) NULL,
+    [URL_Prod]  VARCHAR (100) NULL,
+    CONSTRAINT [SysTablet_INDEX00] PRIMARY KEY CLUSTERED ([RECNUM] ASC) WITH (FILLFACTOR = 70)
+);
+

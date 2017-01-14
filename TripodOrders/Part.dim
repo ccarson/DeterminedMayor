@@ -1,0 +1,758 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="aa1fcf96-b2ce-4850-8483-6cc5573d57e1" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Part</ID>
+  <Name>Part</Name>
+  <CreatedTimestamp>2017-05-22T00:07:17.9Z</CreatedTimestamp>
+  <LastSchemaUpdate>2017-05-22T00:07:17.9Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="3" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-2229" scrolltop="-8348" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="7885" y="21696" backcolor="2434342" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="01000000900144420100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="Part" left="-112" top="-7408" logicalid="2" controlid="1" masterid="0" hint1="0" hint2="0" width="3651" height="17144" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000a0000430e0000f8420000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dimension_Part" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-2229</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-8348</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>-112</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>-7408</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ARDiagramLayout</Name>
+      <Value>
+        <DiagramLayout ZoomPercent="100" ViewPortX="0" ViewPortY="0" xmlns="">
+          <Shapes NodeWidth="149">
+            <Shape Id="Part Key" Expanded="false">
+              <Attributes>
+                <Attribute Id="Part Key" />
+                <Attribute Id="Finish Description" />
+                <Attribute Id="Formatted Part Key" />
+                <Attribute Id="Gun Stock" />
+                <Attribute Id="Is Assembly" />
+                <Attribute Id="Lead Time Days" />
+                <Attribute Id="Part Status" />
+                <Attribute Id="Reorder Point Qty" />
+                <Attribute Id="Reporting Group" />
+                <Attribute Id="SPR Description" />
+                <Attribute Id="SPRNUM" />
+              </Attributes>
+              <Position x="20" y="20" />
+            </Shape>
+            <Shape Id="Assembly Part Key" Expanded="false">
+              <Attributes>
+                <Attribute Id="Assembly Part Key" />
+              </Attributes>
+              <Position x="211" y="20" />
+            </Shape>
+            <Shape Id="Is Reportable" Expanded="false">
+              <Attributes>
+                <Attribute Id="Is Reportable" />
+              </Attributes>
+              <Position x="211" y="68" />
+            </Shape>
+            <Shape Id="Is Gun Part" Expanded="false">
+              <Attributes>
+                <Attribute Id="Is Gun Part" />
+              </Attributes>
+              <Position x="211" y="116" />
+            </Shape>
+            <Shape Id="SPR Sub Category" Expanded="false">
+              <Attributes>
+                <Attribute Id="SPR Sub Category" />
+              </Attributes>
+              <Position x="211" y="164" />
+            </Shape>
+            <Shape Id="SPR Category" Expanded="false">
+              <Attributes>
+                <Attribute Id="SPR Category" />
+              </Attributes>
+              <Position x="402" y="164" />
+            </Shape>
+            <Shape Id="Gun Type" Expanded="false">
+              <Attributes>
+                <Attribute Id="Gun Type" />
+              </Attributes>
+              <Position x="211" y="212" />
+            </Shape>
+          </Shapes>
+        </DiagramLayout>
+      </Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>2017-06-08T18:38:10.09Z</LastProcessed>
+  <State>Processed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="27fc0309-c045-4e67-b98f-2432669f8d45">
+    <DataSourceViewID>Tripod DW</DataSourceViewID>
+  </Source>
+  <ErrorConfiguration dwd:design-time-name="9e0575ce-2aa1-4991-b6c8-4db645588a78">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Language>1033</Language>
+  <Collation>Latin1_General_CI_AS</Collation>
+  <UnknownMemberName>Unknown</UnknownMemberName>
+  <Attributes>
+    <Attribute dwd:design-time-name="cced1f2b-7c13-4433-85ca-713ba4de0ab8">
+      <ID>Part Key</ID>
+      <Name>Part Key</Name>
+      <Usage>Key</Usage>
+      <EstimatedCount>8555</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="38dd5c15-b244-46d6-be41-994bda7160c6">
+          <DataType>BigInt</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="ae27ac67-3086-4634-8877-d7dc74273771">
+            <TableID>dimension_Part</TableID>
+            <ColumnID>PartKey</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="4e1fc6eb-c888-4e3b-9687-e7642951efc3">
+        <DataType>WChar</DataType>
+        <DataSize>20</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="abf74d7b-9586-4f0f-9966-4585431e111a">
+          <TableID>dimension_Part</TableID>
+          <ColumnID>SPRNUM</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="de6d4b7e-d2ba-4adc-82dc-1bbdf91c58c9">
+          <AttributeID>SPRNUM</AttributeID>
+          <RelationshipType>Rigid</RelationshipType>
+          <Name>SPRNUM</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="ac1ac276-d9b6-4628-9da9-755089145b1c">
+          <AttributeID>SPR Description</AttributeID>
+          <RelationshipType>Rigid</RelationshipType>
+          <Name>SPR Description</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="345262f2-f491-47d2-9c3d-3326f2575c8d">
+          <AttributeID>Gun Stock</AttributeID>
+          <RelationshipType>Rigid</RelationshipType>
+          <Name>Gun Stock</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="3aa9606c-6a32-4841-a15d-6ea3671b1981">
+          <AttributeID>Gun Type</AttributeID>
+          <RelationshipType>Rigid</RelationshipType>
+          <Name>Gun Type</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="0964f49d-c033-4a09-9549-413d59b10564">
+          <AttributeID>SPR Sub Category</AttributeID>
+          <RelationshipType>Rigid</RelationshipType>
+          <Name>SPR Sub Category</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="5ff12018-73d2-4af3-acc8-71a64ce67d8a">
+          <AttributeID>Reorder Point Qty</AttributeID>
+          <Name>Reorder Point Qty</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="12eccfec-a039-4962-9160-d6e94965eee3">
+          <AttributeID>Lead Time Days</AttributeID>
+          <Name>Lead Time Days</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="6da20d2f-467e-428b-abb2-993c5a3c39ed">
+          <AttributeID>Part Status</AttributeID>
+          <Name>Part Status</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="476990a4-fc40-4d68-8d92-e117f7f2a181">
+          <AttributeID>Formatted Part Key</AttributeID>
+          <RelationshipType>Rigid</RelationshipType>
+          <Name>Formatted Part Key</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="35a68d78-9281-4712-873e-131dd9060124">
+          <AttributeID>Reporting Group</AttributeID>
+          <RelationshipType>Rigid</RelationshipType>
+          <Name>Reporting Group</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="459572bb-bd69-4e0f-9df8-60c2ed318f0a">
+          <AttributeID>Is Gun Part</AttributeID>
+          <RelationshipType>Rigid</RelationshipType>
+          <Name>Is Gun Part</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="1544eae7-bdad-4f72-badb-bc5656df4edf">
+          <AttributeID>Is Reportable</AttributeID>
+          <RelationshipType>Rigid</RelationshipType>
+          <Name>Is Reportable</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="5ec3f6d6-ab40-4cd6-8ef8-f7e6fc55f2ee">
+          <AttributeID>Assembly Part Key</AttributeID>
+          <RelationshipType>Rigid</RelationshipType>
+          <Name>Assembly Part Key</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="79cb3508-b22e-4074-bca5-4c45d5010d7a">
+          <AttributeID>Finish Description</AttributeID>
+          <RelationshipType>Rigid</RelationshipType>
+          <Name>Finish Description</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="20645aef-b8c6-488a-874e-df7bd608d20b">
+          <AttributeID>Is Assembly</AttributeID>
+          <Name>Is Assembly</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="54a25663-9b83-44a2-9a63-4774e51901c7">
+      <ID>SPRNUM</ID>
+      <Name>SPRNUM</Name>
+      <EstimatedCount>8555</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="d2ae2581-f5b3-4f72-9cf6-240bd7cd0e97">
+          <DataType>WChar</DataType>
+          <DataSize>20</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="22c833e1-aaf5-4ccf-8679-fe99be66588d">
+            <TableID>dimension_Part</TableID>
+            <ColumnID>SPRNUM</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="9639e23a-bd9b-446b-a9d6-cf78a699d8c1">
+        <DataType>WChar</DataType>
+        <DataSize>20</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="db177464-bc74-4ed0-b209-f65495628741">
+          <TableID>dimension_Part</TableID>
+          <ColumnID>SPRNUM</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="0848da99-8066-499e-8a76-9a537c11e84c">
+      <ID>SPR Description</ID>
+      <Name>SPR Description</Name>
+      <EstimatedCount>7922</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="d1d44854-0df8-4099-983b-749404c18336">
+          <DataType>WChar</DataType>
+          <DataSize>35</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="10d0799d-fc6f-4b76-aee1-a7370e6ded4a">
+            <TableID>dimension_Part</TableID>
+            <ColumnID>SPRDescription</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="0e31c658-34ed-443e-9bd8-c01b1f76fdc5">
+        <DataType>WChar</DataType>
+        <DataSize>35</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="01125617-f37a-44b2-8579-594f399644d8">
+          <TableID>dimension_Part</TableID>
+          <ColumnID>SPRDescription</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="da9ec6bf-181e-4cd2-8496-7fa96539a3ec">
+      <ID>Gun Stock</ID>
+      <Name>Gun Stock</Name>
+      <EstimatedCount>3</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="1903ff38-a98c-49c5-b8d1-1bc61402123e">
+          <DataType>WChar</DataType>
+          <DataSize>6</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="ed705a62-644c-45f9-9901-dcca3418fa3d">
+            <TableID>dimension_Part</TableID>
+            <ColumnID>GunStock</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="c6898a31-0fce-45f2-8275-2db135c237a8">
+        <DataType>WChar</DataType>
+        <DataSize>6</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="fd8b5afd-d406-4db3-b42a-be611168d16c">
+          <TableID>dimension_Part</TableID>
+          <ColumnID>GunStock</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="0dabba7f-b334-4e59-aa9e-fb35f5251f2e">
+      <ID>Gun Type</ID>
+      <Name>Gun Type</Name>
+      <EstimatedCount>26</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="e105cad7-8c94-4b13-bdf8-9849da255743">
+          <DataType>WChar</DataType>
+          <DataSize>20</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="1249f2ee-b865-41ac-8f8f-ac099d63aaa2">
+            <TableID>dimension_Part</TableID>
+            <ColumnID>GunType</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="975eabe6-6fe4-4658-96d5-53ccae5676d2">
+        <DataType>WChar</DataType>
+        <DataSize>20</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="de3cca5b-e45d-4de1-a9b2-ff30ee64f79c">
+          <TableID>dimension_Part</TableID>
+          <ColumnID>GunType</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="547e22bf-0014-42b4-9a33-839f385e92c8">
+      <ID>SPR Category</ID>
+      <Name>SPR Category</Name>
+      <EstimatedCount>41</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="625eb114-460e-42e5-b682-09f4ac8723a1">
+          <DataType>WChar</DataType>
+          <DataSize>30</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="1eef14e6-b2c5-4793-911e-b3b0675fd216">
+            <TableID>dimension_Part</TableID>
+            <ColumnID>SPRCategory</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="ae563dfa-1f85-4627-bf2f-ca1e8c7d1f0d">
+        <DataType>WChar</DataType>
+        <DataSize>30</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="1da71c4a-2d9c-406a-a753-92cb2d89d4b0">
+          <TableID>dimension_Part</TableID>
+          <ColumnID>SPRCategory</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="787b459b-7218-4895-b33f-98022d6c9075">
+      <ID>SPR Sub Category</ID>
+      <Name>SPR Sub Category</Name>
+      <EstimatedCount>66</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="72d8f5ec-dde1-4da6-a064-953c6b83e28c">
+          <DataType>WChar</DataType>
+          <DataSize>30</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="9b84a437-67e7-45a7-af95-18b96300e7df">
+            <TableID>dimension_Part</TableID>
+            <ColumnID>SPRCategory</ColumnID>
+          </Source>
+        </KeyColumn>
+        <KeyColumn dwd:design-time-name="5e49c0b6-efdb-4ea8-acd9-8cd099353e72">
+          <DataType>WChar</DataType>
+          <DataSize>30</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="42b015a0-36fe-4f3e-a740-247b1a63e187">
+            <TableID>dimension_Part</TableID>
+            <ColumnID>SPRSubCategory</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="57871b0c-fb70-430c-abf5-9943b87dc758">
+        <DataType>WChar</DataType>
+        <DataSize>30</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="c1b0508f-b293-44a9-a9be-3bd303a0eb57">
+          <TableID>dimension_Part</TableID>
+          <ColumnID>SPRSubCategory</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="076a2fff-43b7-4822-bc8c-bf33874bd6e7">
+          <AttributeID>SPR Category</AttributeID>
+          <RelationshipType>Rigid</RelationshipType>
+          <Name>SPR Category</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="32c5de71-af34-4add-88e0-34d83ec7f825">
+      <ID>Reorder Point Qty</ID>
+      <Name>Reorder Point Qty</Name>
+      <EstimatedCount>60</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="8eb933f4-1d38-481c-96f0-72c7caa474f4">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="eb0e9a17-40c1-46a7-8b1f-1f56f03c148b">
+            <TableID>dimension_Part</TableID>
+            <ColumnID>ReorderPointQty</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="0e84aa21-65bf-4bd7-bdec-c8cf1696613c">
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="df8bcea5-f0e6-4f29-809b-347cdd383bbf">
+          <TableID>dimension_Part</TableID>
+          <ColumnID>ReorderPointQty</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="474fa9fe-de89-4560-a7b6-4d0c71ec18ea">
+      <ID>Lead Time Days</ID>
+      <Name>Lead Time Days</Name>
+      <EstimatedCount>1</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="892d15ed-2657-41c2-b2b7-be119339a18d">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="ec71f46a-6974-421a-a360-5c4c91d1e974">
+            <TableID>dimension_Part</TableID>
+            <ColumnID>LeadTimeDays</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="752e8b4d-c42c-41d7-8859-4a83ae97e183">
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="68104e3a-fbc5-4465-afee-54debce3d5c7">
+          <TableID>dimension_Part</TableID>
+          <ColumnID>LeadTimeDays</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="17a11501-ee53-4f23-96a8-cfd5c7d3b5cb">
+      <ID>Part Status</ID>
+      <Name>Part Status</Name>
+      <EstimatedCount>3</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="8f6ac9e2-d11d-48a3-ade6-e062420ea81b">
+          <DataType>WChar</DataType>
+          <DataSize>1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="02d7db66-311f-4032-9fbd-0fbbebeed169">
+            <TableID>dimension_Part</TableID>
+            <ColumnID>PartStatus</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="1183d731-e046-4851-990b-4625e8255b9a">
+        <DataType>WChar</DataType>
+        <DataSize>1</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="650557f1-729d-40fa-a6bc-405be6fb7e27">
+          <TableID>dimension_Part</TableID>
+          <ColumnID>PartStatus</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="83b0b599-8ca6-4331-88e1-c94fd0088045">
+      <ID>Formatted Part Key</ID>
+      <Name>Formatted Part Key</Name>
+      <EstimatedCount>8555</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="d695f90f-4f32-4aaa-b531-87d6976004f0">
+          <DataType>WChar</DataType>
+          <DataSize>58</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="ad06e3e1-3bbe-4a10-8e11-020a05a64cf2">
+            <TableID>dimension_Part</TableID>
+            <ColumnID>FormattedPartKey</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="7300f936-a99c-4f24-aec9-bbbd6c9997e7">
+        <DataType>WChar</DataType>
+        <DataSize>58</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="8187a714-7389-43d3-b0a0-c640a38cad84">
+          <TableID>dimension_Part</TableID>
+          <ColumnID>FormattedPartKey</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="865e38ce-bad7-4ca2-9c87-cd92a8b9f621">
+      <ID>Is Reportable</ID>
+      <Name>Is Reportable</Name>
+      <EstimatedCount>2</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="245d3813-6a6e-42f2-922e-b86cd978ba16">
+          <DataType>WChar</DataType>
+          <DataSize>1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="bb0e2a1d-5840-4d2e-bba0-901a63ffd2d4">
+            <TableID>dimension_Part</TableID>
+            <ColumnID>IsReportable</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="a0feb827-7a17-434b-9e95-2c1bf407ba35">
+        <DataType>WChar</DataType>
+        <DataSize>1</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="89716377-8a49-495c-9ea3-9e50dc895cc0">
+          <TableID>dimension_Part</TableID>
+          <ColumnID>IsReportable</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="801e571d-5f36-406a-8cf5-58f9af117cdf">
+      <ID>Reporting Group</ID>
+      <Name>Reporting Group</Name>
+      <EstimatedCount>47</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="07dc377e-51a1-45a6-a7e2-100927df7161">
+          <DataType>WChar</DataType>
+          <DataSize>1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="b464fc6b-ea6d-4b98-b050-98befa779dad">
+            <TableID>dimension_Part</TableID>
+            <ColumnID>IsReportable</ColumnID>
+          </Source>
+        </KeyColumn>
+        <KeyColumn dwd:design-time-name="16a1d391-900f-4c5d-9f79-8cfb012d46ef">
+          <DataType>WChar</DataType>
+          <DataSize>6</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="f85c3b54-2d30-47e8-95dd-7e8ae598f5c7">
+            <TableID>dimension_Part</TableID>
+            <ColumnID>ReportingGroup</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="dc7b4d49-d017-41e2-9aa1-f85f00bae15e">
+        <DataType>WChar</DataType>
+        <DataSize>6</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="35017f18-7be4-43db-8d3d-aaa6b19a6e91">
+          <TableID>dimension_Part</TableID>
+          <ColumnID>ReportingGroup</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="a0b74e3a-0997-4bfe-a3d5-c0ac7c7140a7">
+      <ID>Is Gun Part</ID>
+      <Name>Is Gun Part</Name>
+      <EstimatedCount>2</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="3d878507-acc2-4464-bc3b-38e7d7dd8f54">
+          <DataType>WChar</DataType>
+          <DataSize>1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="919ee351-4250-4af0-9db4-7c9cb25e6d6f">
+            <TableID>dimension_Part</TableID>
+            <ColumnID>IsGunPart</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="2cde78b2-2df3-4b42-9912-cb2320cfe91e">
+        <DataType>WChar</DataType>
+        <DataSize>1</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="a0decb71-8efe-4ff2-b2b8-78b606c5bdad">
+          <TableID>dimension_Part</TableID>
+          <ColumnID>IsGunPart</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="dd575f29-dcbd-4659-b0af-c5a20ef6cf0f">
+      <ID>Assembly Part Key</ID>
+      <Name>Assembly Part Key</Name>
+      <EstimatedCount>146</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="f1e99309-9826-475a-8f6f-6820b23e003e">
+          <DataType>WChar</DataType>
+          <DataSize>20</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="b4eba274-4f5a-49a8-84ca-74600a40a279">
+            <TableID>dimension_Part</TableID>
+            <ColumnID>AssemblyPartKey</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="205ac180-9bf7-4e00-9376-8bbd78c15783">
+        <DataType>WChar</DataType>
+        <DataSize>20</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="32ef620b-4227-428a-a3c4-a01088c99d8b">
+          <TableID>dimension_Part</TableID>
+          <ColumnID>AssemblyPartKey</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="a81ea5da-f3ef-4c2f-a38d-d748aa9d5fe3">
+      <ID>Finish Description</ID>
+      <Name>Finish Description</Name>
+      <EstimatedCount>21</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="5dec378b-906b-4ca0-aadb-be934fe8b2d9">
+          <DataType>WChar</DataType>
+          <DataSize>20</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="39e886e0-9277-44a2-b2a2-3c597e7ef746">
+            <TableID>dimension_Part</TableID>
+            <ColumnID>FinishDescription</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="f41c7d57-153a-42ae-a841-638ba3cb7885">
+        <DataType>WChar</DataType>
+        <DataSize>20</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="ecc00169-18e0-4d4d-8310-af7197a9b13b">
+          <TableID>dimension_Part</TableID>
+          <ColumnID>FinishDescription</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="93454236-09c7-41a8-9a91-dd25e76c9f83">
+      <ID>Is Assembly</ID>
+      <Name>Is Assembly</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="cd2890c5-c5f2-47ad-915f-e24459ab7db2">
+          <DataType>WChar</DataType>
+          <DataSize>1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a47c2d1f-188e-4639-9c0f-21c296fbcd82">
+            <TableID>dimension_Part</TableID>
+            <ColumnID>IsAssembly</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="d123e8f7-201d-46f4-937d-bcbece470fd0">
+        <DataType>WChar</DataType>
+        <DataSize>1</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="8567f02a-16c2-4fba-bad2-b9df680c0f07">
+          <TableID>dimension_Part</TableID>
+          <ColumnID>IsAssembly</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <Hierarchies>
+    <Hierarchy dwd:design-time-name="803b762e-096c-4e21-8e04-68513d46714f">
+      <ID>Hierarchy</ID>
+      <Name>By Category</Name>
+      <Levels>
+        <Level dwd:design-time-name="9b7f4f9f-e465-4857-9194-c71dc7ae6d2b">
+          <ID>SPR Category</ID>
+          <Name>Part Category</Name>
+          <SourceAttributeID>SPR Category</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="bc7b3acf-2a2e-4723-b41d-42886476ce02">
+          <ID>SPR Sub Category</ID>
+          <Name>Sub Category</Name>
+          <SourceAttributeID>SPR Sub Category</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="e03ec10f-911f-4697-86ae-e15d53b14485">
+          <ID>Part Key</ID>
+          <Name>Part Key</Name>
+          <SourceAttributeID>Part Key</SourceAttributeID>
+        </Level>
+      </Levels>
+    </Hierarchy>
+    <Hierarchy dwd:design-time-name="260a0442-a4c1-4474-9b63-f1d9d0c60f89">
+      <ID>Hierarchy 1</ID>
+      <Name>By Gun Type</Name>
+      <Levels>
+        <Level dwd:design-time-name="846c0a6c-2ac2-45b4-b390-9921fea55f9a">
+          <ID>Gun Type</ID>
+          <Name>Gun Type</Name>
+          <SourceAttributeID>Gun Type</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="ca455b4c-c7b3-4378-b39d-a6ceb24bd7e7">
+          <ID>Part Key</ID>
+          <Name>Part Key</Name>
+          <SourceAttributeID>Part Key</SourceAttributeID>
+        </Level>
+      </Levels>
+    </Hierarchy>
+    <Hierarchy dwd:design-time-name="6163c855-e73a-4e6f-a6a2-e7d43b02b5d4">
+      <ID>Hierarchy 2</ID>
+      <Name>By Reportable</Name>
+      <Levels>
+        <Level dwd:design-time-name="d480da40-3154-45b1-b7a2-a9a2621905b9">
+          <ID>Is Reportable</ID>
+          <Name>Is Reportable</Name>
+          <SourceAttributeID>Is Reportable</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="7b5fbf54-7c43-4303-9d73-402cab31283b">
+          <ID>Part Key</ID>
+          <Name>Part Key</Name>
+          <SourceAttributeID>Part Key</SourceAttributeID>
+        </Level>
+      </Levels>
+    </Hierarchy>
+    <Hierarchy dwd:design-time-name="f66e7821-55a0-4209-a9fb-f119f8dc23b6">
+      <ID>Hierarchy 3</ID>
+      <Name>By Gun Part</Name>
+      <Levels>
+        <Level dwd:design-time-name="bf33a0d1-0505-4aa9-953a-fa1a38fb6268">
+          <ID>Is Gun Part</ID>
+          <Name>Is Gun Part</Name>
+          <SourceAttributeID>Is Gun Part</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="88c5d309-8549-4557-a2f9-245f287d128c">
+          <ID>Part Key</ID>
+          <Name>Part Key</Name>
+          <SourceAttributeID>Part Key</SourceAttributeID>
+        </Level>
+      </Levels>
+    </Hierarchy>
+    <Hierarchy dwd:design-time-name="b9b06423-29ba-4524-9ea6-995d9802f47c">
+      <ID>Hierarchy 4</ID>
+      <Name>Component Assemblies</Name>
+      <Levels>
+        <Level dwd:design-time-name="92bd09c2-473f-45cc-8d1c-f8a2b231cf80">
+          <ID>Assembly Part Key</ID>
+          <Name>Assembly Part Key</Name>
+          <SourceAttributeID>Assembly Part Key</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="c8704efc-953e-4a53-9be0-25f6f133efb2">
+          <ID>Part Key</ID>
+          <Name>Part Key</Name>
+          <SourceAttributeID>Part Key</SourceAttributeID>
+        </Level>
+      </Levels>
+    </Hierarchy>
+  </Hierarchies>
+  <ProactiveCaching dwd:design-time-name="5698dcb2-1415-4948-9c62-3ec3fb1dbd90">
+    <SilenceInterval>-PT1S</SilenceInterval>
+    <Latency>-PT1S</Latency>
+    <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+    <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+    <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="0189b5e4-c3d4-46e7-8b7d-408c6742b929" />
+  </ProactiveCaching>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

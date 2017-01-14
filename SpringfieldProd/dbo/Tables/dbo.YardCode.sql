@@ -1,0 +1,34 @@
+﻿CREATE TABLE [dbo].[YardCode] (
+    [Recnum]           BIGINT       IDENTITY (1, 1) NOT NULL,
+    [ID]               DECIMAL (10) DEFAULT ((0)) NOT NULL,
+    [YARDCODE]         VARCHAR (8)  DEFAULT (' ') NOT NULL,
+    [DESCRIPTION]      VARCHAR (36) DEFAULT (' ') NOT NULL,
+    [YARD]             VARCHAR (4)  DEFAULT (' ') NOT NULL,
+    [PrintSAInvoice]   VARCHAR (1)  NULL,
+    [PrintCustInvoice] VARCHAR (1)  NULL,
+    [ShipLocation]     CHAR (1)     CONSTRAINT [DF_YardCode_ShipLocation] DEFAULT ('0') NOT NULL,
+    CONSTRAINT [YardCode_INDEX01] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (FILLFACTOR = 70)
+);
+
+
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [YardCode_INDEX00]
+    ON [dbo].[YardCode]([Recnum] ASC) WITH (FILLFACTOR = 70);
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [YardCode_INDEX02]
+    ON [dbo].[YardCode]([YARDCODE] ASC) WITH (FILLFACTOR = 70);
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [YardCode_INDEX03]
+    ON [dbo].[YardCode]([DESCRIPTION] ASC, [YARDCODE] ASC) WITH (FILLFACTOR = 70);
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [YardCode_INDEX04]
+    ON [dbo].[YardCode]([YARD] ASC) WITH (FILLFACTOR = 70);
+

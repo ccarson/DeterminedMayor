@@ -1,0 +1,1885 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="TripodOrders">
+      <DataSourceReference>TripodOrders</DataSourceReference>
+      <rd:SecurityType>Integrated</rd:SecurityType>
+      <rd:DataSourceID>a026b1be-550f-40b8-99f0-34edbfefea56</rd:DataSourceID>
+    </DataSource>
+    <DataSource Name="TripodDW">
+      <DataSourceReference>TripodDW</DataSourceReference>
+      <rd:SecurityType>Integrated</rd:SecurityType>
+      <rd:DataSourceID>05efd41b-0748-4729-a919-9cf5bc58fd60</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="CustomerOrders">
+      <Query>
+        <DataSourceName>TripodOrders</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="CustomerOrderByOriginalOrder">
+            <Value>=Parameters!pOrderNumberFormatted.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText> SELECT NON EMPTY { [Measures].[Item Quantity], [Measures].[Shipped Quantity], [Measures].[Backorder Quantity] } ON COLUMNS, NON EMPTY { ([Part].[SPRNUM].[SPRNUM].ALLMEMBERS * [Order Date].[Date].[Date].ALLMEMBERS * [Ship Date].[Date].[Date].ALLMEMBERS * [Part].[SPR Description].[SPR Description].ALLMEMBERS * [Customer Order].[Original Order Number].[Original Order Number].ALLMEMBERS * [Customer Order].[Order Number].[Order Number].ALLMEMBERS * [Customer Order].[Is Original Order].[Is Original Order].ALLMEMBERS * [Customer Order].[Order Status].[Order Status].ALLMEMBERS * [Customer Order].[Unit Price].[Unit Price].ALLMEMBERS * [Customer Order].[Is Backorder].[Is Backorder].ALLMEMBERS * [Bill To Customer].[By Customer Name Formatted].[Customer].ALLMEMBERS * [Customer Order].[Order Line Item].[Order Line Item].ALLMEMBERS * [Ship To Customer].[By Customer Name Formatted].[Customer].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( STRTOSET(@CustomerOrderByOriginalOrder, CONSTRAINED) ) ON COLUMNS FROM [TripodOrders]) WHERE ( IIF( STRTOSET(@CustomerOrderByOriginalOrder, CONSTRAINED).Count = 1, STRTOSET(@CustomerOrderByOriginalOrder, CONSTRAINED), [Customer Order].[By Original Order].currentmember ) ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+        <rd:DesignerState>
+          <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+            <CommandType>MDX</CommandType>
+            <QuerySpecification xsi:type="MDXQuerySpecification">
+              <Select>
+                <Items>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Part</DimensionName>
+                      <HierarchyName>SPRNUM</HierarchyName>
+                      <HierarchyUniqueName>[Part].[SPRNUM]</HierarchyUniqueName>
+                      <LevelName>SPRNUM</LevelName>
+                      <UniqueName>[Part].[SPRNUM].[SPRNUM]</UniqueName>
+                    </ID>
+                    <ItemCaption>SPRNUM</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Order Date</DimensionName>
+                      <HierarchyName>Date</HierarchyName>
+                      <HierarchyUniqueName>[Order Date].[Date]</HierarchyUniqueName>
+                      <LevelName>Date</LevelName>
+                      <UniqueName>[Order Date].[Date].[Date]</UniqueName>
+                    </ID>
+                    <ItemCaption>Date</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Ship Date</DimensionName>
+                      <HierarchyName>Date</HierarchyName>
+                      <HierarchyUniqueName>[Ship Date].[Date]</HierarchyUniqueName>
+                      <LevelName>Date</LevelName>
+                      <UniqueName>[Ship Date].[Date].[Date]</UniqueName>
+                    </ID>
+                    <ItemCaption>Date</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Part</DimensionName>
+                      <HierarchyName>SPR Description</HierarchyName>
+                      <HierarchyUniqueName>[Part].[SPR Description]</HierarchyUniqueName>
+                      <LevelName>SPR Description</LevelName>
+                      <UniqueName>[Part].[SPR Description].[SPR Description]</UniqueName>
+                    </ID>
+                    <ItemCaption>SPR Description</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Customer Order</DimensionName>
+                      <HierarchyName>Original Order Number</HierarchyName>
+                      <HierarchyUniqueName>[Customer Order].[Original Order Number]</HierarchyUniqueName>
+                      <LevelName>Original Order Number</LevelName>
+                      <UniqueName>[Customer Order].[Original Order Number].[Original Order Number]</UniqueName>
+                    </ID>
+                    <ItemCaption>Original Order Number</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Customer Order</DimensionName>
+                      <HierarchyName>Order Number</HierarchyName>
+                      <HierarchyUniqueName>[Customer Order].[Order Number]</HierarchyUniqueName>
+                      <LevelName>Order Number</LevelName>
+                      <UniqueName>[Customer Order].[Order Number].[Order Number]</UniqueName>
+                    </ID>
+                    <ItemCaption>Order Number</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Customer Order</DimensionName>
+                      <HierarchyName>Is Original Order</HierarchyName>
+                      <HierarchyUniqueName>[Customer Order].[Is Original Order]</HierarchyUniqueName>
+                      <LevelName>Is Original Order</LevelName>
+                      <UniqueName>[Customer Order].[Is Original Order].[Is Original Order]</UniqueName>
+                    </ID>
+                    <ItemCaption>Is Original Order</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Customer Order</DimensionName>
+                      <HierarchyName>Order Status</HierarchyName>
+                      <HierarchyUniqueName>[Customer Order].[Order Status]</HierarchyUniqueName>
+                      <LevelName>Order Status</LevelName>
+                      <UniqueName>[Customer Order].[Order Status].[Order Status]</UniqueName>
+                    </ID>
+                    <ItemCaption>Order Status</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Customer Order</DimensionName>
+                      <HierarchyName>Unit Price</HierarchyName>
+                      <HierarchyUniqueName>[Customer Order].[Unit Price]</HierarchyUniqueName>
+                      <LevelName>Unit Price</LevelName>
+                      <UniqueName>[Customer Order].[Unit Price].[Unit Price]</UniqueName>
+                    </ID>
+                    <ItemCaption>Unit Price</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Customer Order</DimensionName>
+                      <HierarchyName>Is Backorder</HierarchyName>
+                      <HierarchyUniqueName>[Customer Order].[Is Backorder]</HierarchyUniqueName>
+                      <LevelName>Is Backorder</LevelName>
+                      <UniqueName>[Customer Order].[Is Backorder].[Is Backorder]</UniqueName>
+                    </ID>
+                    <ItemCaption>Is Backorder</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Bill To Customer</DimensionName>
+                      <HierarchyName>By Customer Name Formatted</HierarchyName>
+                      <HierarchyUniqueName>[Bill To Customer].[By Customer Name Formatted]</HierarchyUniqueName>
+                      <LevelName>Customer</LevelName>
+                      <UniqueName>[Bill To Customer].[By Customer Name Formatted].[Customer]</UniqueName>
+                    </ID>
+                    <ItemCaption>Customer</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Customer Order</DimensionName>
+                      <HierarchyName>Order Line Item</HierarchyName>
+                      <HierarchyUniqueName>[Customer Order].[Order Line Item]</HierarchyUniqueName>
+                      <LevelName>Order Line Item</LevelName>
+                      <UniqueName>[Customer Order].[Order Line Item].[Order Line Item]</UniqueName>
+                    </ID>
+                    <ItemCaption>Order Line Item</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Ship To Customer</DimensionName>
+                      <HierarchyName>By Customer Name Formatted</HierarchyName>
+                      <HierarchyUniqueName>[Ship To Customer].[By Customer Name Formatted]</HierarchyUniqueName>
+                      <LevelName>Customer</LevelName>
+                      <UniqueName>[Ship To Customer].[By Customer Name Formatted].[Customer]</UniqueName>
+                    </ID>
+                    <ItemCaption>Customer</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>Item Quantity</MeasureName>
+                      <UniqueName>[Measures].[Item Quantity]</UniqueName>
+                    </ID>
+                    <ItemCaption>Item Quantity</ItemCaption>
+                    <BackColor>true</BackColor>
+                    <ForeColor>true</ForeColor>
+                    <FontFamily>true</FontFamily>
+                    <FontSize>true</FontSize>
+                    <FontWeight>true</FontWeight>
+                    <FontStyle>true</FontStyle>
+                    <FontDecoration>true</FontDecoration>
+                    <FormattedValue>true</FormattedValue>
+                    <FormatString>true</FormatString>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>Shipped Quantity</MeasureName>
+                      <UniqueName>[Measures].[Shipped Quantity]</UniqueName>
+                    </ID>
+                    <ItemCaption>Shipped Quantity</ItemCaption>
+                    <BackColor>true</BackColor>
+                    <ForeColor>true</ForeColor>
+                    <FontFamily>true</FontFamily>
+                    <FontSize>true</FontSize>
+                    <FontWeight>true</FontWeight>
+                    <FontStyle>true</FontStyle>
+                    <FontDecoration>true</FontDecoration>
+                    <FormattedValue>true</FormattedValue>
+                    <FormatString>true</FormatString>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>Backorder Quantity</MeasureName>
+                      <UniqueName>[Measures].[Backorder Quantity]</UniqueName>
+                    </ID>
+                    <ItemCaption>Backorder Quantity</ItemCaption>
+                    <BackColor>true</BackColor>
+                    <ForeColor>true</ForeColor>
+                    <FontFamily>true</FontFamily>
+                    <FontSize>true</FontSize>
+                    <FontWeight>true</FontWeight>
+                    <FontStyle>true</FontStyle>
+                    <FontDecoration>true</FontDecoration>
+                    <FormattedValue>true</FormattedValue>
+                    <FormatString>true</FormatString>
+                  </Item>
+                </Items>
+              </Select>
+              <From>TripodOrders</From>
+              <Filter>
+                <FilterItems>
+                  <FilterItem>
+                    <HierarchyUniqueName>[Customer Order].[By Original Order]</HierarchyUniqueName>
+                    <Condition xsi:type="EqualTo">
+                      <Members />
+                      <Parametrized>true</Parametrized>
+                    </Condition>
+                  </FilterItem>
+                </FilterItems>
+              </Filter>
+              <Calculations />
+              <Aggregates />
+              <QueryProperties>
+                <IncludeMemberValue>true</IncludeMemberValue>
+              </QueryProperties>
+            </QuerySpecification>
+            <Query>
+              <Statement> SELECT NON EMPTY { [Measures].[Item Quantity], [Measures].[Shipped Quantity], [Measures].[Backorder Quantity] } ON COLUMNS, NON EMPTY { ([Part].[SPRNUM].[SPRNUM].ALLMEMBERS * [Order Date].[Date].[Date].ALLMEMBERS * [Ship Date].[Date].[Date].ALLMEMBERS * [Part].[SPR Description].[SPR Description].ALLMEMBERS * [Customer Order].[Original Order Number].[Original Order Number].ALLMEMBERS * [Customer Order].[Order Number].[Order Number].ALLMEMBERS * [Customer Order].[Is Original Order].[Is Original Order].ALLMEMBERS * [Customer Order].[Order Status].[Order Status].ALLMEMBERS * [Customer Order].[Unit Price].[Unit Price].ALLMEMBERS * [Customer Order].[Is Backorder].[Is Backorder].ALLMEMBERS * [Bill To Customer].[By Customer Name Formatted].[Customer].ALLMEMBERS * [Customer Order].[Order Line Item].[Order Line Item].ALLMEMBERS * [Ship To Customer].[By Customer Name Formatted].[Customer].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( STRTOSET(@CustomerOrderByOriginalOrder, CONSTRAINED) ) ON COLUMNS FROM [TripodOrders]) WHERE ( IIF( STRTOSET(@CustomerOrderByOriginalOrder, CONSTRAINED).Count = 1, STRTOSET(@CustomerOrderByOriginalOrder, CONSTRAINED), [Customer Order].[By Original Order].currentmember ) ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
+              <ParameterDefinitions>
+                <ParameterDefinition>
+                  <Name>CustomerOrderByOriginalOrder</Name>
+                  <DefaultValues />
+                  <Caption>By Original Order</Caption>
+                  <HierarchyUniqueName>[Customer Order].[By Original Order]</HierarchyUniqueName>
+                  <ParameterValuesQuery>
+                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Customer Order].[By Original Order].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Customer Order].[By Original Order].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Customer Order].[By Original Order].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Customer Order].[By Original Order].ALLMEMBERS ON ROWS FROM [TripodOrders]</Statement>
+                    <ParameterizedStatement>
+                      <ReferencedParameters />
+                    </ParameterizedStatement>
+                  </ParameterValuesQuery>
+                  <MultipleValues>true</MultipleValues>
+                </ParameterDefinition>
+              </ParameterDefinitions>
+            </Query>
+          </QueryDefinition>
+        </rd:DesignerState>
+      </Query>
+      <Fields>
+        <Field Name="SPRNUM">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Part].[SPRNUM].[SPRNUM]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OrderDate">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Order Date].[Date].[Date]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="rawShipDate">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Ship Date].[Date].[Date]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SPRDescription">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Part].[SPR Description].[SPR Description]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OriginalOrderNumber">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Customer Order].[Original Order Number].[Original Order Number]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OrderNumber">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Customer Order].[Order Number].[Order Number]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="IsOriginalOrder">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Customer Order].[Is Original Order].[Is Original Order]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OrderStatus">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Customer Order].[Order Status].[Order Status]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="UnitPrice">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Customer Order].[Unit Price].[Unit Price]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BillToNameFormatted">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Bill To Customer].[By Customer Name Formatted].[Customer]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="IsBackorder">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Customer Order].[Is Backorder].[Is Backorder]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OrderLineItem">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Customer Order].[Order Line Item].[Order Line Item]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ShipToNameFormatted">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Ship To Customer].[By Customer Name Formatted].[Customer]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItemQuantity">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Item Quantity]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ShippedQuantity">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Shipped Quantity]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="BackorderQuantity">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Backorder Quantity]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ShipDate">
+          <Value>=IIF( Fields!rawShipDate.Value = "", Nothing, CDate( Fields!rawShipDate.Value ) )</Value>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Tablix Name="tblxHeader">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>2.28543in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>7.58541in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2.28544in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.41667in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ReportTitle">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Customer Order Detail</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontSize>20pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#333333</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <ZIndex>2</ZIndex>
+                          <Style>
+                            <Border>
+                              <Color>#770000</Color>
+                              <Style>None</Style>
+                              <Width>0.75pt</Width>
+                            </Border>
+                            <TopBorder>
+                              <Style>Solid</Style>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                            </BottomBorder>
+                            <VerticalAlign>Middle</VerticalAlign>
+                          </Style>
+                        </Textbox>
+                        <ColSpan>3</ColSpan>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell />
+                    <TablixCell />
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>CustomerOrders</DataSetName>
+            <Top>0.02778in</Top>
+            <Left>0.22186in</Left>
+            <Height>0.41667in</Height>
+            <Width>12.15628in</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Tablix>
+          <Tablix Name="tblxCustomerOrder00">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>1.1875in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.04167in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2.72499in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.875in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.875in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.88125in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.3in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="lbl01">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Order Number:</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#eeeeee</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </Border>
+                            <RightBorder>
+                              <Style>None</Style>
+                            </RightBorder>
+                            <BackgroundColor>#770000</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>8pt</PaddingRight>
+                            <PaddingTop>4pt</PaddingTop>
+                            <PaddingBottom>4pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="OrderNumber01">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Label>FirstOrderNumber</Label>
+                                  <Value>=First(Fields!OrderNumber.Value, "CustomerOrders")</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#eeeeee</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <ActionInfo>
+                            <Actions>
+                              <Action>
+                                <Hyperlink>=IIf( Parameters!pShowFullOrderHistory.Value, "", 
+	"javascript:void(window.open('" &amp; Variables!gThisReport.Value &amp; "&amp;rs:Command=Render" &amp;
+		"&amp;pOrderNumber=" &amp; Code.URLEncode( Fields!OrderNumber.Value ) &amp;
+		"&amp;pShowFullOrderHistory=True" &amp;
+		"'))" )</Hyperlink>
+                              </Action>
+                            </Actions>
+                          </ActionInfo>
+                          <ToolTip>=IIf( Parameters!pShowFullOrderHistory.Value, "", "Click for Full Order History" )</ToolTip>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </Border>
+                            <LeftBorder>
+                              <Style>None</Style>
+                            </LeftBorder>
+                            <BackgroundColor>#770000</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>4pt</PaddingTop>
+                            <PaddingBottom>4pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <ColSpan>2</ColSpan>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell />
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="OrderDate01">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Order Date:  </Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#eeeeee</Color>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Label>Order Date</Label>
+                                  <Value>=CDate( First(Fields!OrderDate.Value, "CustomerOrders") )</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>MM/dd/yy</Format>
+                                    <Color>#eeeeee</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </Border>
+                            <BackgroundColor>#770000</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>8pt</PaddingRight>
+                            <PaddingTop>4pt</PaddingTop>
+                            <PaddingBottom>4pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <ColSpan>3</ColSpan>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell />
+                    <TablixCell />
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="lbl02">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Bill To:</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#eeeeee</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </Border>
+                            <BottomBorder>
+                              <Style>None</Style>
+                            </BottomBorder>
+                            <RightBorder>
+                              <Style>None</Style>
+                            </RightBorder>
+                            <BackgroundColor>#990000</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>8pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="BillTo01">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!BillToNameFormatted.Value</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#eeeeee</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </Border>
+                            <BottomBorder>
+                              <Style>None</Style>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Style>None</Style>
+                            </LeftBorder>
+                            <BackgroundColor>#990000</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <ColSpan>5</ColSpan>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell />
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="lbl03">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Ship To:</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#eeeeee</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </Border>
+                            <TopBorder>
+                              <Style>None</Style>
+                            </TopBorder>
+                            <RightBorder>
+                              <Style>None</Style>
+                            </RightBorder>
+                            <BackgroundColor>#990000</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>8pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ShipTo01">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Label>Single Ship To</Label>
+                                  <Value>=Fields!ShipToNameFormatted.Value</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#eeeeee</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </Border>
+                            <TopBorder>
+                              <Style>None</Style>
+                            </TopBorder>
+                            <LeftBorder>
+                              <Style>None</Style>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Style>None</Style>
+                            </RightBorder>
+                            <BackgroundColor>#990000</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <ColSpan>2</ColSpan>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell />
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ShipDate01">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Label>Single Detail Ship Date</Label>
+                                  <Value>=IIf( CountDistinct( Fields!OrderNumber.Value ) &gt; 1, "", IIf( Fields!rawShipDate.Value = "", "Not Shipped", "Ship Date: " &amp; Format( CDate( Fields!ShipDate.Value ), "MM/dd/yy" ) ) )</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#eeeeee</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </Border>
+                            <TopBorder>
+                              <Style>None</Style>
+                            </TopBorder>
+                            <LeftBorder>
+                              <Style>None</Style>
+                            </LeftBorder>
+                            <BackgroundColor>#990000</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>8pt</PaddingRight>
+                            <PaddingBottom>4pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <ColSpan>3</ColSpan>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell />
+                    <TablixCell />
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.3in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="OrderNumber02">
+                          <CanGrow>true</CanGrow>
+                          <ToggleImage>
+                            <InitialState>=Parameters!pShowFullOrderHistory.Value And Fields!OrderNumber.Value = Parameters!pOrderNumber.Value</InitialState>
+                          </ToggleImage>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!OrderNumber.Value</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#990000</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <ActionInfo>
+                            <Actions>
+                              <Action>
+                                <Hyperlink>="javascript:void(window.open('" &amp; Variables!gThisReport.Value &amp; "&amp;rs:Command=Render" &amp;
+		"&amp;pOrderNumber=" &amp; Code.URLEncode( Fields!OrderNumber.Value ) &amp;
+		"&amp;pShowFullOrderHistory=False" &amp;
+		"'))"</Hyperlink>
+                              </Action>
+                            </Actions>
+                          </ActionInfo>
+                          <ToolTip>="Click to review this order only"</ToolTip>
+                          <Style>
+                            <Border>
+                              <Color>#990000</Color>
+                              <Style>None</Style>
+                              <Width>0.5pt</Width>
+                            </Border>
+                            <BackgroundColor>#eeeeee</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>8pt</PaddingRight>
+                            <PaddingTop>4pt</PaddingTop>
+                            <PaddingBottom>4pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ShipDate02">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Label>Multiple Detail Ship Date</Label>
+                                  <Value>=IIf( Fields!rawShipDate.Value = "", "Not Shipped", "Ship Date: " &amp; Format( CDate( Fields!ShipDate.Value ), "MM/dd/yy" ) )</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>M/d/yy</Format>
+                                    <Color>#990000</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#990000</Color>
+                              <Style>None</Style>
+                              <Width>0.5pt</Width>
+                            </Border>
+                            <BackgroundColor>#eeeeee</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>4pt</PaddingTop>
+                            <PaddingBottom>4pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <ColSpan>5</ColSpan>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell />
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="lbl04">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Ship To:</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#eeeeee</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                              <Width>0.5pt</Width>
+                            </Border>
+                            <LeftBorder>
+                              <Style>Solid</Style>
+                            </LeftBorder>
+                            <BackgroundColor>#990000</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>8pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ShipTo02">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Label>Multiple Ship To</Label>
+                                  <Value>=Fields!ShipToNameFormatted.Value</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#eeeeee</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                              <Width>0.5pt</Width>
+                            </Border>
+                            <RightBorder>
+                              <Style>Solid</Style>
+                            </RightBorder>
+                            <BackgroundColor>#990000</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <ColSpan>5</ColSpan>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell />
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="lbl05">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Line Item</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#333333</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </Border>
+                            <BackgroundColor>#bbbbbb</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>8pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="lbl06">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>SPRNUM</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#333333</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </Border>
+                            <BackgroundColor>#bbbbbb</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <ColSpan>2</ColSpan>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell />
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="lbl07">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Quantity</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#333333</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </Border>
+                            <BackgroundColor>#bbbbbb</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="lbl08">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Shipped</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#333333</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </Border>
+                            <BackgroundColor>#bbbbbb</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="lbl09">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Backorder</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#333333</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </Border>
+                            <BackgroundColor>#bbbbbb</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="OrderLineItem01">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!OrderLineItem.Value</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </Border>
+                            <BackgroundColor>#dddddd</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>8pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="SPRNUM01">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Label>SPRNUM</Label>
+                                  <Value>=Fields!SPRNUM.Value</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </Border>
+                            <BackgroundColor>#dddddd</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="SPRDescription">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!SPRDescription.Value</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>SPRDescription</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </Border>
+                            <BackgroundColor>#dddddd</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ItemQuantity01">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!ItemQuantity.Value</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>0;(0)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ShippedQuantity01">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!ShippedQuantity.Value</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>0;(0);'-'</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="BackorderQuantity01">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!BackorderQuantity.Value</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>0;(0);'-'</Format>
+                                    <Color>=IIf( Fields!BackorderQuantity.Value &gt; 0, "Red", "Black" )</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <KeepWithGroup>After</KeepWithGroup>
+                </TablixMember>
+                <TablixMember>
+                  <KeepWithGroup>After</KeepWithGroup>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="grpOriginalOrderNumber01">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!OriginalOrderNumber.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!OriginalOrderNumber.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixMembers>
+                    <TablixMember>
+                      <Visibility>
+                        <Hidden>=CountDistinct( Fields!ShipToNameFormatted.Value, "grpOriginalOrderNumber01" ) &gt; 1</Hidden>
+                      </Visibility>
+                    </TablixMember>
+                    <TablixMember>
+                      <Group Name="grpOrderNumber02">
+                        <GroupExpressions>
+                          <GroupExpression>=Fields!OrderNumber.Value</GroupExpression>
+                        </GroupExpressions>
+                      </Group>
+                      <SortExpressions>
+                        <SortExpression>
+                          <Value>=Fields!OrderNumber.Value</Value>
+                        </SortExpression>
+                      </SortExpressions>
+                      <TablixMembers>
+                        <TablixMember>
+                          <Visibility>
+                            <Hidden>=Parameters!pShowFullOrderHistory.Value = False</Hidden>
+                          </Visibility>
+                          <KeepWithGroup>After</KeepWithGroup>
+                        </TablixMember>
+                        <TablixMember>
+                          <Visibility>
+                            <Hidden>=CountDistinct( Fields!ShipToNameFormatted.Value, "grpOriginalOrderNumber01" ) = 1</Hidden>
+                          </Visibility>
+                          <KeepWithGroup>After</KeepWithGroup>
+                        </TablixMember>
+                        <TablixMember>
+                          <Visibility>
+                            <Hidden>=Parameters!pShowFullOrderHistory.Value And Fields!OrderNumber.Value &lt;&gt; Parameters!pOrderNumber.Value</Hidden>
+                            <ToggleItem>OrderNumber02</ToggleItem>
+                          </Visibility>
+                          <KeepWithGroup>After</KeepWithGroup>
+                        </TablixMember>
+                        <TablixMember>
+                          <Group Name="dtlOrderLineItem03" />
+                          <SortExpressions>
+                            <SortExpression>
+                              <Value>=CInt( Fields!OrderLineItem.Value )</Value>
+                            </SortExpression>
+                          </SortExpressions>
+                          <Visibility>
+                            <Hidden>=Parameters!pShowFullOrderHistory.Value And Fields!OrderNumber.Value &lt;&gt; Parameters!pOrderNumber.Value</Hidden>
+                            <ToggleItem>OrderNumber02</ToggleItem>
+                          </Visibility>
+                        </TablixMember>
+                      </TablixMembers>
+                    </TablixMember>
+                  </TablixMembers>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <RepeatRowHeaders>true</RepeatRowHeaders>
+            <DataSetName>CustomerOrders</DataSetName>
+            <Top>0.57722in</Top>
+            <Left>2.50729in</Left>
+            <Height>1.85in</Height>
+            <Width>7.58541in</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Color>LightGrey</Color>
+                <Style>Solid</Style>
+                <Width>0.5pt</Width>
+              </Border>
+            </Style>
+          </Tablix>
+        </ReportItems>
+        <Height>2.51055in</Height>
+        <Style>
+          <Border>
+            <Style>None</Style>
+            <Width>0.5pt</Width>
+          </Border>
+        </Style>
+      </Body>
+      <Width>12.6in</Width>
+      <Page>
+        <PageHeader>
+          <Height>1in</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Image Name="Image1">
+              <Source>Embedded</Source>
+              <Value>SpringfieldGrey3</Value>
+              <Sizing>FitProportional</Sizing>
+              <Top>0.04924in</Top>
+              <Left>0.22186in</Left>
+              <Height>0.87375in</Height>
+              <Width>0.75in</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+            </Image>
+            <Image Name="TripodMainHeader">
+              <Source>Embedded</Source>
+              <Value>SpringfieldRedBlock</Value>
+              <Sizing>FitProportional</Sizing>
+              <ActionInfo>
+                <Actions>
+                  <Action>
+                    <Hyperlink>="javascript:void(window.open('" &amp; Variables!gTripodDashboard.Value &amp; "&amp;rs:Command=Render'))"</Hyperlink>
+                  </Action>
+                </Actions>
+              </ActionInfo>
+              <Top>0.14535in</Top>
+              <Left>2.50729in</Left>
+              <Height>0.70833in</Height>
+              <Width>7.58541in</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+              <cl:ComponentMetadata>
+                <cl:ComponentId>68336317-3ea1-4383-997c-35f443c3a41e</cl:ComponentId>
+                <cl:UserProperties>
+                  <cl:UserProperty Description="" Name="Description">
+                    <cl:Values>
+                      <cl:Value>Links all reports to Home Dashboard with current date</cl:Value>
+                    </cl:Values>
+                  </cl:UserProperty>
+                </cl:UserProperties>
+              </cl:ComponentMetadata>
+            </Image>
+            <Image Name="Image2">
+              <Source>Embedded</Source>
+              <Value>SpringfieldGrey3</Value>
+              <Sizing>FitProportional</Sizing>
+              <Top>0.07701in</Top>
+              <Left>11.62814in</Left>
+              <Height>0.87375in</Height>
+              <Width>0.75in</Width>
+              <ZIndex>2</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+            </Image>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageHeader>
+        <PageFooter>
+          <Height>0.4in</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Line Name="Line3">
+              <Top>0.02778in</Top>
+              <Left>0.22186in</Left>
+              <Height>0in</Height>
+              <Width>12.15628in</Width>
+              <Style>
+                <Border>
+                  <Color>#770000</Color>
+                  <Style>Solid</Style>
+                  <Width>0.5pt</Width>
+                </Border>
+              </Style>
+            </Line>
+            <Textbox Name="lblFooter01">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Report Created:  </Value>
+                      <Style>
+                        <FontFamily>Calibri</FontFamily>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>=Globals!ExecutionTime</Value>
+                      <Style>
+                        <FontFamily>Calibri</FontFamily>
+                        <Format>MMM d, yyyy HH:mm</Format>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.05556in</Top>
+              <Left>0.22186in</Left>
+              <Height>0.25in</Height>
+              <Width>2.9375in</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="lblFooter3">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Report Execution Time:  </Value>
+                      <Style>
+                        <FontFamily>Calibri</FontFamily>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Label>Total Seconds</Label>
+                      <Value>=Now.Subtract( Globals!ExecutionTime ).TotalSeconds</Value>
+                      <Style>
+                        <FontFamily>Calibri</FontFamily>
+                        <Format>0.000;(0.000)</Format>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value> seconds</Value>
+                      <Style>
+                        <FontFamily>Calibri</FontFamily>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.05556in</Top>
+              <Left>9.44064in</Left>
+              <Height>0.25in</Height>
+              <Width>2.9375in</Width>
+              <ZIndex>2</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
+        <LeftMargin>0.25in</LeftMargin>
+        <RightMargin>0.25in</RightMargin>
+        <TopMargin>0.25in</TopMargin>
+        <BottomMargin>0.25in</BottomMargin>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="pOrderNumber">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Order Number:</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="pShowFullOrderHistory">
+      <DataType>Boolean</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>=False</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Full Order History:</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="pOrderNumberFormatted">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>="[Customer Order].[By Original Order].[" &amp; 
+	IIf( Parameters!pShowFullOrderHistory.Value, 
+			"Original Order Number].&amp;[" &amp; Left( Parameters!pOrderNumber.Value, Len( Parameters!pOrderNumber.Value ) - 3 ) , 	
+			"Order Number].&amp;[" &amp; Parameters!pOrderNumber.Value ) &amp; 
+			"]"</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>pOrderNumberFormatted</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+  </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>2</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>pOrderNumber</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>pShowFullOrderHistory</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>pOrderNumberFormatted</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <Code>Public Function URLEncode (ByVal inURL As String) As String
+Dim outURL As String
+outURL = System.Uri.EscapeDataString(inURL).ToString
+Return outURL
+End Function</Code>
+  <EmbeddedImages>
+    <EmbeddedImage Name="SpringfieldGrey2">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+    <EmbeddedImage Name="SpringfieldRedBlock">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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
+ieusnMWMPAAAAABJRU5ErkJggg==</ImageData>
+    </EmbeddedImage>
+    <EmbeddedImage Name="SpringfieldGrey3">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <Variables>
+    <Variable Name="gThisReport">
+      <Value>=Globals!ReportServerUrl + "?" + Code.URLEncode(Globals!ReportFolder + "/" + Globals!ReportName )</Value>
+    </Variable>
+    <Variable Name="gTripodDashboard">
+      <Value>=Globals!ReportServerUrl + "?" + Code.URLEncode(Globals!ReportFolder + "/" + "Sales Dashboard" )</Value>
+    </Variable>
+  </Variables>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportServerUrl>http://sfarmorysql/ReportServer</rd:ReportServerUrl>
+  <rd:ReportID>58215b8a-8b0a-4376-8602-d91f4114b4d3</rd:ReportID>
+</Report>

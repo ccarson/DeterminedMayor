@@ -1,0 +1,19 @@
+﻿CREATE TABLE [dbo].[RprProdG] (
+    [Recnum]    BIGINT        IDENTITY (1, 1) NOT NULL,
+    [Product]   VARCHAR (25)  DEFAULT (' ') NOT NULL,
+    [Group]     VARCHAR (50)  DEFAULT (' ') NOT NULL,
+    [CodeDigit] DECIMAL (2)   DEFAULT ((0)) NOT NULL,
+    [Notes]     VARCHAR (MAX) NULL,
+    CONSTRAINT [RprProdG_INDEX01] PRIMARY KEY CLUSTERED ([Product] ASC) WITH (FILLFACTOR = 70)
+);
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [RprProdG_INDEX00]
+    ON [dbo].[RprProdG]([Recnum] ASC) WITH (FILLFACTOR = 70);
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [RprProdG_INDEX02]
+    ON [dbo].[RprProdG]([Group] ASC, [Product] ASC) WITH (FILLFACTOR = 70);
+

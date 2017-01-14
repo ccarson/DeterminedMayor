@@ -1,0 +1,43 @@
+CREATE TABLE [dbo].[CallHist] (
+    [Recnum]         BIGINT        IDENTITY (1, 1) NOT NULL,
+    [ID]             DECIMAL (10)  DEFAULT ((0)) NOT NULL,
+    [CUSTID]         VARCHAR (10)  DEFAULT (' ') NOT NULL,
+    [INITIALS]       VARCHAR (10)  DEFAULT (' ') NOT NULL,
+    [CALL_DATE]      DATETIME      DEFAULT ('01/01/1753') NOT NULL,
+    [CALL_NOTES]     VARCHAR (MAX) NULL,
+    [CALL_TYPE]      VARCHAR (10)  DEFAULT (' ') NOT NULL,
+    [FOLLOW_DATE]    DATETIME      DEFAULT ('01/01/1753') NOT NULL,
+    [CreatedBy]      CHAR (4)      DEFAULT ('') NOT NULL,
+    [CreatedDate]    DATETIME      DEFAULT (getdate()) NOT NULL,
+    [ChangedBy]      CHAR (4)      NULL,
+    [ChangedDate]    DATETIME      NULL,
+    [FollowedUpDate] DATETIME      NULL,
+    CONSTRAINT [CallHist_INDEX01] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (FILLFACTOR = 70)
+);
+
+
+
+
+
+
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [CallHist_INDEX00]
+    ON [dbo].[CallHist]([Recnum] ASC) WITH (FILLFACTOR = 70);
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [CallHist_INDEX02]
+    ON [dbo].[CallHist]([CUSTID] ASC, [CALL_DATE] DESC, [ID] ASC) WITH (FILLFACTOR = 70);
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [CallHist_INDEX03]
+    ON [dbo].[CallHist]([CUSTID] ASC, [CALL_DATE] ASC, [INITIALS] ASC, [CALL_TYPE] ASC, [ID] ASC) WITH (FILLFACTOR = 70);
+
+
+GO
+CREATE NONCLUSTERED INDEX [CallHist_INDEX04]
+    ON [dbo].[CallHist]([INITIALS] ASC, [FOLLOW_DATE] ASC, [ID] ASC);
+

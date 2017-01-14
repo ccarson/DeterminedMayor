@@ -1,0 +1,18 @@
+﻿CREATE TABLE [dbo].[PLCalib] (
+    [Recnum]      BIGINT       IDENTITY (1, 1) NOT NULL,
+    [ID]          DECIMAL (10) DEFAULT ((0)) NOT NULL,
+    [Caliber]     VARCHAR (10) DEFAULT (' ') NOT NULL,
+    [Description] VARCHAR (50) DEFAULT (' ') NOT NULL,
+    CONSTRAINT [PLCalib_INDEX01] PRIMARY KEY CLUSTERED ([Caliber] ASC) WITH (FILLFACTOR = 70)
+);
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [PLCalib_INDEX00]
+    ON [dbo].[PLCalib]([Recnum] ASC) WITH (FILLFACTOR = 70);
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [PLCalib_INDEX02]
+    ON [dbo].[PLCalib]([ID] ASC) WITH (FILLFACTOR = 70);
+
