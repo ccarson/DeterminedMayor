@@ -180,5 +180,7 @@
   <ItemGroup>
     <None Include="PublishScripts\TripodDW.localdb.publish.xml" />
     <None Include="PublishScripts\TripodDW.CA-LAB.publish.xml" />
+    <None Include="PublishScripts\TripodDW.SFA-QA-SQL.publish.xml" />
+    <None Include="PublishScripts\TripodDW.SFARMORYSQL.publish.xml" />
   </ItemGroup>
 </Project>

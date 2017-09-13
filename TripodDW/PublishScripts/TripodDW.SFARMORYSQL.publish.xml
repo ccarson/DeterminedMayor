@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseName>TripodDW</TargetDatabaseName>
+    <DeployScriptFileName>TripodDW.sql</DeployScriptFileName>
+    <ProfileVersionNumber>1</ProfileVersionNumber>
+    <TargetConnectionString>Data Source=SFARMORYSQL;Persist Security Info=False;User ID=chrisc;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True</TargetConnectionString>
+    <BlockOnPossibleDataLoss>True</BlockOnPossibleDataLoss>
+    <DropObjectsNotInSource>False</DropObjectsNotInSource>
+    <DropConstraintsNotInSource>False</DropConstraintsNotInSource>
+    <DropDmlTriggersNotInSource>False</DropDmlTriggersNotInSource>
+    <DropIndexesNotInSource>False</DropIndexesNotInSource>
+    <GenerateSmartDefaults>True</GenerateSmartDefaults>
+  </PropertyGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="SpringfieldProd">
+      <Value>SpringfieldProd</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
+</Project>
