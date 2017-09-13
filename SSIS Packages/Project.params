@@ -1,28 +1,7 @@
 <?xml version="1.0"?>
 <SSIS:Parameters xmlns:SSIS="www.microsoft.com/SqlServer/SSIS">
   <SSIS:Parameter
-    SSIS:Name="SpringfieldProdInitialCatalog">
-    <SSIS:Properties>
-      <SSIS:Property
-        SSIS:Name="ID">{4dc6f006-7a06-4335-a60c-6bcae155243d}</SSIS:Property>
-      <SSIS:Property
-        SSIS:Name="CreationName"></SSIS:Property>
-      <SSIS:Property
-        SSIS:Name="Description">Springfield Data</SSIS:Property>
-      <SSIS:Property
-        SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-      <SSIS:Property
-        SSIS:Name="Required">1</SSIS:Property>
-      <SSIS:Property
-        SSIS:Name="Sensitive">0</SSIS:Property>
-      <SSIS:Property
-        SSIS:Name="Value">SpringfieldProd</SSIS:Property>
-      <SSIS:Property
-        SSIS:Name="DataType">18</SSIS:Property>
-    </SSIS:Properties>
-  </SSIS:Parameter>
-  <SSIS:Parameter
-    SSIS:Name="TripodDW_InitialCatalog">
+    SSIS:Name="TripodDW_ConnectionString">
     <SSIS:Properties>
       <SSIS:Property
         SSIS:Name="ID">{ab18e1ab-d6f3-4b37-a8c4-6500df2e19df}</SSIS:Property>
@@ -37,20 +16,20 @@
       <SSIS:Property
         SSIS:Name="Sensitive">0</SSIS:Property>
       <SSIS:Property
-        SSIS:Name="Value">TripodDW_Dev</SSIS:Property>
+        SSIS:Name="Value">Data Source=CA-LAB;Initial Catalog=TripodDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Packet Size=32767;Application Name=Tripod ETL - TripodDW;MARS Connection=True;</SSIS:Property>
       <SSIS:Property
         SSIS:Name="DataType">18</SSIS:Property>
     </SSIS:Properties>
   </SSIS:Parameter>
   <SSIS:Parameter
-    SSIS:Name="SpringfieldServer">
+    SSIS:Name="SpringfieldProdConnectionString">
     <SSIS:Properties>
       <SSIS:Property
-        SSIS:Name="ID">{1bb6bd54-f809-418e-964f-81eafdc8c31e}</SSIS:Property>
+        SSIS:Name="ID">{8847d261-b295-4443-ab19-c735ab059d71}</SSIS:Property>
       <SSIS:Property
         SSIS:Name="CreationName"></SSIS:Property>
       <SSIS:Property
-        SSIS:Name="Description">Server Name</SSIS:Property>
+        SSIS:Name="Description"></SSIS:Property>
       <SSIS:Property
         SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
       <SSIS:Property
@@ -58,28 +37,7 @@
       <SSIS:Property
         SSIS:Name="Sensitive">0</SSIS:Property>
       <SSIS:Property
-        SSIS:Name="Value">CA-UNUA\SQL2014</SSIS:Property>
-      <SSIS:Property
-        SSIS:Name="DataType">18</SSIS:Property>
-    </SSIS:Properties>
-  </SSIS:Parameter>
-  <SSIS:Parameter
-    SSIS:Name="TripodOrders_InitialCatalog">
-    <SSIS:Properties>
-      <SSIS:Property
-        SSIS:Name="ID">{8679c69a-7f8c-41a4-9a50-23343840533a}</SSIS:Property>
-      <SSIS:Property
-        SSIS:Name="CreationName"></SSIS:Property>
-      <SSIS:Property
-        SSIS:Name="Description">Tripod Cube</SSIS:Property>
-      <SSIS:Property
-        SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-      <SSIS:Property
-        SSIS:Name="Required">1</SSIS:Property>
-      <SSIS:Property
-        SSIS:Name="Sensitive">0</SSIS:Property>
-      <SSIS:Property
-        SSIS:Name="Value">TripodOrders</SSIS:Property>
+        SSIS:Name="Value">Data Source=CA-LAB;Initial Catalog=SpringfieldProd;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Packet Size=32767;Application Name=Tripod ETL - SpringfieldProd;MARS Connection=True;</SSIS:Property>
       <SSIS:Property
         SSIS:Name="DataType">18</SSIS:Property>
     </SSIS:Properties>

@@ -4,11 +4,9 @@
   DTS:DTSID="{606ED0FF-D927-47C2-B063-BBDC7AEB79E3}"
   DTS:CreationName="OLEDB">
   <DTS:PropertyExpression
-    DTS:Name="InitialCatalog">@[$Project::TripodDW_InitialCatalog]</DTS:PropertyExpression>
-  <DTS:PropertyExpression
-    DTS:Name="ServerName">@[$Project::SpringfieldServer]</DTS:PropertyExpression>
+    DTS:Name="ConnectionString">@[$Project::TripodDW_ConnectionString]</DTS:PropertyExpression>
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="Data Source=CA-UNUA\SQL2014;Initial Catalog=TripodDW_Dev;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Packet Size=32767;" />
+      DTS:ConnectionString="Data Source=CA-LAB;Initial Catalog=TripodDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Packet Size=32767;Application Name=Tripod ETL - TripodDW;MARS Connection=True;" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>

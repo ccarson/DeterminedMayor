@@ -172,7 +172,7 @@
           <ConfigurationSetting>
             <Id>Tripod DW</Id>
             <Name>Tripod DW</Name>
-            <Value xsi:type="xsd:string">Provider=SQLNCLI11.1;Data Source=localhost;Integrated Security=SSPI;Initial Catalog=TripodDW;MARS Connection=True</Value>
+            <Value xsi:type="xsd:string">Provider=SQLNCLI11.1;Data Source=(local);Integrated Security=SSPI;Initial Catalog=TripodDW;MARS Connection=True</Value>
           </ConfigurationSetting>
         </ConnectionMappings>
         <ConnectionSecurityMappings>
