@@ -546,7 +546,7 @@
             <Value>=Parameters!pOrderDateEndFormatted.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText> SELECT NON EMPTY { [Measures].[Item Quantity] } ON COLUMNS, NON EMPTY { ([Bill To Customer].[By Customer Name Formatted].[Customer].ALLMEMBERS * [Ship To Customer].[By Customer Name Formatted].[Customer].ALLMEMBERS * [Ship To Customer].[By Customer Name].[Customer Name].ALLMEMBERS * [Customer Order].[Order Number].[Order Number].ALLMEMBERS * [Part].[By Gun Part].[Is Gun Part].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [Part].[By Reportable].[Is Reportable].&amp;[Y] } ) ON COLUMNS FROM ( SELECT ( [CoreBillToCustomerTypes] ) ON COLUMNS FROM ( SELECT ( { [Customer Order].[Is Original Order].&amp;[1] } ) ON COLUMNS FROM ( SELECT ( STRTOMEMBER(@FromOrderDateDate, CONSTRAINED) : STRTOMEMBER(@ToOrderDateDate, CONSTRAINED) ) ON COLUMNS FROM [TripodOrders])))) WHERE ( [Customer Order].[Is Original Order].&amp;[1], [Part].[By Reportable].[Is Reportable].&amp;[Y] ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+        <CommandText> SELECT NON EMPTY { [Measures].[Item Quantity] } ON COLUMNS, NON EMPTY { ([Bill To Customer].[By Customer Name Formatted].[Customer].ALLMEMBERS * [Ship To Customer].[By Customer Name Formatted].[Customer].ALLMEMBERS * [Ship To Customer].[By Customer Name].[Customer Name].ALLMEMBERS * [Customer Order].[Order Number].[Order Number].ALLMEMBERS * [Part].[By Gun Part].[Is Gun Part].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [Part].[By Reportable].[Is Reportable].&amp;[Y], [Part].[By Reportable].[Part Key].&amp;[3748] } ) ON COLUMNS FROM ( SELECT ( [CoreBillToCustomerTypes] ) ON COLUMNS FROM ( SELECT ( { [Customer Order].[Is Original Order].&amp;[1] } ) ON COLUMNS FROM ( SELECT ( STRTOMEMBER(@FromOrderDateDate, CONSTRAINED) : STRTOMEMBER(@ToOrderDateDate, CONSTRAINED) ) ON COLUMNS FROM [TripodOrders])))) WHERE ( [Customer Order].[Is Original Order].&amp;[1], [Part].[By Reportable].CurrentMember ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
         <rd:DesignerState>
           <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
             <CommandType>MDX</CommandType>
@@ -662,6 +662,9 @@
                         <Member>
                           <MemberUniqueName>[Part].[By Reportable].[Is Reportable].&amp;[Y]</MemberUniqueName>
                         </Member>
+                        <Member>
+                          <MemberUniqueName>[Part].[By Reportable].[Part Key].&amp;[3748]</MemberUniqueName>
+                        </Member>
                       </Members>
                     </Condition>
                   </FilterItem>
@@ -674,7 +677,7 @@
               </QueryProperties>
             </QuerySpecification>
             <Query>
-              <Statement> SELECT NON EMPTY { [Measures].[Item Quantity] } ON COLUMNS, NON EMPTY { ([Bill To Customer].[By Customer Name Formatted].[Customer].ALLMEMBERS * [Ship To Customer].[By Customer Name Formatted].[Customer].ALLMEMBERS * [Ship To Customer].[By Customer Name].[Customer Name].ALLMEMBERS * [Customer Order].[Order Number].[Order Number].ALLMEMBERS * [Part].[By Gun Part].[Is Gun Part].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [Part].[By Reportable].[Is Reportable].&amp;[Y] } ) ON COLUMNS FROM ( SELECT ( [CoreBillToCustomerTypes] ) ON COLUMNS FROM ( SELECT ( { [Customer Order].[Is Original Order].&amp;[1] } ) ON COLUMNS FROM ( SELECT ( STRTOMEMBER(@FromOrderDateDate, CONSTRAINED) : STRTOMEMBER(@ToOrderDateDate, CONSTRAINED) ) ON COLUMNS FROM [TripodOrders])))) WHERE ( [Customer Order].[Is Original Order].&amp;[1], [Part].[By Reportable].[Is Reportable].&amp;[Y] ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
+              <Statement> SELECT NON EMPTY { [Measures].[Item Quantity] } ON COLUMNS, NON EMPTY { ([Bill To Customer].[By Customer Name Formatted].[Customer].ALLMEMBERS * [Ship To Customer].[By Customer Name Formatted].[Customer].ALLMEMBERS * [Ship To Customer].[By Customer Name].[Customer Name].ALLMEMBERS * [Customer Order].[Order Number].[Order Number].ALLMEMBERS * [Part].[By Gun Part].[Is Gun Part].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [Part].[By Reportable].[Is Reportable].&amp;[Y], [Part].[By Reportable].[Part Key].&amp;[3748] } ) ON COLUMNS FROM ( SELECT ( [CoreBillToCustomerTypes] ) ON COLUMNS FROM ( SELECT ( { [Customer Order].[Is Original Order].&amp;[1] } ) ON COLUMNS FROM ( SELECT ( STRTOMEMBER(@FromOrderDateDate, CONSTRAINED) : STRTOMEMBER(@ToOrderDateDate, CONSTRAINED) ) ON COLUMNS FROM [TripodOrders])))) WHERE ( [Customer Order].[Is Original Order].&amp;[1], [Part].[By Reportable].CurrentMember ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
               <ParameterDefinitions>
                 <ParameterDefinition>
                   <Name>FromOrderDateDate</Name>
@@ -2796,7 +2799,6 @@
                           </Style>
                         </Textbox>
                         <ColSpan>2</ColSpan>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell />
