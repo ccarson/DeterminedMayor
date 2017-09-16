@@ -396,7 +396,7 @@
     <DataSet Name="CurrentBackorder">
       <Query>
         <DataSourceName>TripodOrders</DataSourceName>
-        <CommandText> SELECT NON EMPTY { [Measures].[Backorder Quantity] } ON COLUMNS, NON EMPTY { ([Part].[By Category].[Part Key].ALLMEMBERS * [Part].[SPR Description].[SPR Description].ALLMEMBERS * [Part].[By Gun Part].[Is Gun Part].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [Part].[By Reportable].[Is Reportable].&amp;[Y] } ) ON COLUMNS FROM ( SELECT ( { [Customer Order].[Is Backorder].&amp;[1] } ) ON COLUMNS FROM [TripodOrders])) WHERE ( [Customer Order].[Is Backorder].&amp;[1], [Part].[By Reportable].[Is Reportable].&amp;[Y] ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+        <CommandText> SELECT NON EMPTY { [Measures].[Backorder Quantity] } ON COLUMNS, NON EMPTY { ([Part].[By Category].[Part Key].ALLMEMBERS * [Part].[SPR Description].[SPR Description].ALLMEMBERS * [Part].[By Gun Part].[Is Gun Part].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [Customer Order].[By Backorder].[Is Backorder].&amp;[1] } ) ON COLUMNS FROM ( SELECT ( { [Part].[By Reportable].[Is Reportable].&amp;[Y] } ) ON COLUMNS FROM [TripodOrders])) WHERE ( [Part].[By Reportable].[Is Reportable].&amp;[Y], [Customer Order].[By Backorder].[Is Backorder].&amp;[1] ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
         <rd:DesignerState>
           <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
             <CommandType>MDX</CommandType>
@@ -465,25 +465,26 @@
                   </Item>
                 </Items>
               </Select>
+              <AutoExecute>false</AutoExecute>
               <From>TripodOrders</From>
               <Filter>
                 <FilterItems>
-                  <FilterItem>
-                    <HierarchyUniqueName>[Customer Order].[Is Backorder]</HierarchyUniqueName>
-                    <Condition xsi:type="EqualTo">
-                      <Members>
-                        <Member>
-                          <MemberUniqueName>[Customer Order].[Is Backorder].&amp;[1]</MemberUniqueName>
-                        </Member>
-                      </Members>
-                    </Condition>
-                  </FilterItem>
                   <FilterItem>
                     <HierarchyUniqueName>[Part].[By Reportable]</HierarchyUniqueName>
                     <Condition xsi:type="EqualTo">
                       <Members>
                         <Member>
                           <MemberUniqueName>[Part].[By Reportable].[Is Reportable].&amp;[Y]</MemberUniqueName>
+                        </Member>
+                      </Members>
+                    </Condition>
+                  </FilterItem>
+                  <FilterItem>
+                    <HierarchyUniqueName>[Customer Order].[By Backorder]</HierarchyUniqueName>
+                    <Condition xsi:type="EqualTo">
+                      <Members>
+                        <Member>
+                          <MemberUniqueName>[Customer Order].[By Backorder].[Is Backorder].&amp;[1]</MemberUniqueName>
                         </Member>
                       </Members>
                     </Condition>
@@ -497,7 +498,7 @@
               </QueryProperties>
             </QuerySpecification>
             <Query>
-              <Statement> SELECT NON EMPTY { [Measures].[Backorder Quantity] } ON COLUMNS, NON EMPTY { ([Part].[By Category].[Part Key].ALLMEMBERS * [Part].[SPR Description].[SPR Description].ALLMEMBERS * [Part].[By Gun Part].[Is Gun Part].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [Part].[By Reportable].[Is Reportable].&amp;[Y] } ) ON COLUMNS FROM ( SELECT ( { [Customer Order].[Is Backorder].&amp;[1] } ) ON COLUMNS FROM [TripodOrders])) WHERE ( [Customer Order].[Is Backorder].&amp;[1], [Part].[By Reportable].[Is Reportable].&amp;[Y] ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
+              <Statement> SELECT NON EMPTY { [Measures].[Backorder Quantity] } ON COLUMNS, NON EMPTY { ([Part].[By Category].[Part Key].ALLMEMBERS * [Part].[SPR Description].[SPR Description].ALLMEMBERS * [Part].[By Gun Part].[Is Gun Part].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [Customer Order].[By Backorder].[Is Backorder].&amp;[1] } ) ON COLUMNS FROM ( SELECT ( { [Part].[By Reportable].[Is Reportable].&amp;[Y] } ) ON COLUMNS FROM [TripodOrders])) WHERE ( [Part].[By Reportable].[Is Reportable].&amp;[Y], [Customer Order].[By Backorder].[Is Backorder].&amp;[1] ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
               <ParameterDefinitions />
             </Query>
           </QueryDefinition>
@@ -772,7 +773,8 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Parameters!pReportDatePrevious.Value</Value>
+                                  <Label>Previous Report Date</Label>
+                                  <Value>=Variables!vReportDatePrevious.Value</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontSize>14pt</FontSize>
@@ -791,8 +793,8 @@
                             <Actions>
                               <Action>
                                 <Hyperlink>="javascript:void(window.open('" &amp; Variables!gThisReport.Value &amp; "&amp;rs:Command=Render" &amp;
-	"&amp;pReportDateBegin=" &amp; Code.URLEncode( Parameters!pReportDatePrevious.Value ) &amp;
-	"&amp;pReportDateEnd=" &amp; Code.URLEncode( Parameters!pReportDatePrevious.Value ) &amp; 
+	"&amp;pReportDateBegin=" &amp; Code.URLEncode( Variables!vReportDatePrevious.Value ) &amp;
+	"&amp;pReportDateEnd=" &amp; Code.URLEncode( Variables!vReportDatePrevious.Value ) &amp; 
 	"'))"</Hyperlink>
                               </Action>
                             </Actions>
@@ -893,7 +895,8 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Parameters!pReportDateNext.Value</Value>
+                                  <Label>Next Report Date</Label>
+                                  <Value>=Variables!vReportDateNext.Value</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontSize>14pt</FontSize>
@@ -912,8 +915,8 @@
                             <Actions>
                               <Action>
                                 <Hyperlink>="javascript:void(window.open('" &amp; Variables!gThisReport.Value &amp; "&amp;rs:Command=Render" &amp;
-	"&amp;pReportDateBegin=" &amp; Code.URLEncode( Parameters!pReportDateNext.Value ) &amp;
-	"&amp;pReportDateEnd=" &amp; Code.URLEncode( Parameters!pReportDateNext.Value ) &amp; 
+	"&amp;pReportDateBegin=" &amp; Code.URLEncode( Variables!vReportDateNext.Value ) &amp;
+	"&amp;pReportDateEnd=" &amp; Code.URLEncode( Variables!vReportDateNext.Value ) &amp; 
 	"'))"</Hyperlink>
                               </Action>
                             </Actions>
@@ -5736,30 +5739,6 @@
       </DefaultValue>
       <Prompt>End Date:</Prompt>
     </ReportParameter>
-    <ReportParameter Name="pReportDatePrevious">
-      <DataType>DateTime</DataType>
-      <DefaultValue>
-        <Values>
-          <Value>=DateAdd( DateInterval.Day, 
-	Choose( DatePart( DateInterval.Weekday, Parameters!pReportDateBegin.Value ), -2, -3, -1, -1, -1, -1, -1 ) ,
-	Parameters!pReportDateBegin.Value )</Value>
-        </Values>
-      </DefaultValue>
-      <Prompt>pReportDatePrevious</Prompt>
-      <Hidden>true</Hidden>
-    </ReportParameter>
-    <ReportParameter Name="pReportDateNext">
-      <DataType>DateTime</DataType>
-      <DefaultValue>
-        <Values>
-          <Value>=DateAdd( DateInterval.Day,
-	Choose( DatePart( DateInterval.Weekday, Parameters!pReportDateEnd.Value ) , 1, 1, 1, 1, 1, 3, 2 ) , 
-	Parameters!pReportDateEnd.Value )</Value>
-        </Values>
-      </DefaultValue>
-      <Prompt>pReportDateNext</Prompt>
-      <Hidden>true</Hidden>
-    </ReportParameter>
     <ReportParameter Name="pOrderDateBeginFormatted">
       <DataType>String</DataType>
       <DefaultValue>
@@ -5815,16 +5794,6 @@
           <ColumnIndex>1</ColumnIndex>
           <RowIndex>3</RowIndex>
           <ParameterName>pReportDateEnd</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>1</RowIndex>
-          <ParameterName>pReportDatePrevious</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>1</ColumnIndex>
-          <RowIndex>1</RowIndex>
-          <ParameterName>pReportDateNext</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
@@ -5925,6 +5894,18 @@ VX39CvMfMQgORt4abuHeni6tuay0N+DikYfjP5yxhjJ93bsp+wRBMARAraSldNkmr8KdDtelSFNZRo8e
     </Variable>
     <Variable Name="gCustomerOrderSummary">
       <Value>=Globals!ReportServerUrl + "?" + Code.URLEncode(Globals!ReportFolder + "/" + "Customer Order Detail")</Value>
+    </Variable>
+    <Variable Name="vReportDatePrevious">
+      <Value>=DateAdd( DateInterval.Day, 
+	Choose( DatePart( DateInterval.Weekday, Parameters!pReportDateBegin.Value ), -2, -3, -1, -1, -1, -1, -1 ) ,
+	Parameters!pReportDateBegin.Value )</Value>
+      <Writable>true</Writable>
+    </Variable>
+    <Variable Name="vReportDateNext">
+      <Value>=DateAdd( DateInterval.Day, 
+	Choose( DatePart( DateInterval.Weekday, Parameters!pReportDateEnd.Value ) , 1, 1, 1, 1, 1, 3, 2 ) , 
+	Parameters!pReportDateEnd.Value )</Value>
+      <Writable>true</Writable>
     </Variable>
   </Variables>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
