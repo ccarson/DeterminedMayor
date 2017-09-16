@@ -389,6 +389,7 @@
         </Attribute>
         <Attribute dwd:design-time-name="f5a90760-d0dc-41fd-b122-5750576d5eb6">
           <AttributeID>Source Order Recnum</AttributeID>
+          <AttributeHierarchyEnabled>false</AttributeHierarchyEnabled>
           <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
         </Attribute>
         <Attribute dwd:design-time-name="5f6b4394-d476-4aa3-8f73-3ed5fc8d1610">
@@ -465,6 +466,9 @@
         </Hierarchy>
         <Hierarchy dwd:design-time-name="517d6ebf-3777-445d-9830-cfdf2dd50976">
           <HierarchyID>Hierarchy 6</HierarchyID>
+        </Hierarchy>
+        <Hierarchy dwd:design-time-name="7ae33c23-b524-498d-94d3-4c64589dd7f6">
+          <HierarchyID>Hierarchy 7</HierarchyID>
         </Hierarchy>
       </Hierarchies>
     </Dimension>
@@ -4769,8 +4773,8 @@
     <MdxScript dwd:design-time-name="00d05370-1557-4e18-8a24-ca6564d45aed">
       <ID>MdxScript</ID>
       <Name>MdxScript</Name>
-      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
-      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <CreatedTimestamp>0001-01-01T06:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T06:00:00Z</LastSchemaUpdate>
       <Commands>
         <Command>
           <Text>/*

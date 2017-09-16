@@ -8,7 +8,7 @@
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
       <Value>
         <dds xmlns="">
-          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="8" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-647" scrolltop="-348" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="8546" y="18944" backcolor="2434342" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="8" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-647" scrolltop="-348" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="11086" y="21696" backcolor="2434342" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
             <font>
               <ddsxmlobjectstreamwrapper binary="01000000900144420100065461686f6d61" />
             </font>
@@ -107,13 +107,13 @@
                 <Attribute Id="Is Backorder Part" />
                 <Attribute Id="Source Line Recnum" />
                 <Attribute Id="Unit Price" />
+                <Attribute Id="Yard Code" />
               </Attributes>
               <Position x="20" y="20" />
             </Shape>
             <Shape Id="Order Number" Expanded="false">
               <Attributes>
                 <Attribute Id="Order Number" />
-                <Attribute Id="Is Backorder" />
                 <Attribute Id="Is Original Order" />
                 <Attribute Id="Ship To Name" />
                 <Attribute Id="Source Order Recnum" />
@@ -138,29 +138,35 @@
               </Attributes>
               <Position x="430" y="116" />
             </Shape>
+            <Shape Id="Is Backorder" Expanded="false">
+              <Attributes>
+                <Attribute Id="Is Backorder" />
+              </Attributes>
+              <Position x="430" y="164" />
+            </Shape>
             <Shape Id="Order Status" Expanded="false">
               <Attributes>
                 <Attribute Id="Order Status" />
               </Attributes>
-              <Position x="430" y="164" />
+              <Position x="430" y="212" />
             </Shape>
             <Shape Id="Ship To PO" Expanded="false">
               <Attributes>
                 <Attribute Id="Ship To PO" />
               </Attributes>
-              <Position x="430" y="212" />
+              <Position x="430" y="260" />
             </Shape>
             <Shape Id="Customer PO" Expanded="false">
               <Attributes>
                 <Attribute Id="Customer PO" />
               </Attributes>
-              <Position x="430" y="260" />
+              <Position x="430" y="308" />
             </Shape>
             <Shape Id="Part Number" Expanded="false">
               <Attributes>
                 <Attribute Id="Part Number" />
               </Attributes>
-              <Position x="225" y="308" />
+              <Position x="225" y="356" />
             </Shape>
           </Shapes>
         </DiagramLayout>
@@ -281,6 +287,8 @@
           <ColumnID>SourceOrderRecnum</ColumnID>
         </Source>
       </NameColumn>
+      <AttributeHierarchyEnabled>false</AttributeHierarchyEnabled>
+      <AttributeHierarchyOptimizedState>NotOptimized</AttributeHierarchyOptimizedState>
       <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
@@ -504,6 +512,7 @@
           <ColumnID>IsBackorder</ColumnID>
         </Source>
       </NameColumn>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
@@ -545,6 +554,7 @@
           <ColumnID>SPRNUM</ColumnID>
         </Source>
       </NameColumn>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
@@ -783,6 +793,27 @@
           <SourceAttributeID>Order Number</SourceAttributeID>
         </Level>
         <Level dwd:design-time-name="dd4ba1ae-64bb-47cb-ab70-7344f5d3e555">
+          <ID>Order Line Item</ID>
+          <Name>Order Line Item</Name>
+          <SourceAttributeID>Customer Order Fact Key</SourceAttributeID>
+        </Level>
+      </Levels>
+    </Hierarchy>
+    <Hierarchy dwd:design-time-name="f058aae4-17e0-4d2e-9d66-28680cc75043">
+      <ID>Hierarchy 7</ID>
+      <Name>By Backorder</Name>
+      <Levels>
+        <Level dwd:design-time-name="2fbe6096-0b29-49d5-9864-7dd70636e970">
+          <ID>Is Backorder</ID>
+          <Name>Is Backorder</Name>
+          <SourceAttributeID>Is Backorder</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="889d1521-f7a8-41f6-89c6-1239d396452e">
+          <ID>Order Number</ID>
+          <Name>Order Number</Name>
+          <SourceAttributeID>Order Number</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="b8aaa5df-7eca-4668-8f95-152bb9c45c87">
           <ID>Order Line Item</ID>
           <Name>Order Line Item</Name>
           <SourceAttributeID>Customer Order Fact Key</SourceAttributeID>
