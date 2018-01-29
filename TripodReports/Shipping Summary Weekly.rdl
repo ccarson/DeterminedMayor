@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
     <DataSource Name="TripodOrders">
@@ -23,7 +23,7 @@
             <Value>=Parameters!pIsGunPartFormatted.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText> SELECT NON EMPTY { [Measures].[Shipped Quantity] } ON COLUMNS, NON EMPTY { ([Bill To Customer].[By Customer Type].[Customer Type].ALLMEMBERS * [Part].[By Category].[Part Key].ALLMEMBERS * [Part].[SPR Description].[SPR Description].ALLMEMBERS * [Ship Date].[CY Weekly].[Date].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [Part].[By Reportable].[Is Reportable].&amp;[Y] } ) ON COLUMNS FROM ( SELECT ( [CoreBillToCustomerTypes] ) ON COLUMNS FROM ( SELECT ( STRTOSET(@PartByGunPart, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOMEMBER(@FromShipDateCYWeekly, CONSTRAINED) : STRTOMEMBER(@ToShipDateCYWeekly, CONSTRAINED) ) ON COLUMNS FROM [TripodOrders])))) WHERE ( IIF( STRTOSET(@PartByGunPart, CONSTRAINED).Count = 1, STRTOSET(@PartByGunPart, CONSTRAINED), [Part].[By Gun Part].currentmember ), [Part].[By Reportable].[Is Reportable].&amp;[Y] ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+        <CommandText> SELECT NON EMPTY { [Measures].[Shipped Quantity] } ON COLUMNS, NON EMPTY { ([Bill To Customer].[By Customer Type].[Customer Type].ALLMEMBERS * [Part].[By Category].[Part Key].ALLMEMBERS * [Part].[SPR Description].[SPR Description].ALLMEMBERS * [Ship Date].[CY Weekly].[Date].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( STRTOSET(@PartByGunPart, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( { [Part].[By Reportable].[Is Reportable].&amp;[Y] } ) ON COLUMNS FROM ( SELECT ( [CoreBillToCustomerTypes] ) ON COLUMNS FROM ( SELECT ( STRTOMEMBER(@FromShipDateCYWeekly, CONSTRAINED) : STRTOMEMBER(@ToShipDateCYWeekly, CONSTRAINED) ) ON COLUMNS FROM [TripodOrders])))) WHERE ( [Part].[By Reportable].[Is Reportable].&amp;[Y], IIF( STRTOSET(@PartByGunPart, CONSTRAINED).Count = 1, STRTOSET(@PartByGunPart, CONSTRAINED), [Part].[By Gun Part].currentmember ) ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
         <rd:DesignerState>
           <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
             <CommandType>MDX</CommandType>
@@ -114,6 +114,7 @@
                   </Item>
                 </Items>
               </Select>
+              <AutoExecute>false</AutoExecute>
               <From>TripodOrders</From>
               <Filter>
                 <FilterItems>
@@ -125,13 +126,6 @@
                       <FromParametrized>true</FromParametrized>
                       <To />
                       <ToParametrized>true</ToParametrized>
-                    </Condition>
-                  </FilterItem>
-                  <FilterItem>
-                    <HierarchyUniqueName>[Part].[By Gun Part]</HierarchyUniqueName>
-                    <Condition xsi:type="EqualTo">
-                      <Members />
-                      <Parametrized>true</Parametrized>
                     </Condition>
                   </FilterItem>
                   <FilterItem>
@@ -150,6 +144,13 @@
                       </Members>
                     </Condition>
                   </FilterItem>
+                  <FilterItem>
+                    <HierarchyUniqueName>[Part].[By Gun Part]</HierarchyUniqueName>
+                    <Condition xsi:type="EqualTo">
+                      <Members />
+                      <Parametrized>true</Parametrized>
+                    </Condition>
+                  </FilterItem>
                 </FilterItems>
               </Filter>
               <Calculations />
@@ -157,7 +158,7 @@
               <QueryProperties />
             </QuerySpecification>
             <Query>
-              <Statement> SELECT NON EMPTY { [Measures].[Shipped Quantity] } ON COLUMNS, NON EMPTY { ([Bill To Customer].[By Customer Type].[Customer Type].ALLMEMBERS * [Part].[By Category].[Part Key].ALLMEMBERS * [Part].[SPR Description].[SPR Description].ALLMEMBERS * [Ship Date].[CY Weekly].[Date].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [Part].[By Reportable].[Is Reportable].&amp;[Y] } ) ON COLUMNS FROM ( SELECT ( [CoreBillToCustomerTypes] ) ON COLUMNS FROM ( SELECT ( STRTOSET(@PartByGunPart, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOMEMBER(@FromShipDateCYWeekly, CONSTRAINED) : STRTOMEMBER(@ToShipDateCYWeekly, CONSTRAINED) ) ON COLUMNS FROM [TripodOrders])))) WHERE ( IIF( STRTOSET(@PartByGunPart, CONSTRAINED).Count = 1, STRTOSET(@PartByGunPart, CONSTRAINED), [Part].[By Gun Part].currentmember ), [Part].[By Reportable].[Is Reportable].&amp;[Y] ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
+              <Statement> SELECT NON EMPTY { [Measures].[Shipped Quantity] } ON COLUMNS, NON EMPTY { ([Bill To Customer].[By Customer Type].[Customer Type].ALLMEMBERS * [Part].[By Category].[Part Key].ALLMEMBERS * [Part].[SPR Description].[SPR Description].ALLMEMBERS * [Ship Date].[CY Weekly].[Date].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( STRTOSET(@PartByGunPart, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( { [Part].[By Reportable].[Is Reportable].&amp;[Y] } ) ON COLUMNS FROM ( SELECT ( [CoreBillToCustomerTypes] ) ON COLUMNS FROM ( SELECT ( STRTOMEMBER(@FromShipDateCYWeekly, CONSTRAINED) : STRTOMEMBER(@ToShipDateCYWeekly, CONSTRAINED) ) ON COLUMNS FROM [TripodOrders])))) WHERE ( [Part].[By Reportable].[Is Reportable].&amp;[Y], IIF( STRTOSET(@PartByGunPart, CONSTRAINED).Count = 1, STRTOSET(@PartByGunPart, CONSTRAINED), [Part].[By Gun Part].currentmember ) ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
               <ParameterDefinitions>
                 <ParameterDefinition>
                   <Name>FromShipDateCYWeekly</Name>
@@ -195,9 +196,9 @@
                   <Caption>By Gun Part</Caption>
                   <HierarchyUniqueName>[Part].[By Gun Part]</HierarchyUniqueName>
                   <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Part].[By Gun Part].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Part].[By Gun Part].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Part].[By Gun Part].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Part].[By Gun Part].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOMEMBER(@FromShipDateCYWeekly, CONSTRAINED) : STRTOMEMBER(@ToShipDateCYWeekly, CONSTRAINED) ) ON COLUMNS FROM [TripodOrders])</Statement>
+                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Part].[By Gun Part].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Part].[By Gun Part].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Part].[By Gun Part].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Part].[By Gun Part].ALLMEMBERS ON ROWS FROM ( SELECT ( { [Part].[By Reportable].[Is Reportable].&amp;[Y] } ) ON COLUMNS FROM ( SELECT ( [CoreBillToCustomerTypes] ) ON COLUMNS FROM ( SELECT ( STRTOMEMBER(@FromShipDateCYWeekly, CONSTRAINED) : STRTOMEMBER(@ToShipDateCYWeekly, CONSTRAINED) ) ON COLUMNS FROM [TripodOrders])))</Statement>
                     <ParameterizedStatement>
-                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Part].[By Gun Part].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Part].[By Gun Part].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Part].[By Gun Part].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Part].[By Gun Part].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOMEMBER(@FromShipDateCYWeekly, CONSTRAINED) : STRTOMEMBER(@ToShipDateCYWeekly, CONSTRAINED) ) ON COLUMNS FROM [TripodOrders])</Statement>
+                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Part].[By Gun Part].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Part].[By Gun Part].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Part].[By Gun Part].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Part].[By Gun Part].ALLMEMBERS ON ROWS FROM ( SELECT ( { [Part].[By Reportable].[Is Reportable].&amp;[Y] } ) ON COLUMNS FROM ( SELECT ( [CoreBillToCustomerTypes] ) ON COLUMNS FROM ( SELECT ( STRTOMEMBER(@FromShipDateCYWeekly, CONSTRAINED) : STRTOMEMBER(@ToShipDateCYWeekly, CONSTRAINED) ) ON COLUMNS FROM [TripodOrders])))</Statement>
                       <ReferencedParameters>
                         <ReferencedParameter>
                           <Name>FromShipDateCYWeekly</Name>
@@ -305,17 +306,21 @@
                         <UseValueAsLabel>true</UseValueAsLabel>
                         <Visible>true</Visible>
                       </ChartDataLabel>
-                      <ToolTip>="Week Of " &amp; Format( Parameters!pReportDateBegin.Value, "MM/dd" ) &amp; vbCrLf &amp; 
-	Fields!CustomerType.Value &amp; vbCrLf &amp; 
-	IIf( Parameters!pIsGunPart.Value = 1, "Total", Parameters!pIsGunPart.Label ) &amp; " Shipped:  " &amp; Format( SUM( Fields!ShippedQuantity.Value ), "#,0;(#,0);''" ) &amp; vbCrLf &amp; 
-	"Click for " &amp; Fields!CustomerType.Value &amp; " Weekly Summary"</ToolTip>
+                      <ToolTip>
+                        ="Week Of " &amp; Format( Parameters!pReportDateBegin.Value, "MM/dd" ) &amp; vbCrLf &amp;
+                        Fields!CustomerType.Value &amp; vbCrLf &amp;
+                        IIf( Parameters!pIsGunPart.Value = 1, "Total", Parameters!pIsGunPart.Label ) &amp; " Shipped:  " &amp; Format( SUM( Fields!ShippedQuantity.Value ), "#,0;(#,0);''" ) &amp; vbCrLf &amp;
+                        "Click for " &amp; Fields!CustomerType.Value &amp; " Weekly Summary"
+                      </ToolTip>
                       <ActionInfo>
                         <Actions>
                           <Action>
-                            <Hyperlink>="javascript:void(window.open('" + Variables!gThisReport.Value + "&amp;rs:Command=Render" + 
-	"&amp;pIsGunPart=" + Code.URLEncode( Parameters!pIsGunPart.Value ) + 
-	"&amp;pCustomerType=" + Code.URLEncode( Fields!CustomerType.Value ) + 
-	"&amp;pReportDate=" + Code.URLEncode( Parameters!pReportDate.Value ) + "'))"</Hyperlink>
+                            <Hyperlink>
+                              ="javascript:void(window.open('" + Variables!gThisReport.Value + "&amp;rs:Command=Render" +
+                              "&amp;pIsGunPart=" + Code.URLEncode( Parameters!pIsGunPart.Value ) +
+                              "&amp;pCustomerType=" + Code.URLEncode( Fields!CustomerType.Value ) +
+                              "&amp;pReportDate=" + Code.URLEncode( Parameters!pReportDate.Value ) + "'))"
+                            </Hyperlink>
                           </Action>
                         </Actions>
                       </ActionInfo>
@@ -647,8 +652,8 @@
                 </FilterValues>
               </Filter>
             </Filters>
-            <Top>1.07361in</Top>
-            <Left>0.22186in</Left>
+            <Top>0.96944in</Top>
+            <Left>0.25in</Left>
             <Height>3.82861in</Height>
             <Width>3.92709in</Width>
             <Style>
@@ -713,11 +718,13 @@
                         <UseValueAsLabel>true</UseValueAsLabel>
                         <Visible>true</Visible>
                       </ChartDataLabel>
-                      <ToolTip>="Week Of " &amp; Format( Parameters!pReportDateBegin.Value, "MM/dd" ) &amp; vbCrLf &amp;
-	Fields!SPRCategory.Value &amp; vbCrLf &amp;
-	IIf( Right( Parameters!pReportFilter.Value, 2 ) = ", ", 
-			Left( Parameters!pReportFilter.Value, Len( Parameters!pReportFilter.Value ) - 2 ) ,
-			IIf( Parameters!pReportFilter.Value = "No Filter", "Total", Parameters!pReportFilter.Value ) ) &amp; " Shipped:  " &amp; Format( Sum( Fields!ShippedQuantity.Value ), "#,0;(#,0);''" )</ToolTip>
+                      <ToolTip>
+                        ="Week Of " &amp; Format( Parameters!pReportDateBegin.Value, "MM/dd" ) &amp; vbCrLf &amp;
+                        Fields!SPRCategory.Value &amp; vbCrLf &amp;
+                        IIf( Right( Parameters!pReportFilter.Value, 2 ) = ", ",
+                        Left( Parameters!pReportFilter.Value, Len( Parameters!pReportFilter.Value ) - 2 ) ,
+                        IIf( Parameters!pReportFilter.Value = "No Filter", "Total", Parameters!pReportFilter.Value ) ) &amp; " Shipped:  " &amp; Format( Sum( Fields!ShippedQuantity.Value ), "#,0;(#,0);''" )
+                      </ToolTip>
                       <Style>
                         <Border>
                           <Color>#990000</Color>
@@ -1064,7 +1071,7 @@
                 </FilterValues>
               </Filter>
             </Filters>
-            <Top>1.07361in</Top>
+            <Top>0.96944in</Top>
             <Left>4.26875in</Left>
             <Height>3.82861in</Height>
             <Width>4.75001in</Width>
@@ -1292,10 +1299,12 @@
                           <ActionInfo>
                             <Actions>
                               <Action>
-                                <Hyperlink>="javascript:void(window.open('" + Variables!gThisReport.Value + "&amp;rs:Command=Render" + 
-	"&amp;pIsGunPart=" + Code.URLEncode( Parameters!pIsGunPart.Value ) + 
-	"&amp;pCustomerType=" + Code.URLEncode( Fields!CustomerType.Value ) + 
-	"&amp;pReportDate=" + Code.URLEncode( Parameters!pReportDate.Value ) + "'))"</Hyperlink>
+                                <Hyperlink>
+                                  ="javascript:void(window.open('" + Variables!gThisReport.Value + "&amp;rs:Command=Render" +
+                                  "&amp;pIsGunPart=" + Code.URLEncode( Parameters!pIsGunPart.Value ) +
+                                  "&amp;pCustomerType=" + Code.URLEncode( Fields!CustomerType.Value ) +
+                                  "&amp;pReportDate=" + Code.URLEncode( Parameters!pReportDate.Value ) + "'))"
+                                </Hyperlink>
                               </Action>
                             </Actions>
                           </ActionInfo>
@@ -1347,19 +1356,23 @@
                           <ActionInfo>
                             <Actions>
                               <Action>
-                                <Hyperlink>="javascript:void(window.open('" + Variables!gShippingByDate.Value + "&amp;rs:Command=Render" + 
-	"&amp;pWeeklyMonthly=" + Code.URLEncode( Parameters!pWeeklyMonthly.Value ) + 
-	"&amp;pIsGunPart=" + Code.URLEncode( Parameters!pIsGunPart.Value ) + 
-	"&amp;pCustomerType=" + Code.URLEncode( Fields!CustomerType.Value ) + 
-	"&amp;pReportDate=" + Code.URLEncode( Parameters!pReportDate.Value ) + 
-	"'))"</Hyperlink>
+                                <Hyperlink>
+                                  ="javascript:void(window.open('" + Variables!gShippingByDate.Value + "&amp;rs:Command=Render" +
+                                  "&amp;pWeeklyMonthly=" + Code.URLEncode( Parameters!pWeeklyMonthly.Value ) +
+                                  "&amp;pIsGunPart=" + Code.URLEncode( Parameters!pIsGunPart.Value ) +
+                                  "&amp;pCustomerType=" + Code.URLEncode( Fields!CustomerType.Value ) +
+                                  "&amp;pReportDate=" + Code.URLEncode( Parameters!pReportDate.Value ) +
+                                  "'))"
+                                </Hyperlink>
                               </Action>
                             </Actions>
                           </ActionInfo>
-                          <ToolTip>="Week Of " &amp; Format( Parameters!pReportDateBegin.Value, "MM/dd" ) &amp; vbCrLf &amp; 
-	Fields!CustomerType.Value &amp; vbCrLf &amp; 
-	IIf( Parameters!pIsGunPart.Value = 1, "Total", Parameters!pIsGunPart.Label ) &amp; " Shipped:  " &amp; Format( Sum( Fields!ShippedQuantity.Value ), "#,0;(#,0);''" ) &amp; vbCrLf &amp; 
-	"Click for Shipping By Date"</ToolTip>
+                          <ToolTip>
+                            ="Week Of " &amp; Format( Parameters!pReportDateBegin.Value, "MM/dd" ) &amp; vbCrLf &amp;
+                            Fields!CustomerType.Value &amp; vbCrLf &amp;
+                            IIf( Parameters!pIsGunPart.Value = 1, "Total", Parameters!pIsGunPart.Label ) &amp; " Shipped:  " &amp; Format( Sum( Fields!ShippedQuantity.Value ), "#,0;(#,0);''" ) &amp; vbCrLf &amp;
+                            "Click for Shipping By Date"
+                          </ToolTip>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1483,20 +1496,24 @@
                           <ActionInfo>
                             <Actions>
                               <Action>
-                                <Hyperlink>="javascript:void(window.open('" + Variables!gShippingByDate.Value + "&amp;rs:Command=Render" + 
-	"&amp;pIsGunPart=" + Code.URLEncode( Parameters!pIsGunPart.Value ) + 
-	"&amp;pWeeklyMonthly=" + Code.URLEncode( Parameters!pWeeklyMonthly.Value ) + 
-	"&amp;pCustomerType=" + Code.URLEncode( Fields!CustomerType.Value ) + 
-	"&amp;pSPRCategory=" + Code.URLEncode( Fields!SPRCategory.Value ) + 
-	"&amp;pReportDate=" + Code.URLEncode( Parameters!pReportDate.Value ) + 
-	"'))"</Hyperlink>
+                                <Hyperlink>
+                                  ="javascript:void(window.open('" + Variables!gShippingByDate.Value + "&amp;rs:Command=Render" +
+                                  "&amp;pIsGunPart=" + Code.URLEncode( Parameters!pIsGunPart.Value ) +
+                                  "&amp;pWeeklyMonthly=" + Code.URLEncode( Parameters!pWeeklyMonthly.Value ) +
+                                  "&amp;pCustomerType=" + Code.URLEncode( Fields!CustomerType.Value ) +
+                                  "&amp;pSPRCategory=" + Code.URLEncode( Fields!SPRCategory.Value ) +
+                                  "&amp;pReportDate=" + Code.URLEncode( Parameters!pReportDate.Value ) +
+                                  "'))"
+                                </Hyperlink>
                               </Action>
                             </Actions>
                           </ActionInfo>
-                          <ToolTip>="Week Of " &amp; Format( Parameters!pReportDateBegin.Value, "MM/dd" ) &amp; vbCrLf &amp;
-	Fields!CustomerType.Value &amp; " - " &amp; Fields!SPRCategory.Value &amp; vbCrLf &amp; 
-	IIf( Parameters!pIsGunPart.Value = 1, "Total", Parameters!pIsGunPart.Label ) &amp; " Orders:  " &amp; Format( Sum( Fields!ShippedQuantity.Value ), "#,0;(#,0);''" ) &amp; vbCrLf &amp; 
-	"Click for Shipping By Date"</ToolTip>
+                          <ToolTip>
+                            ="Week Of " &amp; Format( Parameters!pReportDateBegin.Value, "MM/dd" ) &amp; vbCrLf &amp;
+                            Fields!CustomerType.Value &amp; " - " &amp; Fields!SPRCategory.Value &amp; vbCrLf &amp;
+                            IIf( Parameters!pIsGunPart.Value = 1, "Total", Parameters!pIsGunPart.Label ) &amp; " Orders:  " &amp; Format( Sum( Fields!ShippedQuantity.Value ), "#,0;(#,0);''" ) &amp; vbCrLf &amp;
+                            "Click for Shipping By Date"
+                          </ToolTip>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1541,15 +1558,19 @@
                           <ActionInfo>
                             <Actions>
                               <Action>
-                                <Hyperlink>="javascript:void(window.open('" + Variables!gThisReport.Value + "&amp;rs:Command=Render" + 
-	"&amp;pIsGunPart=" + Code.URLEncode( Parameters!pIsGunPart.Value ) + 
-	"&amp;pReportDate=" + Code.URLEncode( Parameters!pReportDate.Value ) + "'))"</Hyperlink>
+                                <Hyperlink>
+                                  ="javascript:void(window.open('" + Variables!gThisReport.Value + "&amp;rs:Command=Render" +
+                                  "&amp;pIsGunPart=" + Code.URLEncode( Parameters!pIsGunPart.Value ) +
+                                  "&amp;pReportDate=" + Code.URLEncode( Parameters!pReportDate.Value ) + "'))"
+                                </Hyperlink>
                               </Action>
                             </Actions>
                           </ActionInfo>
-                          <ToolTip>="Week Of " &amp; Format( Parameters!pReportDateBegin.Value, "MM/dd" ) &amp; vbCrLf &amp; 
-	IIf( Parameters!pIsGunPart.Value = 1, "Total", Parameters!pIsGunPart.Label ) &amp; " Shipped:  " &amp; Format( SUM( Fields!ShippedQuantity.Value ), "#,0;(#,0);''" ) &amp; vbCrLf &amp; 
-	"Click for Complete Weekly Summary"</ToolTip>
+                          <ToolTip>
+                            ="Week Of " &amp; Format( Parameters!pReportDateBegin.Value, "MM/dd" ) &amp; vbCrLf &amp;
+                            IIf( Parameters!pIsGunPart.Value = 1, "Total", Parameters!pIsGunPart.Label ) &amp; " Shipped:  " &amp; Format( SUM( Fields!ShippedQuantity.Value ), "#,0;(#,0);''" ) &amp; vbCrLf &amp;
+                            "Click for Complete Weekly Summary"
+                          </ToolTip>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1594,18 +1615,22 @@
                           <ActionInfo>
                             <Actions>
                               <Action>
-                                <Hyperlink>="javascript:void(window.open('" + Variables!gShippingByDate.Value + "&amp;rs:Command=Render" + 
-	"&amp;pWeeklyMonthly=" + Code.URLEncode( Parameters!pWeeklyMonthly.Value ) + 
-	"&amp;pIsGunPart=" + Code.URLEncode( Parameters!pIsGunPart.Value ) + 
-	"&amp;pReportDateBegin=" + Code.URLEncode( Parameters!pReportDateBegin.Value ) + 
-	"&amp;pReportDateEnd=" + Code.URLEncode( Parameters!pReportDateEnd.Value ) + 
-	"'))"</Hyperlink>
+                                <Hyperlink>
+                                  ="javascript:void(window.open('" + Variables!gShippingByDate.Value + "&amp;rs:Command=Render" +
+                                  "&amp;pWeeklyMonthly=" + Code.URLEncode( Parameters!pWeeklyMonthly.Value ) +
+                                  "&amp;pIsGunPart=" + Code.URLEncode( Parameters!pIsGunPart.Value ) +
+                                  "&amp;pReportDateBegin=" + Code.URLEncode( Parameters!pReportDateBegin.Value ) +
+                                  "&amp;pReportDateEnd=" + Code.URLEncode( Parameters!pReportDateEnd.Value ) +
+                                  "'))"
+                                </Hyperlink>
                               </Action>
                             </Actions>
                           </ActionInfo>
-                          <ToolTip>="Week Of " &amp; Format( Parameters!pReportDateBegin.Value, "MM/dd" ) &amp; vbCrLf &amp;
-	IIf( Parameters!pIsGunPart.Value = 1, "Total", Parameters!pIsGunPart.Label ) &amp; " Shipped:  " &amp; Format( Sum( Fields!ShippedQuantity.Value ), "#,0;(#,0);''" ) &amp; vbCrLf &amp; 
-	"Click for Shipping By Date"</ToolTip>
+                          <ToolTip>
+                            ="Week Of " &amp; Format( Parameters!pReportDateBegin.Value, "MM/dd" ) &amp; vbCrLf &amp;
+                            IIf( Parameters!pIsGunPart.Value = 1, "Total", Parameters!pIsGunPart.Label ) &amp; " Shipped:  " &amp; Format( Sum( Fields!ShippedQuantity.Value ), "#,0;(#,0);''" ) &amp; vbCrLf &amp;
+                            "Click for Shipping By Date"
+                          </ToolTip>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1690,7 +1715,7 @@
                 </FilterValues>
               </Filter>
             </Filters>
-            <Top>4.98477in</Top>
+            <Top>4.8675in</Top>
             <Left>0.325in</Left>
             <Height>1.25in</Height>
             <Width>3.5625in</Width>
@@ -1958,22 +1983,26 @@
                           <ActionInfo>
                             <Actions>
                               <Action>
-                                <Hyperlink>="javascript:void(window.open('" + Variables!gPartShippingDetail.Value + "&amp;rs:Command=Render" + 
-	"&amp;pIsGunPart=" + Code.URLEncode( Parameters!pIsGunPart.Value ) + 
-	"&amp;pCustomerType=" + Code.URLEncode( Parameters!pCustomerType.Value ) + 
-	"&amp;pSPRCategory=" + Code.URLEncode( Fields!SPRCategory.Value ) + 
-	"&amp;pReportDateBegin=" + Code.URLEncode( Parameters!pReportDateBegin.Value ) + 
-	"&amp;pReportDateEnd=" + Code.URLEncode( Parameters!pReportDateEnd.Value ) + 
-	"'))"</Hyperlink>
+                                <Hyperlink>
+                                  ="javascript:void(window.open('" + Variables!gPartShippingDetail.Value + "&amp;rs:Command=Render" +
+                                  "&amp;pIsGunPart=" + Code.URLEncode( Parameters!pIsGunPart.Value ) +
+                                  "&amp;pCustomerType=" + Code.URLEncode( Parameters!pCustomerType.Value ) +
+                                  "&amp;pSPRCategory=" + Code.URLEncode( Fields!SPRCategory.Value ) +
+                                  "&amp;pReportDateBegin=" + Code.URLEncode( Parameters!pReportDateBegin.Value ) +
+                                  "&amp;pReportDateEnd=" + Code.URLEncode( Parameters!pReportDateEnd.Value ) +
+                                  "'))"
+                                </Hyperlink>
                               </Action>
                             </Actions>
                           </ActionInfo>
-                          <ToolTip>="Week Of " &amp; Format( Parameters!pReportDateBegin.Value, "MM/dd" ) &amp; vbCrLf &amp;
-	Fields!SPRCategory.Value &amp; vbCrLf &amp; 
-	IIf( Right( Parameters!pReportFilter.Value, 2 ) = ", ", 
-			Left( Parameters!pReportFilter.Value, Len( Parameters!pReportFilter.Value ) - 2 ) ,
-			IIf( Parameters!pReportFilter.Value = "No Filter", "Total", Parameters!pReportFilter.Value ) ) &amp; " Shipped:  " &amp; Format( Sum( Fields!ShippedQuantity.Value ), "#,0;(#,0);''" ) &amp; vbCrLf &amp; 
-	"Click for Part Shipping Detail"</ToolTip>
+                          <ToolTip>
+                            ="Week Of " &amp; Format( Parameters!pReportDateBegin.Value, "MM/dd" ) &amp; vbCrLf &amp;
+                            Fields!SPRCategory.Value &amp; vbCrLf &amp;
+                            IIf( Right( Parameters!pReportFilter.Value, 2 ) = ", ",
+                            Left( Parameters!pReportFilter.Value, Len( Parameters!pReportFilter.Value ) - 2 ) ,
+                            IIf( Parameters!pReportFilter.Value = "No Filter", "Total", Parameters!pReportFilter.Value ) ) &amp; " Shipped:  " &amp; Format( Sum( Fields!ShippedQuantity.Value ), "#,0;(#,0);''" ) &amp; vbCrLf &amp;
+                            "Click for Part Shipping Detail"
+                          </ToolTip>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -2099,20 +2128,24 @@
                           <ActionInfo>
                             <Actions>
                               <Action>
-                                <Hyperlink>="javascript:void(window.open('" + Variables!gPartShippingDetail.Value + "&amp;rs:Command=Render" + 
-	"&amp;pIsGunPart=" + Code.URLEncode( Parameters!pIsGunPart.Value ) + 
-	"&amp;pCustomerType=" + Code.URLEncode( Parameters!pCustomerType.Value ) + 
-	"&amp;pSPRNUM=" + Code.URLEncode( Fields!SPRNUM.Value ) + 
-	"&amp;pReportDateBegin=" + Code.URLEncode( Parameters!pReportDateBegin.Value ) + 
-	"&amp;pReportDateEnd=" + Code.URLEncode( Parameters!pReportDateEnd.Value ) + 
-	"'))"</Hyperlink>
+                                <Hyperlink>
+                                  ="javascript:void(window.open('" + Variables!gPartShippingDetail.Value + "&amp;rs:Command=Render" +
+                                  "&amp;pIsGunPart=" + Code.URLEncode( Parameters!pIsGunPart.Value ) +
+                                  "&amp;pCustomerType=" + Code.URLEncode( Parameters!pCustomerType.Value ) +
+                                  "&amp;pSPRNUM=" + Code.URLEncode( Fields!SPRNUM.Value ) +
+                                  "&amp;pReportDateBegin=" + Code.URLEncode( Parameters!pReportDateBegin.Value ) +
+                                  "&amp;pReportDateEnd=" + Code.URLEncode( Parameters!pReportDateEnd.Value ) +
+                                  "'))"
+                                </Hyperlink>
                               </Action>
                             </Actions>
                           </ActionInfo>
-                          <ToolTip>="Week Of " &amp; Format( Parameters!pReportDateBegin.Value, "MM/dd" ) &amp; vbCrLf &amp;
-	Fields!SPRNUM.Value &amp; " | " &amp; Fields!SPRDescription.Value &amp; vbCrLf &amp;
-	IIf( Parameters!pCustomerType.Value = "", "Total", Parameters!pCustomerType.Value ) &amp; " Shipped:  " &amp; Format( Sum( Fields!ShippedQuantity.Value ), "#,0;(#,0);''" ) &amp; vbCrLf &amp; 
-	"Click for Part Shipping Detail"</ToolTip>
+                          <ToolTip>
+                            ="Week Of " &amp; Format( Parameters!pReportDateBegin.Value, "MM/dd" ) &amp; vbCrLf &amp;
+                            Fields!SPRNUM.Value &amp; " | " &amp; Fields!SPRDescription.Value &amp; vbCrLf &amp;
+                            IIf( Parameters!pCustomerType.Value = "", "Total", Parameters!pCustomerType.Value ) &amp; " Shipped:  " &amp; Format( Sum( Fields!ShippedQuantity.Value ), "#,0;(#,0);''" ) &amp; vbCrLf &amp;
+                            "Click for Part Shipping Detail"
+                          </ToolTip>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -2198,20 +2231,24 @@
                           <ActionInfo>
                             <Actions>
                               <Action>
-                                <Hyperlink>="javascript:void(window.open('" + Variables!gShippingByDate.Value + "&amp;rs:Command=Render" + 
-	"&amp;pWeeklyMonthly=" + Code.URLEncode( Parameters!pWeeklyMonthly.Value ) + 
-	"&amp;pIsGunPart=" + Code.URLEncode( Parameters!pIsGunPart.Value ) + 
-	"&amp;pReportDateBegin=" + Code.URLEncode( Parameters!pReportDateBegin.Value ) + 
-	"&amp;pReportDateEnd=" + Code.URLEncode( Parameters!pReportDateEnd.Value ) + 
-	"'))"</Hyperlink>
+                                <Hyperlink>
+                                  ="javascript:void(window.open('" + Variables!gShippingByDate.Value + "&amp;rs:Command=Render" +
+                                  "&amp;pWeeklyMonthly=" + Code.URLEncode( Parameters!pWeeklyMonthly.Value ) +
+                                  "&amp;pIsGunPart=" + Code.URLEncode( Parameters!pIsGunPart.Value ) +
+                                  "&amp;pReportDateBegin=" + Code.URLEncode( Parameters!pReportDateBegin.Value ) +
+                                  "&amp;pReportDateEnd=" + Code.URLEncode( Parameters!pReportDateEnd.Value ) +
+                                  "'))"
+                                </Hyperlink>
                               </Action>
                             </Actions>
                           </ActionInfo>
-                          <ToolTip>="Week Of " &amp; Format( Parameters!pReportDateBegin.Value, "MM/dd" ) &amp; vbCrLf &amp;
-	IIf( Right( Parameters!pReportFilter.Value, 2 ) = ", ", 
-			Left( Parameters!pReportFilter.Value, Len( Parameters!pReportFilter.Value ) - 2 ) ,
-			IIf( Parameters!pReportFilter.Value = "No Filter", "Total", Parameters!pReportFilter.Value ) ) &amp; " Shipped:  " &amp; Format( Sum( Fields!ShippedQuantity.Value ), "#,0;(#,0);''" ) &amp; vbCrLf &amp; 
-	"Click for Shipping By Date"</ToolTip>
+                          <ToolTip>
+                            ="Week Of " &amp; Format( Parameters!pReportDateBegin.Value, "MM/dd" ) &amp; vbCrLf &amp;
+                            IIf( Right( Parameters!pReportFilter.Value, 2 ) = ", ",
+                            Left( Parameters!pReportFilter.Value, Len( Parameters!pReportFilter.Value ) - 2 ) ,
+                            IIf( Parameters!pReportFilter.Value = "No Filter", "Total", Parameters!pReportFilter.Value ) ) &amp; " Shipped:  " &amp; Format( Sum( Fields!ShippedQuantity.Value ), "#,0;(#,0);''" ) &amp; vbCrLf &amp;
+                            "Click for Shipping By Date"
+                          </ToolTip>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -2313,8 +2350,8 @@
                 </FilterValues>
               </Filter>
             </Filters>
-            <Top>4.98477in</Top>
-            <Left>4.40592in</Left>
+            <Top>4.8675in</Top>
+            <Left>4.34375in</Left>
             <Height>1.25in</Height>
             <Width>4.37062in</Width>
             <ZIndex>3</ZIndex>
@@ -2330,13 +2367,13 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.28543in</Width>
+                  <Width>2.5in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>7.58541in</Width>
+                  <Width>7.25in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.29586in</Width>
+                  <Width>2.5in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -2370,10 +2407,12 @@
                           <ActionInfo>
                             <Actions>
                               <Action>
-                                <Hyperlink>="javascript:void(window.open('" + Variables!gThisReport.Value + "&amp;rs:Command=Render" + 
-	"&amp;pIsGunPart=" + Code.URLEncode( Parameters!pIsGunPart.Value ) + 
-	"&amp;pCustomerType=" + Code.URLEncode( Parameters!pCustomerType.Value ) + 
-	"&amp;pReportDate=" + Code.URLEncode( Parameters!pReportDatePrevious.Value ) + "'))"</Hyperlink>
+                                <Hyperlink>
+                                  ="javascript:void(window.open('" + Variables!gThisReport.Value + "&amp;rs:Command=Render" +
+                                  "&amp;pIsGunPart=" + Code.URLEncode( Parameters!pIsGunPart.Value ) +
+                                  "&amp;pCustomerType=" + Code.URLEncode( Parameters!pCustomerType.Value ) +
+                                  "&amp;pReportDate=" + Code.URLEncode( Parameters!pReportDatePrevious.Value ) + "'))"
+                                </Hyperlink>
                               </Action>
                             </Actions>
                           </ActionInfo>
@@ -2384,9 +2423,6 @@
                               <Style>None</Style>
                               <Width>0.5pt</Width>
                             </Border>
-                            <TopBorder>
-                              <Style>Solid</Style>
-                            </TopBorder>
                             <BottomBorder>
                               <Style>Solid</Style>
                             </BottomBorder>
@@ -2423,10 +2459,12 @@
                           <ActionInfo>
                             <Actions>
                               <Action>
-                                <Hyperlink>="javascript:void(window.open('" + Variables!gShippingSummaryMonthly.Value + "&amp;rs:Command=Render" + 
-	"&amp;pIsGunPart=" + Code.URLEncode( Parameters!pNextIsGunPart.Value ) + 
-	"&amp;pCustomerType=" + Code.URLEncode( Parameters!pCustomerType.Value ) + 
-	"&amp;pReportDate=" + Code.URLEncode( Parameters!pReportDate.Value ) + "'))"</Hyperlink>
+                                <Hyperlink>
+                                  ="javascript:void(window.open('" + Variables!gShippingSummaryMonthly.Value + "&amp;rs:Command=Render" +
+                                  "&amp;pIsGunPart=" + Code.URLEncode( Parameters!pNextIsGunPart.Value ) +
+                                  "&amp;pCustomerType=" + Code.URLEncode( Parameters!pCustomerType.Value ) +
+                                  "&amp;pReportDate=" + Code.URLEncode( Parameters!pReportDate.Value ) + "'))"
+                                </Hyperlink>
                               </Action>
                             </Actions>
                           </ActionInfo>
@@ -2438,9 +2476,6 @@
                               <Style>None</Style>
                               <Width>0.5pt</Width>
                             </Border>
-                            <TopBorder>
-                              <Style>Solid</Style>
-                            </TopBorder>
                             <BottomBorder>
                               <Style>Solid</Style>
                             </BottomBorder>
@@ -2476,10 +2511,12 @@
                           <ActionInfo>
                             <Actions>
                               <Action>
-                                <Hyperlink>="javascript:void(window.open('" + Variables!gThisReport.Value + "&amp;rs:Command=Render" + 
-	"&amp;pIsGunPart=" + Code.URLEncode( Parameters!pIsGunPart.Value ) + 
-	"&amp;pCustomerType=" + Code.URLEncode( Parameters!pCustomerType.Value ) + 
-	"&amp;pReportDate=" + Code.URLEncode( Parameters!pReportDateNext.Value ) + "'))"</Hyperlink>
+                                <Hyperlink>
+                                  ="javascript:void(window.open('" + Variables!gThisReport.Value + "&amp;rs:Command=Render" +
+                                  "&amp;pIsGunPart=" + Code.URLEncode( Parameters!pIsGunPart.Value ) +
+                                  "&amp;pCustomerType=" + Code.URLEncode( Parameters!pCustomerType.Value ) +
+                                  "&amp;pReportDate=" + Code.URLEncode( Parameters!pReportDateNext.Value ) + "'))"
+                                </Hyperlink>
                               </Action>
                             </Actions>
                           </ActionInfo>
@@ -2490,9 +2527,6 @@
                               <Style>None</Style>
                               <Width>0.5pt</Width>
                             </Border>
-                            <TopBorder>
-                              <Style>Solid</Style>
-                            </TopBorder>
                             <BottomBorder>
                               <Style>Solid</Style>
                             </BottomBorder>
@@ -2569,10 +2603,12 @@
                           <ActionInfo>
                             <Actions>
                               <Action>
-                                <Hyperlink>="javascript:void(window.open('" + Variables!gThisReport.Value + "&amp;rs:Command=Render" + 
-	"&amp;pIsGunPart=" + Code.URLEncode( Parameters!pNextIsGunPart.Value ) + 
-	"&amp;pCustomerType=" + Code.URLEncode( Parameters!pCustomerType.Value ) + 
-	"&amp;pReportDate=" + Code.URLEncode( Parameters!pReportDate.Value ) + "'))"</Hyperlink>
+                                <Hyperlink>
+                                  ="javascript:void(window.open('" + Variables!gThisReport.Value + "&amp;rs:Command=Render" +
+                                  "&amp;pIsGunPart=" + Code.URLEncode( Parameters!pNextIsGunPart.Value ) +
+                                  "&amp;pCustomerType=" + Code.URLEncode( Parameters!pCustomerType.Value ) +
+                                  "&amp;pReportDate=" + Code.URLEncode( Parameters!pReportDate.Value ) + "'))"
+                                </Hyperlink>
                               </Action>
                             </Actions>
                           </ActionInfo>
@@ -2615,9 +2651,11 @@
                           <ActionInfo>
                             <Actions>
                               <Action>
-                                <Hyperlink>="javascript:void(window.open('" &amp; Variables!gThisReport.Value &amp; "&amp;rs:Command=Render" &amp;
-		"&amp;pReportDate=" &amp; Code.URLEncode( Parameters!pReportDate.Value ) &amp;
-		"'))"</Hyperlink>
+                                <Hyperlink>
+                                  ="javascript:void(window.open('" &amp; Variables!gThisReport.Value &amp; "&amp;rs:Command=Render" &amp;
+                                  "&amp;pReportDate=" &amp; Code.URLEncode( Parameters!pReportDate.Value ) &amp;
+                                  "'))"
+                                </Hyperlink>
                               </Action>
                             </Actions>
                           </ActionInfo>
@@ -2656,10 +2694,9 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>WeeklyShipping</DataSetName>
-            <Top>0.04167in</Top>
-            <Left>0.22186in</Left>
+            <Left>0.25in</Left>
             <Height>0.9in</Height>
-            <Width>12.1667in</Width>
+            <Width>12.25in</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -2722,18 +2759,22 @@
                                       <UseValueAsLabel>true</UseValueAsLabel>
                                       <Visible>true</Visible>
                                     </ChartDataLabel>
-                                    <ToolTip>="Week Of " &amp; Format( Fields!ShipDateFirstDayOfWeek.Value, "MM/dd" ) &amp; vbCrLf &amp;
-	IIf( Right( Parameters!pReportFilter.Value, 2 ) = ", ", 
-			Left( Parameters!pReportFilter.Value, Len( Parameters!pReportFilter.Value ) - 2 ) ,
-			IIf( Parameters!pReportFilter.Value = "No Filter", "Total", Parameters!pReportFilter.Value ) ) &amp; " Shipped:  " &amp; Format( Sum( Fields!ShippedQuantity.Value ), "#,0;(#,0);''" ) &amp; vbCrLf &amp; 
-	"Click for " &amp; Fields!ShipDateFirstDayOfWeek.Value &amp; " Shipping Summary"</ToolTip>
+                                    <ToolTip>
+                                      ="Week Of " &amp; Format( Fields!ShipDateFirstDayOfWeek.Value, "MM/dd" ) &amp; vbCrLf &amp;
+                                      IIf( Right( Parameters!pReportFilter.Value, 2 ) = ", ",
+                                      Left( Parameters!pReportFilter.Value, Len( Parameters!pReportFilter.Value ) - 2 ) ,
+                                      IIf( Parameters!pReportFilter.Value = "No Filter", "Total", Parameters!pReportFilter.Value ) ) &amp; " Shipped:  " &amp; Format( Sum( Fields!ShippedQuantity.Value ), "#,0;(#,0);''" ) &amp; vbCrLf &amp;
+                                      "Click for " &amp; Fields!ShipDateFirstDayOfWeek.Value &amp; " Shipping Summary"
+                                    </ToolTip>
                                     <ActionInfo>
                                       <Actions>
                                         <Action>
-                                          <Hyperlink>="javascript:void(window.open('" + Variables!gThisReport.Value + "&amp;rs:Command=Render" + 
-	"&amp;pIsGunPart=" + Code.URLEncode( Parameters!pIsGunPart.Value ) + 
-	"&amp;pCustomerType=" + Code.URLEncode( Parameters!pCustomerType.Value ) + 
-	"&amp;pReportDate=" + Code.URLEncode( Fields!ShipDateFirstDayOfWeek.Value )  + "'))"</Hyperlink>
+                                          <Hyperlink>
+                                            ="javascript:void(window.open('" + Variables!gThisReport.Value + "&amp;rs:Command=Render" +
+                                            "&amp;pIsGunPart=" + Code.URLEncode( Parameters!pIsGunPart.Value ) +
+                                            "&amp;pCustomerType=" + Code.URLEncode( Parameters!pCustomerType.Value ) +
+                                            "&amp;pReportDate=" + Code.URLEncode( Fields!ShipDateFirstDayOfWeek.Value )  + "'))"
+                                          </Hyperlink>
                                         </Action>
                                       </Actions>
                                     </ActionInfo>
@@ -3142,10 +3183,12 @@
                           <ActionInfo>
                             <Actions>
                               <Action>
-                                <Hyperlink>="javascript:void(window.open('" + Variables!gThisReport.Value + "&amp;rs:Command=Render" + 
-	"&amp;pIsGunPart=" + Code.URLEncode( Parameters!pIsGunPart.Value ) + 
-	"&amp;pCustomerType=" + Code.URLEncode( Parameters!pCustomerType.Value ) + 
-	"&amp;pReportDate=" + Code.URLEncode( DateAdd( DateInterval.WeekOfYear, 14, Parameters!pReportDateBegin.Value ) ) + "'))"</Hyperlink>
+                                <Hyperlink>
+                                  ="javascript:void(window.open('" + Variables!gThisReport.Value + "&amp;rs:Command=Render" +
+                                  "&amp;pIsGunPart=" + Code.URLEncode( Parameters!pIsGunPart.Value ) +
+                                  "&amp;pCustomerType=" + Code.URLEncode( Parameters!pCustomerType.Value ) +
+                                  "&amp;pReportDate=" + Code.URLEncode( DateAdd( DateInterval.WeekOfYear, 14, Parameters!pReportDateBegin.Value ) ) + "'))"
+                                </Hyperlink>
                               </Action>
                             </Actions>
                           </ActionInfo>
@@ -3190,10 +3233,12 @@
                           <ActionInfo>
                             <Actions>
                               <Action>
-                                <Hyperlink>="javascript:void(window.open('" + Variables!gThisReport.Value + "&amp;rs:Command=Render" + 
-	"&amp;pIsGunPart=" + Code.URLEncode( Parameters!pIsGunPart.Value ) + 
-	"&amp;pCustomerType=" + Code.URLEncode( Parameters!pCustomerType.Value ) + 
-	"&amp;pReportDate=" + Code.URLEncode( DateAdd( DateInterval.WeekOfYear, -1, Parameters!pShipDataFirstDate.Value ) ) + "'))"</Hyperlink>
+                                <Hyperlink>
+                                  ="javascript:void(window.open('" + Variables!gThisReport.Value + "&amp;rs:Command=Render" +
+                                  "&amp;pIsGunPart=" + Code.URLEncode( Parameters!pIsGunPart.Value ) +
+                                  "&amp;pCustomerType=" + Code.URLEncode( Parameters!pCustomerType.Value ) +
+                                  "&amp;pReportDate=" + Code.URLEncode( DateAdd( DateInterval.WeekOfYear, -1, Parameters!pShipDataFirstDate.Value ) ) + "'))"
+                                </Hyperlink>
                               </Action>
                             </Actions>
                           </ActionInfo>
@@ -3272,8 +3317,8 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>WeeklyShipping</DataSetName>
-            <Top>1.07361in</Top>
-            <Left>9.13856in</Left>
+            <Top>0.96944in</Top>
+            <Left>9.21356in</Left>
             <Height>6.8in</Height>
             <Width>3.25in</Width>
             <ZIndex>5</ZIndex>
@@ -3284,71 +3329,427 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>7.87361in</Height>
+        <Height>7.83194in</Height>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
         </Style>
       </Body>
-      <Width>12.6in</Width>
+      <Width>12.75in</Width>
       <Page>
         <PageHeader>
-          <Height>1in</Height>
+          <Height>1.30568in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
-            <Image Name="Image2">
-              <Source>Embedded</Source>
-              <Value>SpringfieldGrey3</Value>
-              <Sizing>FitProportional</Sizing>
-              <Top>0.07701in</Top>
-              <Left>11.62814in</Left>
-              <Height>0.87375in</Height>
-              <Width>0.75in</Width>
+            <Rectangle Name="TripodReportHeader">
+              <ReportItems>
+                <Image Name="HeaderImageLeft">
+                  <Source>Embedded</Source>
+                  <Value>SpringfieldGrey2</Value>
+                  <Sizing>FitProportional</Sizing>
+                  <Top>0.1in</Top>
+                  <Left>0.25in</Left>
+                  <Height>0.87375in</Height>
+                  <Width>0.75in</Width>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                  </Style>
+                </Image>
+                <Image Name="HeaderImageRight">
+                  <Source>Embedded</Source>
+                  <Value>SpringfieldGrey2</Value>
+                  <Sizing>FitProportional</Sizing>
+                  <Top>0.1in</Top>
+                  <Left>11.75in</Left>
+                  <Height>0.87375in</Height>
+                  <Width>0.75in</Width>
+                  <ZIndex>1</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                  </Style>
+                </Image>
+                <Image Name="HeaderImageCenter">
+                  <Source>Embedded</Source>
+                  <Value>SpringfieldRedBlock</Value>
+                  <Sizing>FitProportional</Sizing>
+                  <Top>11.2pt</Top>
+                  <Left>2.5825in</Left>
+                  <Height>0.70833in</Height>
+                  <Width>7.58541in</Width>
+                  <ZIndex>2</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                  </Style>
+                  <cl:ComponentMetadata>
+                    <cl:ComponentId>b9739f3f-5321-4d3c-a805-fb18bf37185a</cl:ComponentId>
+                  </cl:ComponentMetadata>
+                </Image>
+                <Textbox Name="linkDashboard">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Sales Dashboard</Value>
+                          <Style>
+                            <FontStyle>Normal</FontStyle>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontWeight>Normal</FontWeight>
+                            <TextDecoration>Underline</TextDecoration>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <ActionInfo>
+                    <Actions>
+                      <Action>
+                        <Drillthrough>
+                          <ReportName>Sales Dashboard</ReportName>
+                        </Drillthrough>
+                      </Action>
+                    </Actions>
+                  </ActionInfo>
+                  <Top>1.03069in</Top>
+                  <Left>0.25in</Left>
+                  <Height>0.25in</Height>
+                  <Width>1.02083in</Width>
+                  <ZIndex>3</ZIndex>
+                  <Style>
+                    <Border>
+                      <Color>#770000</Color>
+                      <Style>None</Style>
+                      <Width>0.5pt</Width>
+                    </Border>
+                    <VerticalAlign>Middle</VerticalAlign>
+                  </Style>
+                </Textbox>
+                <Textbox Name="linkOrderSummary">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Order Summary</Value>
+                          <Style>
+                            <FontStyle>Normal</FontStyle>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontWeight>Normal</FontWeight>
+                            <TextDecoration>Underline</TextDecoration>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <ActionInfo>
+                    <Actions>
+                      <Action>
+                        <Drillthrough>
+                          <ReportName>Order Summary Weekly</ReportName>
+                        </Drillthrough>
+                      </Action>
+                    </Actions>
+                  </ActionInfo>
+                  <Top>1.03069in</Top>
+                  <Left>1.34194in</Left>
+                  <Height>0.25in</Height>
+                  <Width>1.03543in</Width>
+                  <ZIndex>4</ZIndex>
+                  <Style>
+                    <Border>
+                      <Color>#770000</Color>
+                      <Style>None</Style>
+                      <Width>0.5pt</Width>
+                    </Border>
+                    <VerticalAlign>Middle</VerticalAlign>
+                  </Style>
+                </Textbox>
+                <Textbox Name="linkShippingSummary">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Shipping Summary</Value>
+                          <Style>
+                            <FontStyle>Normal</FontStyle>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontWeight>Normal</FontWeight>
+                            <TextDecoration>Underline</TextDecoration>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <ActionInfo>
+                    <Actions>
+                      <Action>
+                        <Drillthrough>
+                          <ReportName>Shipping Summary Weekly</ReportName>
+                        </Drillthrough>
+                      </Action>
+                    </Actions>
+                  </ActionInfo>
+                  <Top>1.03069in</Top>
+                  <Left>2.44848in</Left>
+                  <Height>0.25in</Height>
+                  <Width>1.20486in</Width>
+                  <ZIndex>5</ZIndex>
+                  <Style>
+                    <Border>
+                      <Color>#770000</Color>
+                      <Style>None</Style>
+                      <Width>0.5pt</Width>
+                    </Border>
+                    <VerticalAlign>Middle</VerticalAlign>
+                  </Style>
+                </Textbox>
+                <Textbox Name="linkBackorder">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Backorder</Value>
+                          <Style>
+                            <FontStyle>Normal</FontStyle>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontWeight>Normal</FontWeight>
+                            <TextDecoration>Underline</TextDecoration>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <ActionInfo>
+                    <Actions>
+                      <Action>
+                        <Drillthrough>
+                          <ReportName>Part Backorder Detail</ReportName>
+                        </Drillthrough>
+                      </Action>
+                    </Actions>
+                  </ActionInfo>
+                  <Top>1.03069in</Top>
+                  <Left>3.72446in</Left>
+                  <Height>0.25in</Height>
+                  <Width>0.72569in</Width>
+                  <ZIndex>6</ZIndex>
+                  <Style>
+                    <Border>
+                      <Color>#770000</Color>
+                      <Style>None</Style>
+                      <Width>0.5pt</Width>
+                    </Border>
+                    <VerticalAlign>Middle</VerticalAlign>
+                  </Style>
+                </Textbox>
+                <Textbox Name="linkBudgeting">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Budgeting</Value>
+                          <Style>
+                            <FontStyle>Normal</FontStyle>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontWeight>Normal</FontWeight>
+                            <TextDecoration>Underline</TextDecoration>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <ActionInfo>
+                    <Actions>
+                      <Action>
+                        <Drillthrough>
+                          <ReportName>Actual vs Projected Sales</ReportName>
+                        </Drillthrough>
+                      </Action>
+                    </Actions>
+                  </ActionInfo>
+                  <Top>1.03069in</Top>
+                  <Left>4.52126in</Left>
+                  <Height>0.25in</Height>
+                  <Width>0.69791in</Width>
+                  <ZIndex>7</ZIndex>
+                  <Style>
+                    <Border>
+                      <Color>#770000</Color>
+                      <Style>None</Style>
+                      <Width>0.5pt</Width>
+                    </Border>
+                    <VerticalAlign>Middle</VerticalAlign>
+                  </Style>
+                </Textbox>
+                <Textbox Name="linkInverntory">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Inventory</Value>
+                          <Style>
+                            <FontStyle>Normal</FontStyle>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontWeight>Normal</FontWeight>
+                            <TextDecoration>Underline</TextDecoration>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <ActionInfo>
+                    <Actions>
+                      <Action>
+                        <Drillthrough>
+                          <ReportName>Daily Inventory</ReportName>
+                        </Drillthrough>
+                      </Action>
+                    </Actions>
+                  </ActionInfo>
+                  <Top>1.03069in</Top>
+                  <Left>5.29028in</Left>
+                  <Height>0.25in</Height>
+                  <Width>0.73958in</Width>
+                  <ZIndex>8</ZIndex>
+                  <Style>
+                    <Border>
+                      <Color>#770000</Color>
+                      <Style>None</Style>
+                      <Width>0.5pt</Width>
+                    </Border>
+                    <VerticalAlign>Middle</VerticalAlign>
+                  </Style>
+                </Textbox>
+                <Textbox Name="linkPromotions">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Promotions</Value>
+                          <Style>
+                            <FontStyle>Normal</FontStyle>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontWeight>Normal</FontWeight>
+                            <TextDecoration>Underline</TextDecoration>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <ActionInfo>
+                    <Actions>
+                      <Action>
+                        <Drillthrough>
+                          <ReportName>Promotional Order Summary</ReportName>
+                        </Drillthrough>
+                      </Action>
+                    </Actions>
+                  </ActionInfo>
+                  <Top>1.03068in</Top>
+                  <Left>6.10097in</Left>
+                  <Height>0.25in</Height>
+                  <Width>0.73958in</Width>
+                  <ZIndex>9</ZIndex>
+                  <Style>
+                    <Border>
+                      <Color>#770000</Color>
+                      <Style>None</Style>
+                      <Width>0.5pt</Width>
+                    </Border>
+                    <VerticalAlign>Middle</VerticalAlign>
+                  </Style>
+                </Textbox>
+                <Line Name="HeaderLine">
+                  <Top>1.30568in</Top>
+                  <Left>0.25in</Left>
+                  <Height>0in</Height>
+                  <Width>12.25in</Width>
+                  <ZIndex>10</ZIndex>
+                  <Style>
+                    <Border>
+                      <Color>#770000</Color>
+                      <Style>Solid</Style>
+                      <Width>0.75pt</Width>
+                    </Border>
+                  </Style>
+                </Line>
+                <Line Name="HeaderLine2">
+                  <Top>0.04306in</Top>
+                  <Left>0.25in</Left>
+                  <Height>0in</Height>
+                  <Width>12.25in</Width>
+                  <ZIndex>11</ZIndex>
+                  <Style>
+                    <Border>
+                      <Color>#770000</Color>
+                      <Style>Solid</Style>
+                      <Width>0.75pt</Width>
+                    </Border>
+                  </Style>
+                </Line>
+              </ReportItems>
+              <KeepTogether>true</KeepTogether>
+              <Height>1.30568in</Height>
+              <Width>12.75in</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
               </Style>
-            </Image>
-            <Image Name="Image3">
-              <Source>Embedded</Source>
-              <Value>SpringfieldRedBlock</Value>
-              <Sizing>FitProportional</Sizing>
-              <ActionInfo>
-                <Actions>
-                  <Action>
-                    <Hyperlink>="javascript:void(window.open('" &amp; Variables!gTripodDashboard.Value &amp; "&amp;rs:Command=Render'))"</Hyperlink>
-                  </Action>
-                </Actions>
-              </ActionInfo>
-              <Top>0.14535in</Top>
-              <Left>2.50729in</Left>
-              <Height>0.70833in</Height>
-              <Width>7.58541in</Width>
-              <ZIndex>1</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-              </Style>
-            </Image>
-            <Image Name="Image1">
-              <Source>Embedded</Source>
-              <Value>SpringfieldGrey3</Value>
-              <Sizing>FitProportional</Sizing>
-              <Top>0.04924in</Top>
-              <Left>0.22186in</Left>
-              <Height>0.87375in</Height>
-              <Width>0.75in</Width>
-              <ZIndex>2</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-              </Style>
-            </Image>
+              <cl:ComponentMetadata>
+                <cl:ComponentId>bac9a568-dfde-49b5-bfe8-309a35608f96</cl:ComponentId>
+                <cl:SourcePath>/Report Parts/TripodReportHeader</cl:SourcePath>
+                <cl:SyncDate>2017-10-16T00:12:53.6630000-05:00</cl:SyncDate>
+                <cl:UserProperties>
+                  <cl:UserProperty Description="" Name="Description">
+                    <cl:Values>
+                      <cl:Value>Standard Header For Tripod Reports</cl:Value>
+                    </cl:Values>
+                  </cl:UserProperty>
+                </cl:UserProperties>
+              </cl:ComponentMetadata>
+            </Rectangle>
           </ReportItems>
           <Style>
             <Border>
@@ -3361,113 +3762,137 @@
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
-            <Line Name="Line3">
-              <Top>0.02257in</Top>
-              <Left>0.22186in</Left>
-              <Height>0in</Height>
-              <Width>12.1667in</Width>
-              <Style>
-                <Border>
-                  <Color>#770000</Color>
-                  <Style>Solid</Style>
-                  <Width>0.5pt</Width>
-                </Border>
-              </Style>
-            </Line>
-            <Textbox Name="lblFooter01">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Report Created:  </Value>
-                      <Style>
-                        <FontFamily>Calibri</FontFamily>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                    <TextRun>
-                      <Value>=Globals!ExecutionTime</Value>
-                      <Style>
-                        <FontFamily>Calibri</FontFamily>
-                        <FontSize>8pt</FontSize>
-                        <Format>MM/dd/yy  HH:mm</Format>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <Top>0.075in</Top>
-              <Left>0.22186in</Left>
-              <Height>0.25in</Height>
-              <Width>2.96564in</Width>
-              <ZIndex>1</ZIndex>
-              <ToolTip>=ChrW(169) &amp; Year(Today) &amp; " Springfield, Inc. All Rights Reserved."</ToolTip>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <VerticalAlign>Middle</VerticalAlign>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="lblFooter02">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Report Execution Time:  </Value>
-                      <Style>
-                        <FontFamily>Calibri</FontFamily>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                    <TextRun>
-                      <Label>Total Seconds</Label>
-                      <Value>=Now.Subtract( Globals!ExecutionTime ).TotalSeconds</Value>
-                      <Style>
-                        <FontFamily>Calibri</FontFamily>
-                        <FontSize>8pt</FontSize>
-                        <Format>0.000;(0.000)</Format>
-                      </Style>
-                    </TextRun>
-                    <TextRun>
-                      <Value> seconds</Value>
-                      <Style>
-                        <FontFamily>Calibri</FontFamily>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
+            <Rectangle Name="TripodReportFooter">
+              <ReportItems>
+                <Line Name="FooterLine">
+                  <Top>1pt</Top>
+                  <Left>0.25in</Left>
+                  <Height>0in</Height>
+                  <Width>12.25in</Width>
                   <Style>
-                    <TextAlign>Right</TextAlign>
+                    <Border>
+                      <Color>#770000</Color>
+                      <Style>Solid</Style>
+                      <Width>0.75pt</Width>
+                    </Border>
                   </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>0.075in</Top>
-              <Left>9.4125in</Left>
-              <Height>0.25in</Height>
-              <Width>2.97606in</Width>
-              <ZIndex>2</ZIndex>
-              <ToolTip>=Globals!ReportName</ToolTip>
+                </Line>
+                <Textbox Name="CreatedDateTime">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Report Created:  </Value>
+                          <Style>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontSize>8pt</FontSize>
+                          </Style>
+                        </TextRun>
+                        <TextRun>
+                          <Value>=Globals!ExecutionTime</Value>
+                          <Style>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontSize>8pt</FontSize>
+                            <Format>MM/dd/yy  HH:mm</Format>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style />
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>5pt</Top>
+                  <Left>0.25in</Left>
+                  <Height>0.25in</Height>
+                  <Width>2.9375in</Width>
+                  <ZIndex>1</ZIndex>
+                  <ToolTip>=ChrW(169) &amp; Year(Today) &amp; " Springfield, Inc. All Rights Reserved."</ToolTip>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <VerticalAlign>Middle</VerticalAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Textbox Name="ExecutionTime">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Report Execution Time:  </Value>
+                          <Style>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontSize>8pt</FontSize>
+                          </Style>
+                        </TextRun>
+                        <TextRun>
+                          <Label>Total Seconds</Label>
+                          <Value>=Now.Subtract( Globals!ExecutionTime ).TotalSeconds</Value>
+                          <Style>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontSize>8pt</FontSize>
+                            <Format>0.000;(0.000)</Format>
+                          </Style>
+                        </TextRun>
+                        <TextRun>
+                          <Value> seconds</Value>
+                          <Style>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontSize>8pt</FontSize>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>5pt</Top>
+                  <Left>9.5625in</Left>
+                  <Height>0.25in</Height>
+                  <Width>2.9375in</Width>
+                  <ZIndex>2</ZIndex>
+                  <ToolTip>=Globals!ReportName</ToolTip>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <VerticalAlign>Middle</VerticalAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+              </ReportItems>
+              <KeepTogether>true</KeepTogether>
+              <Height>0.375in</Height>
+              <Width>12.75in</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
-                <VerticalAlign>Middle</VerticalAlign>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
               </Style>
-            </Textbox>
+              <cl:ComponentMetadata>
+                <cl:ComponentId>277f4b9d-5092-401c-8412-45114fc92c1d</cl:ComponentId>
+                <cl:SourcePath>/Report Parts/TripodReportFooter</cl:SourcePath>
+                <cl:SyncDate>2017-10-16T00:12:53.7100000-05:00</cl:SyncDate>
+                <cl:UserProperties>
+                  <cl:UserProperty Description="" Name="Description">
+                    <cl:Values>
+                      <cl:Value>Standard Footer For Tripod Reports</cl:Value>
+                    </cl:Values>
+                  </cl:UserProperty>
+                </cl:UserProperties>
+              </cl:ComponentMetadata>
+            </Rectangle>
           </ReportItems>
           <Style>
             <Border>
@@ -3577,9 +4002,11 @@
       <DataType>String</DataType>
       <DefaultValue>
         <Values>
-          <Value>="[Ship Date].[CY Weekly].[Week].&amp;[" &amp; 
-	DatePart( DateInterval.Year, Parameters!pShipDataFirstDate.Value ) &amp; "]&amp;[" &amp; 
-	DatePart( DateInterval.WeekOfYear, Parameters!pShipDataFirstDate.Value ) &amp; "]"</Value>
+          <Value>
+            ="[Ship Date].[CY Weekly].[Week].&amp;[" &amp;
+            DatePart( DateInterval.Year, Parameters!pShipDataFirstDate.Value ) &amp; "]&amp;[" &amp;
+            DatePart( DateInterval.WeekOfYear, Parameters!pShipDataFirstDate.Value ) &amp; "]"
+          </Value>
         </Values>
       </DefaultValue>
       <Prompt>pShipDataFirstDateFormatted</Prompt>
@@ -3589,9 +4016,11 @@
       <DataType>String</DataType>
       <DefaultValue>
         <Values>
-          <Value>="[Ship Date].[CY Weekly].[Week].&amp;[" &amp; 
-	DatePart( DateInterval.Year, Parameters!pReportDateEnd.Value ) &amp; "]&amp;[" &amp; 
-	DatePart( DateInterval.WeekOfYear, Parameters!pReportDateEnd.Value ) &amp; "]"</Value>
+          <Value>
+            ="[Ship Date].[CY Weekly].[Week].&amp;[" &amp;
+            DatePart( DateInterval.Year, Parameters!pReportDateEnd.Value ) &amp; "]&amp;[" &amp;
+            DatePart( DateInterval.WeekOfYear, Parameters!pReportDateEnd.Value ) &amp; "]"
+          </Value>
         </Values>
       </DefaultValue>
       <Prompt>pShipDataLastDateFormatted</Prompt>
@@ -3653,7 +4082,7 @@
       <DataType>String</DataType>
       <DefaultValue>
         <Values>
-          <Value>="[Part].[By Gun Part].[" &amp; Choose( Parameters!pIsGunPart.Value, "All", "[Is Gun Part].&amp;[Y", "[Is Gun Part].&amp;[N" ) &amp; "]"</Value>
+          <Value>="[Part].[By Gun Part].[" &amp; Choose( Parameters!pIsGunPart.Value, "All", "Is Gun Part].&amp;[Y", "Is Gun Part].&amp;[N" ) &amp; "]"</Value>
         </Values>
       </DefaultValue>
       <Prompt>pIsGunPartFormatted</Prompt>
@@ -3663,8 +4092,10 @@
       <DataType>String</DataType>
       <DefaultValue>
         <Values>
-          <Value>=IIf( Parameters!pCustomerType.Value = "" And Parameters!pIsGunPart.Value = 1, "No Filter", 
-	IIf( Parameters!pCustomerType.Value = "", "", Parameters!pCustomerType.Value &amp; ", ") &amp; IIf( Parameters!pIsGunPart.Value = 1, "", Parameters!pIsGunPart.Label ) )</Value>
+          <Value>
+            =IIf( Parameters!pCustomerType.Value = "" And Parameters!pIsGunPart.Value = 1, "No Filter",
+            IIf( Parameters!pCustomerType.Value = "", "", Parameters!pCustomerType.Value &amp; ", ") &amp; IIf( Parameters!pIsGunPart.Value = 1, "", Parameters!pIsGunPart.Label ) )
+          </Value>
         </Values>
       </DefaultValue>
       <AllowBlank>true</AllowBlank>
@@ -3674,8 +4105,8 @@
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
-      <NumberOfColumns>2</NumberOfColumns>
-      <NumberOfRows>14</NumberOfRows>
+      <NumberOfColumns>8</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
@@ -3688,78 +4119,80 @@
           <ParameterName>pWeeklyMonthly</ParameterName>
         </CellDefinition>
         <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>1</RowIndex>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>0</RowIndex>
           <ParameterName>pCustomerType</ParameterName>
         </CellDefinition>
         <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>3</RowIndex>
+          <ColumnIndex>3</ColumnIndex>
+          <RowIndex>0</RowIndex>
           <ParameterName>pReportDateBegin</ParameterName>
         </CellDefinition>
         <CellDefinition>
-          <ColumnIndex>1</ColumnIndex>
-          <RowIndex>3</RowIndex>
+          <ColumnIndex>4</ColumnIndex>
+          <RowIndex>0</RowIndex>
           <ParameterName>pReportDateEnd</ParameterName>
         </CellDefinition>
         <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>4</RowIndex>
+          <ColumnIndex>5</ColumnIndex>
+          <RowIndex>0</RowIndex>
           <ParameterName>pReportDatePrevious</ParameterName>
         </CellDefinition>
         <CellDefinition>
-          <ColumnIndex>1</ColumnIndex>
-          <RowIndex>4</RowIndex>
+          <ColumnIndex>6</ColumnIndex>
+          <RowIndex>0</RowIndex>
           <ParameterName>pReportDateNext</ParameterName>
         </CellDefinition>
         <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>5</RowIndex>
+          <ColumnIndex>7</ColumnIndex>
+          <RowIndex>0</RowIndex>
           <ParameterName>pReportDateFilter</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
-          <RowIndex>7</RowIndex>
+          <RowIndex>1</RowIndex>
           <ParameterName>pShipDataFirstDate</ParameterName>
         </CellDefinition>
         <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>8</RowIndex>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>1</RowIndex>
           <ParameterName>pShipDataFirstDateFormatted</ParameterName>
         </CellDefinition>
         <CellDefinition>
-          <ColumnIndex>1</ColumnIndex>
-          <RowIndex>8</RowIndex>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>1</RowIndex>
           <ParameterName>pShipDataLastDateFormatted</ParameterName>
         </CellDefinition>
         <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>10</RowIndex>
+          <ColumnIndex>3</ColumnIndex>
+          <RowIndex>1</RowIndex>
           <ParameterName>pIsGunPart</ParameterName>
         </CellDefinition>
         <CellDefinition>
-          <ColumnIndex>1</ColumnIndex>
-          <RowIndex>10</RowIndex>
+          <ColumnIndex>4</ColumnIndex>
+          <RowIndex>1</RowIndex>
           <ParameterName>pNextIsGunPart</ParameterName>
         </CellDefinition>
         <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>11</RowIndex>
+          <ColumnIndex>5</ColumnIndex>
+          <RowIndex>1</RowIndex>
           <ParameterName>pIsGunPartFormatted</ParameterName>
         </CellDefinition>
         <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>13</RowIndex>
+          <ColumnIndex>6</ColumnIndex>
+          <RowIndex>1</RowIndex>
           <ParameterName>pReportFilter</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
-  <Code>Public Function URLEncode (ByVal inURL As String) As String
-	Dim outURL As String
-	outURL = System.Uri.EscapeDataString(inURL).ToString
-	Return outURL
-End Function</Code>
+  <Code>
+    Public Function URLEncode (ByVal inURL As String) As String
+    Dim outURL As String
+    outURL = System.Uri.EscapeDataString(inURL).ToString
+    Return outURL
+    End Function
+  </Code>
   <EmbeddedImages>
     <EmbeddedImage Name="SpringfieldGrey2">
       <MIMEType>image/png</MIMEType>
@@ -3824,6 +4257,6 @@ VX39CvMfMQgORt4abuHeni6tuay0N+DikYfjP5yxhjJ93bsp+wRBMARAraSldNkmr8KdDtelSFNZRo8e
     </Variable>
   </Variables>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportServerUrl>http://ca-unua/ReportServer</rd:ReportServerUrl>
+  <rd:ReportServerUrl>http://ca-lab/Reportserver</rd:ReportServerUrl>
   <rd:ReportID>d263e5ba-1418-45b9-ae0d-c1315f03ba88</rd:ReportID>
 </Report>

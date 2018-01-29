@@ -7,11 +7,6 @@
       <rd:SecurityType>Integrated</rd:SecurityType>
       <rd:DataSourceID>a026b1be-550f-40b8-99f0-34edbfefea56</rd:DataSourceID>
     </DataSource>
-    <DataSource Name="TripodDW">
-      <DataSourceReference>TripodDW</DataSourceReference>
-      <rd:SecurityType>Integrated</rd:SecurityType>
-      <rd:DataSourceID>05efd41b-0748-4729-a919-9cf5bc58fd60</rd:DataSourceID>
-    </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="CustomerOrders">
@@ -22,11 +17,11 @@
             <Value>=Parameters!pOrderNumberFormatted.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText> SELECT NON EMPTY { [Measures].[Item Quantity], [Measures].[Shipped Quantity], [Measures].[Backorder Quantity] } ON COLUMNS, NON EMPTY { ([Part].[SPRNUM].[SPRNUM].ALLMEMBERS * [Order Date].[Date].[Date].ALLMEMBERS * [Ship Date].[Date].[Date].ALLMEMBERS * [Part].[SPR Description].[SPR Description].ALLMEMBERS * [Customer Order].[Original Order Number].[Original Order Number].ALLMEMBERS * [Customer Order].[Order Number].[Order Number].ALLMEMBERS * [Customer Order].[Is Original Order].[Is Original Order].ALLMEMBERS * [Customer Order].[Order Status].[Order Status].ALLMEMBERS * [Customer Order].[Unit Price].[Unit Price].ALLMEMBERS * [Customer Order].[Is Backorder].[Is Backorder].ALLMEMBERS * [Bill To Customer].[By Customer Name Formatted].[Customer].ALLMEMBERS * [Customer Order].[Order Line Item].[Order Line Item].ALLMEMBERS * [Ship To Customer].[By Customer Name Formatted].[Customer].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( STRTOSET(@CustomerOrderByOriginalOrder, CONSTRAINED) ) ON COLUMNS FROM [TripodOrders]) WHERE ( IIF( STRTOSET(@CustomerOrderByOriginalOrder, CONSTRAINED).Count = 1, STRTOSET(@CustomerOrderByOriginalOrder, CONSTRAINED), [Customer Order].[By Original Order].currentmember ) ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+        <CommandText> SELECT NON EMPTY { [Measures].[Item Quantity], [Measures].[Shipped Quantity], [Measures].[Backorder Quantity] } ON COLUMNS, NON EMPTY { ([Part].[SPRNUM].[SPRNUM].ALLMEMBERS * [Order Date].[Date].[Date].ALLMEMBERS * [Ship Date].[Date].[Date].ALLMEMBERS * [Part].[SPR Description].[SPR Description].ALLMEMBERS * [Customer Order].[By Original Order].[Order Line Item].ALLMEMBERS * [Customer Order].[Order Status].[Order Status].ALLMEMBERS * [Customer Order].[Unit Price].[Unit Price].ALLMEMBERS * [Customer Order].[Is Backorder].[Is Backorder].ALLMEMBERS * [Bill To Customer].[By Customer Name Formatted].[Customer].ALLMEMBERS * [Ship To Customer].[By Customer Name Formatted].[Customer].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( STRTOSET(@CustomerOrderByOriginalOrder, CONSTRAINED) ) ON COLUMNS FROM [TripodOrders]) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
         <rd:DesignerState>
-          <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+          <QueryDefinition xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
             <CommandType>MDX</CommandType>
-            <QuerySpecification xsi:type="MDXQuerySpecification">
+            <QuerySpecification xsi:type="MDXQuerySpecification" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
               <Select>
                 <Items>
                   <Item>
@@ -76,10 +71,10 @@
                   <Item>
                     <ID xsi:type="Level">
                       <DimensionName>Customer Order</DimensionName>
-                      <HierarchyName>Original Order Number</HierarchyName>
-                      <HierarchyUniqueName>[Customer Order].[Original Order Number]</HierarchyUniqueName>
+                      <HierarchyName>By Original Order</HierarchyName>
+                      <HierarchyUniqueName>[Customer Order].[By Original Order]</HierarchyUniqueName>
                       <LevelName>Original Order Number</LevelName>
-                      <UniqueName>[Customer Order].[Original Order Number].[Original Order Number]</UniqueName>
+                      <UniqueName>[Customer Order].[By Original Order].[Original Order Number]</UniqueName>
                     </ID>
                     <ItemCaption>Original Order Number</ItemCaption>
                     <UniqueName>true</UniqueName>
@@ -87,10 +82,10 @@
                   <Item>
                     <ID xsi:type="Level">
                       <DimensionName>Customer Order</DimensionName>
-                      <HierarchyName>Order Number</HierarchyName>
-                      <HierarchyUniqueName>[Customer Order].[Order Number]</HierarchyUniqueName>
+                      <HierarchyName>By Original Order</HierarchyName>
+                      <HierarchyUniqueName>[Customer Order].[By Original Order]</HierarchyUniqueName>
                       <LevelName>Order Number</LevelName>
-                      <UniqueName>[Customer Order].[Order Number].[Order Number]</UniqueName>
+                      <UniqueName>[Customer Order].[By Original Order].[Order Number]</UniqueName>
                     </ID>
                     <ItemCaption>Order Number</ItemCaption>
                     <UniqueName>true</UniqueName>
@@ -98,12 +93,12 @@
                   <Item>
                     <ID xsi:type="Level">
                       <DimensionName>Customer Order</DimensionName>
-                      <HierarchyName>Is Original Order</HierarchyName>
-                      <HierarchyUniqueName>[Customer Order].[Is Original Order]</HierarchyUniqueName>
-                      <LevelName>Is Original Order</LevelName>
-                      <UniqueName>[Customer Order].[Is Original Order].[Is Original Order]</UniqueName>
+                      <HierarchyName>By Original Order</HierarchyName>
+                      <HierarchyUniqueName>[Customer Order].[By Original Order]</HierarchyUniqueName>
+                      <LevelName>Order Line Item</LevelName>
+                      <UniqueName>[Customer Order].[By Original Order].[Order Line Item]</UniqueName>
                     </ID>
-                    <ItemCaption>Is Original Order</ItemCaption>
+                    <ItemCaption>Order Line Item</ItemCaption>
                     <UniqueName>true</UniqueName>
                   </Item>
                   <Item>
@@ -148,17 +143,6 @@
                       <UniqueName>[Bill To Customer].[By Customer Name Formatted].[Customer]</UniqueName>
                     </ID>
                     <ItemCaption>Customer</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>Customer Order</DimensionName>
-                      <HierarchyName>Order Line Item</HierarchyName>
-                      <HierarchyUniqueName>[Customer Order].[Order Line Item]</HierarchyUniqueName>
-                      <LevelName>Order Line Item</LevelName>
-                      <UniqueName>[Customer Order].[Order Line Item].[Order Line Item]</UniqueName>
-                    </ID>
-                    <ItemCaption>Order Line Item</ItemCaption>
                     <UniqueName>true</UniqueName>
                   </Item>
                   <Item>
@@ -241,7 +225,7 @@
               </QueryProperties>
             </QuerySpecification>
             <Query>
-              <Statement> SELECT NON EMPTY { [Measures].[Item Quantity], [Measures].[Shipped Quantity], [Measures].[Backorder Quantity] } ON COLUMNS, NON EMPTY { ([Part].[SPRNUM].[SPRNUM].ALLMEMBERS * [Order Date].[Date].[Date].ALLMEMBERS * [Ship Date].[Date].[Date].ALLMEMBERS * [Part].[SPR Description].[SPR Description].ALLMEMBERS * [Customer Order].[Original Order Number].[Original Order Number].ALLMEMBERS * [Customer Order].[Order Number].[Order Number].ALLMEMBERS * [Customer Order].[Is Original Order].[Is Original Order].ALLMEMBERS * [Customer Order].[Order Status].[Order Status].ALLMEMBERS * [Customer Order].[Unit Price].[Unit Price].ALLMEMBERS * [Customer Order].[Is Backorder].[Is Backorder].ALLMEMBERS * [Bill To Customer].[By Customer Name Formatted].[Customer].ALLMEMBERS * [Customer Order].[Order Line Item].[Order Line Item].ALLMEMBERS * [Ship To Customer].[By Customer Name Formatted].[Customer].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( STRTOSET(@CustomerOrderByOriginalOrder, CONSTRAINED) ) ON COLUMNS FROM [TripodOrders]) WHERE ( IIF( STRTOSET(@CustomerOrderByOriginalOrder, CONSTRAINED).Count = 1, STRTOSET(@CustomerOrderByOriginalOrder, CONSTRAINED), [Customer Order].[By Original Order].currentmember ) ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
+              <Statement> SELECT NON EMPTY { [Measures].[Item Quantity], [Measures].[Shipped Quantity], [Measures].[Backorder Quantity] } ON COLUMNS, NON EMPTY { ([Part].[SPRNUM].[SPRNUM].ALLMEMBERS * [Order Date].[Date].[Date].ALLMEMBERS * [Ship Date].[Date].[Date].ALLMEMBERS * [Part].[SPR Description].[SPR Description].ALLMEMBERS * [Customer Order].[By Original Order].[Order Line Item].ALLMEMBERS * [Customer Order].[Order Status].[Order Status].ALLMEMBERS * [Customer Order].[Unit Price].[Unit Price].ALLMEMBERS * [Customer Order].[Is Backorder].[Is Backorder].ALLMEMBERS * [Bill To Customer].[By Customer Name Formatted].[Customer].ALLMEMBERS * [Ship To Customer].[By Customer Name Formatted].[Customer].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( STRTOSET(@CustomerOrderByOriginalOrder, CONSTRAINED) ) ON COLUMNS FROM [TripodOrders]) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
               <ParameterDefinitions>
                 <ParameterDefinition>
                   <Name>CustomerOrderByOriginalOrder</Name>
@@ -279,15 +263,15 @@
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="OriginalOrderNumber">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Customer Order].[Original Order Number].[Original Order Number]" /&gt;</DataField>
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Customer Order].[By Original Order].[Original Order Number]" /&gt;</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="OrderNumber">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Customer Order].[Order Number].[Order Number]" /&gt;</DataField>
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Customer Order].[By Original Order].[Order Number]" /&gt;</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="IsOriginalOrder">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Customer Order].[Is Original Order].[Is Original Order]" /&gt;</DataField>
+        <Field Name="OrderLineItem">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Customer Order].[By Original Order].[Order Line Item]" /&gt;</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="OrderStatus">
@@ -304,10 +288,6 @@
         </Field>
         <Field Name="IsBackorder">
           <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Customer Order].[Is Backorder].[Is Backorder]" /&gt;</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="OrderLineItem">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Customer Order].[Order Line Item].[Order Line Item]" /&gt;</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="ShipToNameFormatted">
@@ -346,7 +326,7 @@
                   <Width>7.58541in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.28544in</Width>
+                  <Width>2.37916in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -383,9 +363,6 @@
                               <Style>None</Style>
                               <Width>0.75pt</Width>
                             </Border>
-                            <TopBorder>
-                              <Style>Solid</Style>
-                            </TopBorder>
                             <BottomBorder>
                               <Style>Solid</Style>
                             </BottomBorder>
@@ -414,10 +391,9 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>CustomerOrders</DataSetName>
-            <Top>0.02778in</Top>
-            <Left>0.22186in</Left>
+            <Left>0.25in</Left>
             <Height>0.41667in</Height>
-            <Width>12.15628in</Width>
+            <Width>12.25in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -428,22 +404,22 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.1875in</Width>
+                  <Width>1.25in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.04167in</Width>
+                  <Width>1.25in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.72499in</Width>
+                  <Width>3.5in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.875in</Width>
+                  <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.875in</Width>
+                  <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.88125in</Width>
+                  <Width>1in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -1552,10 +1528,10 @@
             </TablixRowHierarchy>
             <RepeatRowHeaders>true</RepeatRowHeaders>
             <DataSetName>CustomerOrders</DataSetName>
-            <Top>0.57722in</Top>
-            <Left>2.50729in</Left>
+            <Top>0.48611in</Top>
+            <Left>1.875in</Left>
             <Height>1.85in</Height>
-            <Width>7.58541in</Width>
+            <Width>9in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -1566,7 +1542,7 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>2.51055in</Height>
+        <Height>2.40638in</Height>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1574,74 +1550,420 @@
           </Border>
         </Style>
       </Body>
-      <Width>12.6in</Width>
+      <Width>12.75in</Width>
       <Page>
         <PageHeader>
-          <Height>1in</Height>
+          <Height>1.30568in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
-            <Image Name="Image1">
-              <Source>Embedded</Source>
-              <Value>SpringfieldGrey3</Value>
-              <Sizing>FitProportional</Sizing>
-              <Top>0.04924in</Top>
-              <Left>0.22186in</Left>
-              <Height>0.87375in</Height>
-              <Width>0.75in</Width>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-              </Style>
-            </Image>
-            <Image Name="TripodMainHeader">
-              <Source>Embedded</Source>
-              <Value>SpringfieldRedBlock</Value>
-              <Sizing>FitProportional</Sizing>
-              <ActionInfo>
-                <Actions>
-                  <Action>
-                    <Hyperlink>="javascript:void(window.open('" &amp; Variables!gTripodDashboard.Value &amp; "&amp;rs:Command=Render'))"</Hyperlink>
-                  </Action>
-                </Actions>
-              </ActionInfo>
-              <Top>0.14535in</Top>
-              <Left>2.50729in</Left>
-              <Height>0.70833in</Height>
-              <Width>7.58541in</Width>
-              <ZIndex>1</ZIndex>
+            <Rectangle Name="TripodReportHeader">
+              <ReportItems>
+                <Image Name="HeaderImageLeft">
+                  <Source>Embedded</Source>
+                  <Value>SpringfieldGrey2</Value>
+                  <Sizing>FitProportional</Sizing>
+                  <Top>0.1in</Top>
+                  <Left>0.25in</Left>
+                  <Height>0.87375in</Height>
+                  <Width>0.75in</Width>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                  </Style>
+                </Image>
+                <Image Name="HeaderImageRight">
+                  <Source>Embedded</Source>
+                  <Value>SpringfieldGrey2</Value>
+                  <Sizing>FitProportional</Sizing>
+                  <Top>0.1in</Top>
+                  <Left>11.75in</Left>
+                  <Height>0.87375in</Height>
+                  <Width>0.75in</Width>
+                  <ZIndex>1</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                  </Style>
+                </Image>
+                <Image Name="HeaderImageCenter">
+                  <Source>Embedded</Source>
+                  <Value>SpringfieldRedBlock</Value>
+                  <Sizing>FitProportional</Sizing>
+                  <Top>11.2pt</Top>
+                  <Left>2.5825in</Left>
+                  <Height>0.70833in</Height>
+                  <Width>7.58541in</Width>
+                  <ZIndex>2</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                  </Style>
+                  <cl:ComponentMetadata>
+                    <cl:ComponentId>b9739f3f-5321-4d3c-a805-fb18bf37185a</cl:ComponentId>
+                  </cl:ComponentMetadata>
+                </Image>
+                <Textbox Name="linkDashboard">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Sales Dashboard</Value>
+                          <Style>
+                            <FontStyle>Normal</FontStyle>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontWeight>Normal</FontWeight>
+                            <TextDecoration>Underline</TextDecoration>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <ActionInfo>
+                    <Actions>
+                      <Action>
+                        <Drillthrough>
+                          <ReportName>Sales Dashboard</ReportName>
+                        </Drillthrough>
+                      </Action>
+                    </Actions>
+                  </ActionInfo>
+                  <Top>1.03069in</Top>
+                  <Left>0.25in</Left>
+                  <Height>0.25in</Height>
+                  <Width>1.02083in</Width>
+                  <ZIndex>3</ZIndex>
+                  <Style>
+                    <Border>
+                      <Color>#770000</Color>
+                      <Style>None</Style>
+                      <Width>0.5pt</Width>
+                    </Border>
+                    <VerticalAlign>Middle</VerticalAlign>
+                  </Style>
+                </Textbox>
+                <Textbox Name="linkOrderSummary">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Order Summary</Value>
+                          <Style>
+                            <FontStyle>Normal</FontStyle>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontWeight>Normal</FontWeight>
+                            <TextDecoration>Underline</TextDecoration>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <ActionInfo>
+                    <Actions>
+                      <Action>
+                        <Drillthrough>
+                          <ReportName>Order Summary Weekly</ReportName>
+                        </Drillthrough>
+                      </Action>
+                    </Actions>
+                  </ActionInfo>
+                  <Top>1.03069in</Top>
+                  <Left>1.34194in</Left>
+                  <Height>0.25in</Height>
+                  <Width>1.03543in</Width>
+                  <ZIndex>4</ZIndex>
+                  <Style>
+                    <Border>
+                      <Color>#770000</Color>
+                      <Style>None</Style>
+                      <Width>0.5pt</Width>
+                    </Border>
+                    <VerticalAlign>Middle</VerticalAlign>
+                  </Style>
+                </Textbox>
+                <Textbox Name="linkShippingSummary">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Shipping Summary</Value>
+                          <Style>
+                            <FontStyle>Normal</FontStyle>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontWeight>Normal</FontWeight>
+                            <TextDecoration>Underline</TextDecoration>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <ActionInfo>
+                    <Actions>
+                      <Action>
+                        <Drillthrough>
+                          <ReportName>Shipping Summary Weekly</ReportName>
+                        </Drillthrough>
+                      </Action>
+                    </Actions>
+                  </ActionInfo>
+                  <Top>1.03069in</Top>
+                  <Left>2.44848in</Left>
+                  <Height>0.25in</Height>
+                  <Width>1.20486in</Width>
+                  <ZIndex>5</ZIndex>
+                  <Style>
+                    <Border>
+                      <Color>#770000</Color>
+                      <Style>None</Style>
+                      <Width>0.5pt</Width>
+                    </Border>
+                    <VerticalAlign>Middle</VerticalAlign>
+                  </Style>
+                </Textbox>
+                <Textbox Name="linkBackorder">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Backorder</Value>
+                          <Style>
+                            <FontStyle>Normal</FontStyle>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontWeight>Normal</FontWeight>
+                            <TextDecoration>Underline</TextDecoration>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <ActionInfo>
+                    <Actions>
+                      <Action>
+                        <Drillthrough>
+                          <ReportName>Part Backorder Detail</ReportName>
+                        </Drillthrough>
+                      </Action>
+                    </Actions>
+                  </ActionInfo>
+                  <Top>1.03069in</Top>
+                  <Left>3.72446in</Left>
+                  <Height>0.25in</Height>
+                  <Width>0.72569in</Width>
+                  <ZIndex>6</ZIndex>
+                  <Style>
+                    <Border>
+                      <Color>#770000</Color>
+                      <Style>None</Style>
+                      <Width>0.5pt</Width>
+                    </Border>
+                    <VerticalAlign>Middle</VerticalAlign>
+                  </Style>
+                </Textbox>
+                <Textbox Name="linkBudgeting">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Budgeting</Value>
+                          <Style>
+                            <FontStyle>Normal</FontStyle>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontWeight>Normal</FontWeight>
+                            <TextDecoration>Underline</TextDecoration>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <ActionInfo>
+                    <Actions>
+                      <Action>
+                        <Drillthrough>
+                          <ReportName>Actual vs Projected Sales</ReportName>
+                        </Drillthrough>
+                      </Action>
+                    </Actions>
+                  </ActionInfo>
+                  <Top>1.03069in</Top>
+                  <Left>4.52126in</Left>
+                  <Height>0.25in</Height>
+                  <Width>0.69791in</Width>
+                  <ZIndex>7</ZIndex>
+                  <Style>
+                    <Border>
+                      <Color>#770000</Color>
+                      <Style>None</Style>
+                      <Width>0.5pt</Width>
+                    </Border>
+                    <VerticalAlign>Middle</VerticalAlign>
+                  </Style>
+                </Textbox>
+                <Textbox Name="linkInverntory">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Inventory</Value>
+                          <Style>
+                            <FontStyle>Normal</FontStyle>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontWeight>Normal</FontWeight>
+                            <TextDecoration>Underline</TextDecoration>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <ActionInfo>
+                    <Actions>
+                      <Action>
+                        <Drillthrough>
+                          <ReportName>Daily Inventory</ReportName>
+                        </Drillthrough>
+                      </Action>
+                    </Actions>
+                  </ActionInfo>
+                  <Top>1.03069in</Top>
+                  <Left>5.29028in</Left>
+                  <Height>0.25in</Height>
+                  <Width>0.73958in</Width>
+                  <ZIndex>8</ZIndex>
+                  <Style>
+                    <Border>
+                      <Color>#770000</Color>
+                      <Style>None</Style>
+                      <Width>0.5pt</Width>
+                    </Border>
+                    <VerticalAlign>Middle</VerticalAlign>
+                  </Style>
+                </Textbox>
+                <Textbox Name="linkPromotions">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Promotions</Value>
+                          <Style>
+                            <FontStyle>Normal</FontStyle>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontWeight>Normal</FontWeight>
+                            <TextDecoration>Underline</TextDecoration>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <ActionInfo>
+                    <Actions>
+                      <Action>
+                        <Drillthrough>
+                          <ReportName>Promotional Order Summary</ReportName>
+                        </Drillthrough>
+                      </Action>
+                    </Actions>
+                  </ActionInfo>
+                  <Top>1.03068in</Top>
+                  <Left>6.10097in</Left>
+                  <Height>0.25in</Height>
+                  <Width>0.73958in</Width>
+                  <ZIndex>9</ZIndex>
+                  <Style>
+                    <Border>
+                      <Color>#770000</Color>
+                      <Style>None</Style>
+                      <Width>0.5pt</Width>
+                    </Border>
+                    <VerticalAlign>Middle</VerticalAlign>
+                  </Style>
+                </Textbox>
+                <Line Name="HeaderLine">
+                  <Top>1.30568in</Top>
+                  <Left>0.25in</Left>
+                  <Height>0in</Height>
+                  <Width>12.25in</Width>
+                  <ZIndex>10</ZIndex>
+                  <Style>
+                    <Border>
+                      <Color>#770000</Color>
+                      <Style>Solid</Style>
+                      <Width>0.75pt</Width>
+                    </Border>
+                  </Style>
+                </Line>
+                <Line Name="HeaderLine2">
+                  <Top>0.04306in</Top>
+                  <Left>0.25in</Left>
+                  <Height>0in</Height>
+                  <Width>12.25in</Width>
+                  <ZIndex>11</ZIndex>
+                  <Style>
+                    <Border>
+                      <Color>#770000</Color>
+                      <Style>Solid</Style>
+                      <Width>0.75pt</Width>
+                    </Border>
+                  </Style>
+                </Line>
+              </ReportItems>
+              <KeepTogether>true</KeepTogether>
+              <Height>1.30568in</Height>
+              <Width>12.75in</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
               </Style>
               <cl:ComponentMetadata>
-                <cl:ComponentId>68336317-3ea1-4383-997c-35f443c3a41e</cl:ComponentId>
+                <cl:ComponentId>bac9a568-dfde-49b5-bfe8-309a35608f96</cl:ComponentId>
+                <cl:SourcePath>/Report Parts/TripodReportHeader</cl:SourcePath>
+                <cl:SyncDate>2017-10-16T00:12:53.6630000-05:00</cl:SyncDate>
                 <cl:UserProperties>
                   <cl:UserProperty Description="" Name="Description">
                     <cl:Values>
-                      <cl:Value>Links all reports to Home Dashboard with current date</cl:Value>
+                      <cl:Value>Standard Header For Tripod Reports</cl:Value>
                     </cl:Values>
                   </cl:UserProperty>
                 </cl:UserProperties>
               </cl:ComponentMetadata>
-            </Image>
-            <Image Name="Image2">
-              <Source>Embedded</Source>
-              <Value>SpringfieldGrey3</Value>
-              <Sizing>FitProportional</Sizing>
-              <Top>0.07701in</Top>
-              <Left>11.62814in</Left>
-              <Height>0.87375in</Height>
-              <Width>0.75in</Width>
-              <ZIndex>2</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-              </Style>
-            </Image>
+            </Rectangle>
           </ReportItems>
           <Style>
             <Border>
@@ -1654,104 +1976,137 @@
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
-            <Line Name="Line3">
-              <Top>0.02778in</Top>
-              <Left>0.22186in</Left>
-              <Height>0in</Height>
-              <Width>12.15628in</Width>
-              <Style>
-                <Border>
-                  <Color>#770000</Color>
-                  <Style>Solid</Style>
-                  <Width>0.5pt</Width>
-                </Border>
-              </Style>
-            </Line>
-            <Textbox Name="lblFooter01">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Report Created:  </Value>
-                      <Style>
-                        <FontFamily>Calibri</FontFamily>
-                      </Style>
-                    </TextRun>
-                    <TextRun>
-                      <Value>=Globals!ExecutionTime</Value>
-                      <Style>
-                        <FontFamily>Calibri</FontFamily>
-                        <Format>MMM d, yyyy HH:mm</Format>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <Top>0.05556in</Top>
-              <Left>0.22186in</Left>
-              <Height>0.25in</Height>
-              <Width>2.9375in</Width>
-              <ZIndex>1</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="lblFooter3">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Report Execution Time:  </Value>
-                      <Style>
-                        <FontFamily>Calibri</FontFamily>
-                      </Style>
-                    </TextRun>
-                    <TextRun>
-                      <Label>Total Seconds</Label>
-                      <Value>=Now.Subtract( Globals!ExecutionTime ).TotalSeconds</Value>
-                      <Style>
-                        <FontFamily>Calibri</FontFamily>
-                        <Format>0.000;(0.000)</Format>
-                      </Style>
-                    </TextRun>
-                    <TextRun>
-                      <Value> seconds</Value>
-                      <Style>
-                        <FontFamily>Calibri</FontFamily>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
+            <Rectangle Name="TripodReportFooter">
+              <ReportItems>
+                <Line Name="FooterLine">
+                  <Top>1pt</Top>
+                  <Left>0.25in</Left>
+                  <Height>0in</Height>
+                  <Width>12.25in</Width>
                   <Style>
-                    <TextAlign>Right</TextAlign>
+                    <Border>
+                      <Color>#770000</Color>
+                      <Style>Solid</Style>
+                      <Width>0.75pt</Width>
+                    </Border>
                   </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>0.05556in</Top>
-              <Left>9.44064in</Left>
-              <Height>0.25in</Height>
-              <Width>2.9375in</Width>
-              <ZIndex>2</ZIndex>
+                </Line>
+                <Textbox Name="CreatedDateTime">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Report Created:  </Value>
+                          <Style>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontSize>8pt</FontSize>
+                          </Style>
+                        </TextRun>
+                        <TextRun>
+                          <Value>=Globals!ExecutionTime</Value>
+                          <Style>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontSize>8pt</FontSize>
+                            <Format>MM/dd/yy  HH:mm</Format>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style />
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>5pt</Top>
+                  <Left>0.25in</Left>
+                  <Height>0.25in</Height>
+                  <Width>2.9375in</Width>
+                  <ZIndex>1</ZIndex>
+                  <ToolTip>=ChrW(169) &amp; Year(Today) &amp; " Springfield, Inc. All Rights Reserved."</ToolTip>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <VerticalAlign>Middle</VerticalAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Textbox Name="ExecutionTime">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Report Execution Time:  </Value>
+                          <Style>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontSize>8pt</FontSize>
+                          </Style>
+                        </TextRun>
+                        <TextRun>
+                          <Label>Total Seconds</Label>
+                          <Value>=Now.Subtract( Globals!ExecutionTime ).TotalSeconds</Value>
+                          <Style>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontSize>8pt</FontSize>
+                            <Format>0.000;(0.000)</Format>
+                          </Style>
+                        </TextRun>
+                        <TextRun>
+                          <Value> seconds</Value>
+                          <Style>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontSize>8pt</FontSize>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>5pt</Top>
+                  <Left>9.5625in</Left>
+                  <Height>0.25in</Height>
+                  <Width>2.9375in</Width>
+                  <ZIndex>2</ZIndex>
+                  <ToolTip>=Globals!ReportName</ToolTip>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <VerticalAlign>Middle</VerticalAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+              </ReportItems>
+              <KeepTogether>true</KeepTogether>
+              <Height>0.375in</Height>
+              <Width>12.75in</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
               </Style>
-            </Textbox>
+              <cl:ComponentMetadata>
+                <cl:ComponentId>277f4b9d-5092-401c-8412-45114fc92c1d</cl:ComponentId>
+                <cl:SourcePath>/Report Parts/TripodReportFooter</cl:SourcePath>
+                <cl:SyncDate>2017-10-16T00:12:53.7100000-05:00</cl:SyncDate>
+                <cl:UserProperties>
+                  <cl:UserProperty Description="" Name="Description">
+                    <cl:Values>
+                      <cl:Value>Standard Footer For Tripod Reports</cl:Value>
+                    </cl:Values>
+                  </cl:UserProperty>
+                </cl:UserProperties>
+              </cl:ComponentMetadata>
+            </Rectangle>
           </ReportItems>
           <Style>
             <Border>
@@ -1880,6 +2235,6 @@ VX39CvMfMQgORt4abuHeni6tuay0N+DikYfjP5yxhjJ93bsp+wRBMARAraSldNkmr8KdDtelSFNZRo8e
     </Variable>
   </Variables>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportServerUrl>http://sfarmorysql/ReportServer</rd:ReportServerUrl>
+  <rd:ReportServerUrl>http://ca-lab/Reportserver</rd:ReportServerUrl>
   <rd:ReportID>58215b8a-8b0a-4376-8602-d91f4114b4d3</rd:ReportID>
 </Report>

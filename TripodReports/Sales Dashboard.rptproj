@@ -63,6 +63,10 @@
       <FullPath>Projections Monthly.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
+      <Name>Promotional Order Summary.rdl</Name>
+      <FullPath>Promotional Order Summary.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>Sales Dashboard.rdl</Name>
       <FullPath>Sales Dashboard.rdl</FullPath>
     </ProjectItem>
@@ -79,6 +83,24 @@
       <FullPath>Shipping Summary Weekly.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
+      <Name>TripodReportTemplates.rdl</Name>
+      <FullPath>TripodReportTemplates.rdl</FullPath>
+      <PublishableComponents>
+        <PublishedItem>
+          <ComponentId>bac9a568-dfde-49b5-bfe8-309a35608f96</ComponentId>
+          <IsOverwriteOnRedeploy>true</IsOverwriteOnRedeploy>
+          <ComponentName>TripodReportHeader</ComponentName>
+          <IsSelectedToPublish>true</IsSelectedToPublish>
+        </PublishedItem>
+        <PublishedItem>
+          <ComponentId>277f4b9d-5092-401c-8412-45114fc92c1d</ComponentId>
+          <IsOverwriteOnRedeploy>true</IsOverwriteOnRedeploy>
+          <ComponentName>TripodReportFooter</ComponentName>
+          <IsSelectedToPublish>true</IsSelectedToPublish>
+        </PublishedItem>
+      </PublishableComponents>
+    </ProjectItem>
+    <ProjectItem>
       <Name>XD by XA Inventory.rdl</Name>
       <FullPath>XD by XA Inventory.rdl</FullPath>
     </ProjectItem>
@@ -92,7 +114,9 @@
         <TargetServerURL>http://ca-lab/ReportServer</TargetServerURL>
         <TargetFolder>Sales Dashboard</TargetFolder>
         <TargetDataSourceFolder>Data Sources</TargetDataSourceFolder>
+        <OverwriteDataSources>true</OverwriteDataSources>
         <TargetDatasetFolder>Datasets</TargetDatasetFolder>
+        <OverwriteDatasets>true</OverwriteDatasets>
         <TargetReportPartFolder>Report Parts</TargetReportPartFolder>
         <StartItem>Sales Dashboard.rdl</StartItem>
       </Options>
