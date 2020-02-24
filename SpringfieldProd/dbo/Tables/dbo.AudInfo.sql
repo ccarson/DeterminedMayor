@@ -5,13 +5,15 @@
     [TableName]    VARCHAR (31) DEFAULT (' ') NULL,
     [User]         VARCHAR (10) DEFAULT (' ') NOT NULL,
     [WorkStation]  VARCHAR (20) DEFAULT (' ') NOT NULL,
-    [CDate]        DATETIME     DEFAULT ('01/01/1753') NOT NULL,
+    [CDate]        DATETIME     DEFAULT ('1753-01-01') NOT NULL,
     [CTime]        VARCHAR (8)  DEFAULT (' ') NOT NULL,
     [RecordNumber] DECIMAL (8)  DEFAULT ((0)) NOT NULL,
     [Deleted]      VARCHAR (1)  DEFAULT (' ') NOT NULL,
     [RecordRowID]  VARCHAR (30) NULL,
-    CONSTRAINT [AudInfo_INDEX01] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (FILLFACTOR = 70)
+    CONSTRAINT [AudInfo_INDEX01] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (FILLFACTOR = 90)
 );
+
+
 
 
 

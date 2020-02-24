@@ -2,7 +2,7 @@
     [Recnum]    BIGINT         IDENTITY (1, 1) NOT NULL,
     [PriceType] VARCHAR (20)   DEFAULT (' ') NOT NULL,
     [Factor]    DECIMAL (8, 4) DEFAULT ((0)) NOT NULL,
-    [FromPrice] VARCHAR (12)   DEFAULT (' ') NOT NULL,
+    [FromPrice] VARCHAR (20)   DEFAULT (' ') NOT NULL,
     [CalcHow]   VARCHAR (1)    DEFAULT (' ') NOT NULL,
     [Round]     VARCHAR (1)    DEFAULT (' ') NOT NULL,
     [NoFET]     VARCHAR (1)    DEFAULT (' ') NOT NULL,

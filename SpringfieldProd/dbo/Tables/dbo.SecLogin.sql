@@ -20,13 +20,14 @@
     [VacationView]    VARCHAR (20)  NULL,
     [WindowsUserName] VARCHAR (50)  DEFAULT (' ') NOT NULL,
     [Active]          VARCHAR (1)   NULL,
-    CONSTRAINT [SecLogin_INDEX01] PRIMARY KEY CLUSTERED ([ID_Key] ASC) WITH (FILLFACTOR = 70)
+    CONSTRAINT [SecLogin_INDEX00] PRIMARY KEY CLUSTERED ([Recnum] ASC)
 );
 
 
+
+
 GO
-CREATE UNIQUE NONCLUSTERED INDEX [SecLogin_INDEX00]
-    ON [dbo].[SecLogin]([Recnum] ASC) WITH (FILLFACTOR = 70);
+
 
 
 GO
@@ -52,4 +53,9 @@ CREATE UNIQUE NONCLUSTERED INDEX [SecLogin_INDEX05]
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [SecLogin_INDEX06]
     ON [dbo].[SecLogin]([WindowsUserName] ASC, [Login] ASC);
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [SecLogin_INDEX01]
+    ON [dbo].[SecLogin]([ID_Key] ASC, [Recnum] ASC);
 

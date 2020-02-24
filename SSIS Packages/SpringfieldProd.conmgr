@@ -1,14 +1,18 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:ObjectName="SpringfieldProd"
   DTS:DTSID="{C5A0DCCF-780C-4A21-8C72-E2C5E406FE30}"
   DTS:CreationName="OLEDB">
+  <DTS:PropertyExpression
+    DTS:Name="InitialCatalog">@[$Project::SpringfieldProd_InitialCatalog]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="Password">@[$Project::SpringfieldProd_Password]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="ServerName">@[$Project::SpringfieldProd_ServerName]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="UserName">@[$Project::SpringfieldProd_UserName]</DTS:PropertyExpression>
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="Data Source=SFARMORYSQL;User ID=chrisc;Initial Catalog=SpringfieldProd;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;Packet Size=32767;Application Name=Tripod ETL - SpringfieldProd;MARS Connection=True;">
-      <DTS:Password
-        DTS:Name="Password"
-        Sensitive="1"></DTS:Password>
-    </DTS:ConnectionManager>
+      DTS:ConnectionString="Data Source=SFARMORYSQL;User ID=chrisc;Initial Catalog=SpringfieldProd;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;Packet Size=32767;Application Name=Tripod ETL - SpringfieldProd;MARS Connection=True;" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>

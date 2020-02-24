@@ -65,13 +65,15 @@
     [BIRTHDATE]        DATETIME     DEFAULT ('01/01/1753') NOT NULL,
     [Own_XDS]          VARCHAR (1)  DEFAULT (' ') NOT NULL,
     [CreatedBy]        VARCHAR (20) NULL,
-    [CreatedOn]        DATETIME     NULL,
+    [CreatedOn]        DATETIME     CONSTRAINT [D_dbo_WARRANTY_1] DEFAULT (getdate()) NULL,
     [Duplicate]        TINYINT      DEFAULT ((0)) NOT NULL,
     [SentEmail]        VARCHAR (1)  NULL,
     [HubSpotContactID] BIGINT       DEFAULT ((0)) NOT NULL,
     [OWN_SAINT]        VARCHAR (1)  NULL,
-    CONSTRAINT [WARRANTY_INDEX01] PRIMARY KEY CLUSTERED ([SERIALNUM] ASC, [Duplicate] ASC, [SPRNUM] ASC, [Recnum] ASC)
+    CONSTRAINT [WARRANTY_INDEX01] PRIMARY KEY CLUSTERED ([SERIALNUM] ASC, [Duplicate] ASC, [SPRNUM] ASC, [Recnum] ASC) WITH (FILLFACTOR = 70)
 );
+
+
 
 
 

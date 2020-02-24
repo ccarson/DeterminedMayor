@@ -1,27 +1,24 @@
 ﻿
-
 CREATE VIEW [dbo].[vwExplodedBOM]
 AS
-WITH PartCTE AS (SELECT        MASTPART AS RootPart, MASTPART, CAST((CASE WHEN subref.REPLACE_FLAG = 'Y' THEN (AMOUNT * - 1) ELSE (AMOUNT) END) AS DECIMAL) 
-                                                                 AS Amount, CAST((CASE WHEN subref.REPLACE_FLAG = 'Y' THEN (TaxQty * - 1) ELSE (TaxQty) END) AS DECIMAL) AS TaxQty, SUBPART, 
-                                                                 0 AS SubLevel, (CASE WHEN subpart IN
-                                                                     (SELECT        MASTPART
-                                                                       FROM            subref
-                                                                          INNER JOIN parts p on p.SPRNUM = subref.MASTPART and p.PURCH_FLAG <> 'P') THEN 'Yes' ELSE '' END) AS IsAssembly, REPLACE_FLAG
+WITH PartCTE AS (SELECT        MASTPART AS RootPart, MASTPART, CAST((CASE WHEN subref.REPLACE_FLAG = 'Y' THEN (AMOUNT * - 1) ELSE (AMOUNT) END) AS DECIMAL) AS Amount, 
+                                                                 CAST((CASE WHEN subref.REPLACE_FLAG = 'Y' THEN (TaxQty * - 1) ELSE (TaxQty) END) AS DECIMAL) AS TaxQty, SUBPART, 0 AS SubLevel, (CASE WHEN subpart IN
+                                                                     (SELECT        Mastpart
+                                                                       FROM            subref INNER JOIN
+                                                                                                 parts p ON p.SPRNUM = subref.MASTPART AND p.PURCH_FLAG <> 'P') THEN 'Yes' ELSE '' END) AS IsAssembly, REPLACE_FLAG
                                         FROM            dbo.subref
                                         WHERE        (MASTPART <> '')
                                         UNION ALL
-                                        SELECT        pcte.RootPart, sub.MASTPART, CAST(CASE WHEN pcte.Amount < 0 THEN (sub.AMOUNT * pcte.Amount) WHEN sub.REPLACE_FLAG = 'Y' THEN ((sub.AMOUNT * - 1) * pcte.Amount) ELSE (sub.AMOUNT * pcte.Amount) END AS DECIMAL) AS Expr1, 
-                                                                 CAST((CASE WHEN pcte.Amount < 0 THEN (sub.AMOUNT * pcte.Amount) WHEN sub.REPLACE_FLAG = 'Y' THEN ((sub.TaxQty * - 1) * pcte.Amount) ELSE (sub.TaxQty * pcte.Amount) END) AS DECIMAL) AS TaxQty, sub.SUBPART, 
-                                                                 pcte.SubLevel + 1 AS SubLevel, (CASE WHEN sub.SUBPART IN
-                                                                     (SELECT        subref.MASTPART
-                                                                       FROM            subref
-                                                                                                                        INNER JOIN parts p on p.SPRNUM = subref.MASTPART and p.PURCH_FLAG <> 'P') THEN 'Yes' ELSE '' END) AS IsAssembly, sub.REPLACE_FLAG
+                                        SELECT        pcte.RootPart, sub.MASTPART, CAST(CASE WHEN pcte.Amount < 0 THEN (sub.AMOUNT * pcte.Amount) WHEN sub.REPLACE_FLAG = 'Y' THEN ((sub.AMOUNT * - 1) * pcte.Amount) 
+                                                                 ELSE (sub.AMOUNT * pcte.Amount) END AS DECIMAL) AS Expr1, CAST((CASE WHEN pcte.Amount < 0 THEN (sub.AMOUNT * pcte.Amount) WHEN sub.REPLACE_FLAG = 'Y' THEN ((sub.TaxQty * - 1) 
+                                                                 * pcte.Amount) ELSE (sub.TaxQty * pcte.Amount) END) AS DECIMAL) AS TaxQty, sub.SUBPART, pcte.SubLevel + 1 AS SubLevel, (CASE WHEN sub.subpart IN
+                                                                     (SELECT        subref.Mastpart
+                                                                       FROM            subref INNER JOIN
+                                                                                                 parts p ON p.SPRNUM = subref.MASTPART AND p.PURCH_FLAG <> 'P') THEN 'Yes' ELSE '' END) AS IsAssembly, sub.REPLACE_FLAG
                                         FROM            PartCTE AS pcte INNER JOIN
-                                                                 dbo.subref AS sub ON sub.MASTPART = pcte.SUBPART AND pcte.MASTPART <> pcte.SUBPART
-                                                                                                              INNER JOIN parts p on p.SPRNUM = pcte.SUBPART and p.PURCH_FLAG <> 'P')
-    SELECT        TOP (100) PERCENT pcte.RootPart, pcte.MASTPART, pcte.SUBPART, pcte.Amount AS Qty, pcte.TaxQty, dbo.parts.[DESC], pcte.SubLevel, dbo.parts.COSTFIN, 
-                              pcte.IsAssembly, pcte.REPLACE_FLAG
+                                                                 dbo.subref AS sub ON sub.MASTPART = pcte.SUBPART AND pcte.MASTPART <> pcte.SUBPART INNER JOIN
+                                                                 dbo.parts AS p ON p.SPRNUM = pcte.SUBPART AND p.PURCH_FLAG <> 'P')
+    SELECT        TOP (100) PERCENT pcte.RootPart, pcte.MASTPART, pcte.SUBPART, pcte.Amount AS Qty, pcte.TaxQty, dbo.parts.[DESC], pcte.SubLevel, dbo.parts.COSTFIN, pcte.IsAssembly, pcte.REPLACE_FLAG, dbo.parts.LEAD_TIME
      FROM            PartCTE AS pcte INNER JOIN
                               dbo.parts ON dbo.parts.SPRNUM = pcte.SUBPART
      ORDER BY pcte.RootPart, pcte.MASTPART, pcte.SUBPART, pcte.REPLACE_FLAG

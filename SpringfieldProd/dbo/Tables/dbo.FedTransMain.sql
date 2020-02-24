@@ -28,8 +28,12 @@
     [CreatedBy]       VARCHAR (4)     DEFAULT ('') NOT NULL,
     [CreatedDate]     DATETIME        DEFAULT (getdate()) NOT NULL,
     [Recall]          VARCHAR (20)    DEFAULT ('') NOT NULL,
+    [PONumber]        INT             CONSTRAINT [DF_FedTransMain_PONumber] DEFAULT ((0)) NOT NULL,
+    [POLine]          INT             CONSTRAINT [DF_FedTransMain_POLine] DEFAULT ((0)) NOT NULL,
     CONSTRAINT [FedTransMain_INDEX01] PRIMARY KEY CLUSTERED ([ID] ASC)
 );
+
+
 
 
 GO
@@ -45,4 +49,15 @@ CREATE UNIQUE NONCLUSTERED INDEX [FedTransMain_INDEX03]
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [FedTransMain_INDEX02]
     ON [dbo].[FedTransMain]([HeaderID] ASC, [LineNum] ASC, [CreatedDate] ASC, [ID] ASC);
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_FedTransMain_PO_And_Corrected]
+    ON [dbo].[FedTransMain]([PONumber] ASC, [POLine] ASC, [CorrectedBy] ASC)
+    INCLUDE([ID]);
+
+
+GO
+CREATE NONCLUSTERED INDEX [FedTransMain_INDEX05]
+    ON [dbo].[FedTransMain]([WorkOrderNumber] ASC, [CorrectedBy] ASC, [LineNum] ASC);
 

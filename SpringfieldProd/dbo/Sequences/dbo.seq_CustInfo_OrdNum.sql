@@ -1,0 +1,6 @@
+﻿CREATE SEQUENCE [dbo].[seq_CustInfo_OrdNum]
+    AS DECIMAL (10)
+    START WITH 2940105
+    INCREMENT BY 1
+    MINVALUE 1;
+

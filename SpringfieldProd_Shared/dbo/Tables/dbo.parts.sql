@@ -136,6 +136,10 @@
     [SubCategory]              VARCHAR (10)    NULL,
     [Packed]                   BIGINT          DEFAULT ((0)) NOT NULL,
     [PulledToWO]               BIGINT          CONSTRAINT [DF_parts_PulledToWO] DEFAULT ((0)) NOT NULL,
+    [PartNumber]               VARCHAR (40)    CONSTRAINT [DF_parts_PartNumber] DEFAULT (' ') NOT NULL,
+    [AttributeDescription]     VARCHAR (1024)  NULL,
+    [PurchaseUOM]              CHAR (4)        CONSTRAINT [DF_Parts_PurchaseUOM] DEFAULT ('EA') NOT NULL,
+ 	
     CONSTRAINT [parts_INDEX01] PRIMARY KEY CLUSTERED ([SPRNUM] ASC) WITH (FILLFACTOR = 70),
     CONSTRAINT [FK_parts_GUNTYPE] FOREIGN KEY ([GUNTYPE]) REFERENCES [dbo].[GUNTYPES] ([CODE]),
     CONSTRAINT [FK_parts_RPT_GROUP] FOREIGN KEY ([RPT_GROUP]) REFERENCES [dbo].[INPRTGRP] ([CODE]),

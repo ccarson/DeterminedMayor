@@ -1,4 +1,5 @@
 ﻿
+
 CREATE PROCEDURE [dbo].[sasp_ComparePartCountToFIFO] 
 AS
 
@@ -15,7 +16,7 @@ FROM parts p WHERE p.SPRNUM NOT IN
 (SELECT DISTINCT PartNum 
 FROM @FIFOCount); 
 
-select fc.PartNum, fc.Quantity AS FIFOCount, case when p.RECEIVE_TO = 'R' THEN p.[RAW] ELSE p.FIN END AS PartCount
+select fc.PartNum, fc.Quantity AS FIFOCount, p.[RAW] + p.FIN + p.Packed AS PartCount
 from @FIFOCount fc
 inner join parts p
 on fc.PartNum = p.SPRNUM

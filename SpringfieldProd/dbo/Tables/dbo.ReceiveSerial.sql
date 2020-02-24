@@ -10,8 +10,11 @@
     [SemiOrFullAuto]   VARCHAR (1)  DEFAULT (' ') NOT NULL,
     [Manufacturer]     VARCHAR (10) DEFAULT (' ') NOT NULL,
     [Updated]          VARCHAR (1)  DEFAULT ('N') NOT NULL,
+    [Line]             INT          DEFAULT ((0)) NOT NULL,
     CONSTRAINT [ReceiveSerial_INDEX01] PRIMARY KEY CLUSTERED ([ID] ASC)
 );
+
+
 
 
 GO

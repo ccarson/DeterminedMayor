@@ -27,6 +27,6 @@ SELECT
 								SELECT DISTINCT ',' + GUNTYPE 
 								FROM		dbo.parts AS p
 								INNER JOIN	dbo.MASTERLN ON MASTERLN.SPRNUM = p.SPRNUM
-								WHERE		dbo.MASTERLN.ORDNUM = @pORDNUM
+								WHERE		MASTERLN.ORDNUM = @pORDNUM
 								FOR XML PATH('') ), 1, 1, '' )  
 ;

@@ -69,8 +69,28 @@
     [EnteredBy]           VARCHAR (10)    NULL,
     [OwnSaint]            SMALLINT        DEFAULT ((0)) NULL,
     [Gender]              CHAR (1)        DEFAULT ('') NULL,
+    [BillName]            VARCHAR (50)    CONSTRAINT [DF_PromoInfo_BillName] DEFAULT ('') NOT NULL,
+    [BillAddress1]        VARCHAR (30)    CONSTRAINT [DF_PromoInfo_BillAddress1] DEFAULT ('') NOT NULL,
+    [BillAddress2]        VARCHAR (30)    CONSTRAINT [DF_PromoInfo_BIllAddress2] DEFAULT ('') NOT NULL,
+    [BillCity]            VARCHAR (30)    CONSTRAINT [DF_PromoInfo_BillCity] DEFAULT ('') NOT NULL,
+    [BillState]           VARCHAR (2)     CONSTRAINT [DF_PromoInfo_BillState] DEFAULT ('') NOT NULL,
+    [BillZip]             VARCHAR (10)    CONSTRAINT [DF_PromoInfo_BillZip] DEFAULT ('') NOT NULL,
+    [BCustID]             VARCHAR (10)    CONSTRAINT [DF_PromoInfo_BCustID] DEFAULT ('') NOT NULL,
+    [SubTotal]            NUMERIC (8, 2)  NULL,
+    [Shipping]            NUMERIC (6, 2)  NULL,
+    [Tax]                 NUMERIC (6, 2)  NULL,
+    [OrderTotal]          NUMERIC (10, 2) NULL,
+    [CardNum]             VARCHAR (19)    NULL,
+    [CardKind]            VARCHAR (1)     NULL,
+    [CCToken]             VARCHAR (25)    NULL,
+    [AVSResult]           VARCHAR (1)     NULL,
+    [AvaStatus]           VARCHAR (20)    NULL,
+    [AvaType]             VARCHAR (20)    NULL,
+    [CardExp]             VARCHAR (4)     NULL,
     CONSTRAINT [PromoInfo_INDEX01] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (FILLFACTOR = 100)
 );
+
+
 
 
 
@@ -134,5 +154,7 @@ CREATE STATISTICS [_WA_Sys_00000003_4A7D1573]
 
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [PromoInfo_INDEX08]
-    ON [dbo].[PromoInfo]([OrdNum] ASC, [ID] ASC, [SubmissionType] ASC) WITH (FILLFACTOR = 100);
+    ON [dbo].[PromoInfo]([OrdNum] ASC, [ID] ASC) WITH (FILLFACTOR = 100);
+
+
 

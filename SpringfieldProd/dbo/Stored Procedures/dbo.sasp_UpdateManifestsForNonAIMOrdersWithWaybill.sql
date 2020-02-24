@@ -1,24 +1,37 @@
 ﻿
-CREATE PROCEDURE [dbo].[sasp_UpdateManifestsForNonAIMOrdersWithWaybill] @sWaybill varchar(50), @sName varchar(36), @sCity varchar(20), @sState varchar(2), @iHeaderID bigint, @iPallet int
+
+CREATE PROCEDURE [dbo].[sasp_UpdateManifestsForNonAIMOrdersWithWaybill] 
+(
+  @sWaybill varchar(50)
+, @sVendorID varchar(8)
+, @iHeaderID bigint
+, @iPallet int
+)
 AS
+
+--We don't actually have CartonHeader records for Non-AIM orders, so the Pallet number is useless right now...
 
 UPDATE ManifestDetail 
 SET MasterTrackingID = @sWaybill
   , MasterTrackingIDType = 'TRUCK' 
+/*
 WHERE ManifestDetail.ID IN
   (SELECT md.ID
     FROM ManifestDetail md
       INNER JOIN ManifestPackage mp
         ON md.ID = mp.DetailID
-      INNER JOIN CartonHeader ch
+      LEFT JOIN CartonHeader ch
         ON mp.ID = ch.ManifestPackageID
           AND ch.Pallet = @iPallet
     WHERE md.Status <> 'C' 
       AND md.HeaderID = @iHeaderID 
-      AND md.Name = @sName 
-      AND md.City = @sCity 
-      AND md.[State] = @sState
+      AND md.VendorID = @sVendorID 
   );
+*/
+--Remove this if we put the Pallet code (above) back in.
+    WHERE [Status] <> 'C' 
+      AND HeaderID = @iHeaderID 
+      AND VendorID = @sVendorID;
 
 --Now set the waybill into all the packages
 UPDATE ManifestPackage 
@@ -28,13 +41,13 @@ WHERE DetailID IN
     FROM ManifestDetail md
     WHERE md.Status <> 'C' 
       AND md.HeaderID = @iHeaderID
-      AND md.Name = @sName 
-      AND md.City = @sCity 
-      AND md.[State] = @sState
+      AND md.VendorID = @sVendorID 
   )
+/*
   AND ManifestPackage.ID IN
     (SELECT ch.ManifestPackageID
       FROM CartonHeader ch
         WHERE ManifestPackage.ID = ch.ManifestPackageID
           AND ch.Pallet = @iPallet
     )
+*/

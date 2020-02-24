@@ -30,6 +30,7 @@
     [Version]        VARCHAR (15)  DEFAULT (' ') NOT NULL,
     [Email]          VARCHAR (100) DEFAULT (' ') NOT NULL,
     [APVendorID]     VARCHAR (8)   NULL,
+    [INACTIVE_FLAG]  CHAR (1)      DEFAULT ('N') NULL,	
     CONSTRAINT [POVendor_INDEX01] PRIMARY KEY CLUSTERED ([VENDOR_ID] ASC) WITH (FILLFACTOR = 70)
 );
 

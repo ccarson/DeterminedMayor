@@ -1,17 +1,20 @@
 ﻿CREATE TABLE [dbo].[PartsForecast] (
-    [ID]                BIGINT       IDENTITY (1, 1) NOT NULL,
-    [ForecastHeaderID]  BIGINT       CONSTRAINT [DF__PartsFore__Forec__51F34EB2] DEFAULT ((0)) NOT NULL,
-    [SprNum]            VARCHAR (20) CONSTRAINT [DF__PartsFore__SprNu__52E772EB] DEFAULT (' ') NOT NULL,
-    [YearMonth]         VARCHAR (6)  CONSTRAINT [DF__PartsFore__YearM__53DB9724] DEFAULT (' ') NOT NULL,
-    [New]               VARCHAR (1)  NULL,
-    [Quan]              INT          NULL,
-    [QuanShip]          INT          NULL,
-    [OrigQuan]          INT          NULL,
-    [Approved]          VARCHAR (1)  NULL,
-    [ParametersApplied] VARCHAR (1)  NULL,
-    [GunTypeCode]       CHAR (1)     NULL,
+    [ID]                 BIGINT          IDENTITY (1, 1) NOT NULL,
+    [ForecastHeaderID]   BIGINT          CONSTRAINT [DF__PartsFore__Forec__51F34EB2] DEFAULT ((0)) NOT NULL,
+    [SprNum]             VARCHAR (20)    CONSTRAINT [DF__PartsFore__SprNu__52E772EB] DEFAULT (' ') NOT NULL,
+    [YearMonth]          VARCHAR (6)     CONSTRAINT [DF__PartsFore__YearM__53DB9724] DEFAULT (' ') NOT NULL,
+    [New]                VARCHAR (1)     NULL,
+    [Quan]               INT             NULL,
+    [QuanShip]           INT             NULL,
+    [OrigQuan]           INT             NULL,
+    [Approved]           VARCHAR (1)     NULL,
+    [ParametersApplied]  VARCHAR (1)     NULL,
+    [GunTypeCode]        CHAR (1)        NULL,
+    [TotalMinutesNeeded] NUMERIC (10, 2) CONSTRAINT [DF_PartsForecast_TotalMinutesNeeded] DEFAULT ((0)) NOT NULL,
     CONSTRAINT [PartsForecast_INDEX01] PRIMARY KEY CLUSTERED ([ID] ASC)
 );
+
+
 
 
 

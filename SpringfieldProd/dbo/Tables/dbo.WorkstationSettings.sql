@@ -13,8 +13,11 @@
     [FobReaderPort]            VARCHAR (30)  NULL,
     [PrintPackingListFirst]    CHAR (1)      DEFAULT ('N') NOT NULL,
     [DocumentPrinterPort]      VARCHAR (255) DEFAULT ('') NOT NULL,
+    [ClampackLabelPrinterPort] VARCHAR (255) NULL,
     CONSTRAINT [WorkstationSettings_INDEX01] PRIMARY KEY CLUSTERED ([WorkstationName] ASC) WITH (FILLFACTOR = 70)
 );
+
+
 
 
 

@@ -44,8 +44,14 @@
     [ShipToPO]            VARCHAR (40)   NULL,
     [AVSResult]           VARCHAR (1)    NULL,
     [YardCode]            VARCHAR (4)    NULL,
+    [AvaStatus]           VARCHAR (20)   NULL,
+    [AvaType]             VARCHAR (20)   NULL,
+    [ShipEmail]           VARCHAR (100)  NULL,
+    [ShipPhone]           VARCHAR (20)   NULL,
     CONSTRAINT [WebStoreHeader_INDEX01] PRIMARY KEY CLUSTERED ([OrderNum] ASC) WITH (FILLFACTOR = 70)
 );
+
+
 
 
 GO

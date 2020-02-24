@@ -35,9 +35,12 @@
     [OrderedSubApparel]   NUMERIC (10, 2) NULL,
     [SubLabor]            NUMERIC (10, 2) NULL,
     [OrderedSubLabor]     NUMERIC (10, 2) NULL,
-    [EMail]               VARCHAR (500)   NULL,
+    [Email]               VARCHAR (500)   NULL,
+    [NFAStamp]            CHAR (1)        CONSTRAINT [DF_ShowHead_NFAStamp] DEFAULT ('N') NOT NULL,
     CONSTRAINT [ShowHead_INDEX00] PRIMARY KEY CLUSTERED ([RECNUM] ASC) WITH (FILLFACTOR = 70)
 );
+
+
 
 
 

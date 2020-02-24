@@ -190,7 +190,7 @@
     [XDAWarehousePrinter]  VARCHAR (50)    NULL,
     [XDDPrinter]           VARCHAR (50)    NULL,
     [HubSpotPortalID]      VARCHAR (20)    NULL,
-    [HubSpotAPIKey]        VARCHAR (40)    NULL,
+    [HubSpotAPIKey]        VARCHAR (300)   NULL,
     [HubSpotRefreshKey]    VARCHAR (40)    NULL,
     [HubSpotExpiry]        VARCHAR (40)    NULL,
     [HubSpotClientID]      VARCHAR (40)    NULL,
@@ -199,6 +199,8 @@
     [SerialAuditRunDate]   DATE            NULL,
     CONSTRAINT [SYSINFO_INDEX00] PRIMARY KEY CLUSTERED ([Recnum] ASC) WITH (FILLFACTOR = 70)
 );
+
+
 
 
 

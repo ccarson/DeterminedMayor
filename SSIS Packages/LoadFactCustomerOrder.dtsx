@@ -5,21 +5,20 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="CA-UNUA"
   DTS:CreatorName="CA-UNUA\Chris"
-  DTS:DTSID="{DD64DA4F-423F-4DBE-89CD-F6CAB91BE3B9}"
+  DTS:DTSID="{A67E69B9-D01B-406A-8F08-4A2E20400131}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LastModifiedProductVersion="15.0.2000.71"
   DTS:LocaleID="1033"
   DTS:ObjectName="LoadFactCustomerOrder"
   DTS:PackageType="5"
-  DTS:ProtectionLevel="0"
-  DTS:VersionBuild="278"
-  DTS:VersionGUID="{951F63A3-DE0F-4714-8827-78E390612203}">
+  DTS:VersionBuild="280"
+  DTS:VersionGUID="{EEDCC311-9832-4867-92FD-C31A4D3C84F2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{ED8049FC-577C-411E-BFD2-EE31E97E2B86}"
+      DTS:DTSID="{E38C0E1C-56E6-4565-A7F2-D4EC23FD18B1}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="ChangeTrackingCurrentVersion">
@@ -28,7 +27,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{3C711F58-E313-484D-8EF5-4A5294019449}"
+      DTS:DTSID="{A245E0AD-DC7D-442E-A78E-F5276905FA4D}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="LastChangeTrackingVersion">
@@ -41,7 +40,7 @@
       DTS:refId="Package\SEQ - Extract Changed Data From Production"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
-      DTS:DTSID="{CAA2F713-AE64-4420-9D11-A93A227DF551}"
+      DTS:DTSID="{D1E9094E-1FC9-4109-A7A1-70573DA76182}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
       DTS:ObjectName="SEQ - Extract Changed Data From Production">
@@ -51,7 +50,7 @@
           DTS:refId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:DTSID="{fae69276-1cff-41c1-af49-2632ca7337ec}"
+          DTS:DTSID="{AFDD73F0-1863-4E5A-A7AC-CB5E3B6B5265}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
           DTS:ObjectName="DF - Load stage CMASTER changes"
@@ -161,7 +160,7 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 	x.CUSTID 
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 	x.CUSTID 
 FROM        CHANGETABLE(CHANGES dbo.CMASTER, ? ) AS x 
 WHERE 	x.SYS_CHANGE_OPERATION != 'D' AND x.SYS_CHANGE_VERSION !&gt; ? ;</property>
                     <property
@@ -184,7 +183,7 @@ WHERE 	x.SYS_CHANGE_OPERATION != 'D' AND x.SYS_CHANGE_VERSION !&gt; ? ;</propert
                     <property
                       dataType="System.String"
                       description="The mappings between the parameters in the SQL command and variables."
-                      name="ParameterMapping">"Parameter0:Input",{3C711F58-E313-484D-8EF5-4A5294019449};"Parameter1:Input",{ED8049FC-577C-411E-BFD2-EE31E97E2B86};</property>
+                      name="ParameterMapping">"Parameter0:Input",{A245E0AD-DC7D-442E-A78E-F5276905FA4D};"Parameter1:Input",{E38C0E1C-56E6-4565-A7F2-D4EC23FD18B1};</property>
                   </properties>
                   <connections>
                     <connection
@@ -275,7 +274,7 @@ WHERE 	x.SYS_CHANGE_OPERATION != 'D' AND x.SYS_CHANGE_VERSION !&gt; ? ;</propert
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 	CUSTID = BCUSTID 
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 	CUSTID = BCUSTID 
 FROM 	dbo.CUSTINFO
 WHERE EXISTS( 	SELECT 1 FROM CHANGETABLE( CHANGES dbo.CUSTINFO, ? ) AS ct
 		WHERE ct.ORDNUM = CUSTINFO.ORDNUM
@@ -300,7 +299,7 @@ WHERE EXISTS( 	SELECT 1 FROM CHANGETABLE( CHANGES dbo.CUSTINFO, ? ) AS ct
                     <property
                       dataType="System.String"
                       description="The mappings between the parameters in the SQL command and variables."
-                      name="ParameterMapping">"Parameter0:Input",{3C711F58-E313-484D-8EF5-4A5294019449};"Parameter1:Input",{ED8049FC-577C-411E-BFD2-EE31E97E2B86};</property>
+                      name="ParameterMapping">"Parameter0:Input",{A245E0AD-DC7D-442E-A78E-F5276905FA4D};"Parameter1:Input",{E38C0E1C-56E6-4565-A7F2-D4EC23FD18B1};</property>
                   </properties>
                   <connections>
                     <connection
@@ -391,7 +390,7 @@ WHERE EXISTS( 	SELECT 1 FROM CHANGETABLE( CHANGES dbo.CUSTINFO, ? ) AS ct
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 	CUSTID = SCUSTID 
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 	CUSTID = SCUSTID 
 FROM 	dbo.CUSTINFO
 WHERE EXISTS( 	SELECT 1 FROM CHANGETABLE( CHANGES dbo.CUSTINFO, ? ) AS ct
 		WHERE ct.ORDNUM = CUSTINFO.ORDNUM
@@ -416,7 +415,7 @@ WHERE EXISTS( 	SELECT 1 FROM CHANGETABLE( CHANGES dbo.CUSTINFO, ? ) AS ct
                     <property
                       dataType="System.String"
                       description="The mappings between the parameters in the SQL command and variables."
-                      name="ParameterMapping">"Parameter0:Input",{3C711F58-E313-484D-8EF5-4A5294019449};"Parameter1:Input",{ED8049FC-577C-411E-BFD2-EE31E97E2B86};</property>
+                      name="ParameterMapping">"Parameter0:Input",{A245E0AD-DC7D-442E-A78E-F5276905FA4D};"Parameter1:Input",{E38C0E1C-56E6-4565-A7F2-D4EC23FD18B1};</property>
                   </properties>
                   <connections>
                     <connection
@@ -507,7 +506,7 @@ WHERE EXISTS( 	SELECT 1 FROM CHANGETABLE( CHANGES dbo.CUSTINFO, ? ) AS ct
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 	CUSTID = BCUSTID 
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 	CUSTID = BCUSTID 
 FROM 	dbo.CUSTINFO
 WHERE EXISTS( 	SELECT 1 FROM CHANGETABLE( CHANGES dbo.MASTERLN, ? ) AS ct
 		WHERE ct.ORDNUM = CUSTINFO.ORDNUM
@@ -532,7 +531,7 @@ WHERE EXISTS( 	SELECT 1 FROM CHANGETABLE( CHANGES dbo.MASTERLN, ? ) AS ct
                     <property
                       dataType="System.String"
                       description="The mappings between the parameters in the SQL command and variables."
-                      name="ParameterMapping">"Parameter0:Input",{3C711F58-E313-484D-8EF5-4A5294019449};"Parameter1:Input",{ED8049FC-577C-411E-BFD2-EE31E97E2B86};"Parameter2:Input",{3C711F58-E313-484D-8EF5-4A5294019449};"Parameter3:Input",{ED8049FC-577C-411E-BFD2-EE31E97E2B86};</property>
+                      name="ParameterMapping">"Parameter0:Input",{A245E0AD-DC7D-442E-A78E-F5276905FA4D};"Parameter1:Input",{E38C0E1C-56E6-4565-A7F2-D4EC23FD18B1};"Parameter2:Input",{A245E0AD-DC7D-442E-A78E-F5276905FA4D};"Parameter3:Input",{E38C0E1C-56E6-4565-A7F2-D4EC23FD18B1};</property>
                   </properties>
                   <connections>
                     <connection
@@ -623,7 +622,7 @@ WHERE EXISTS( 	SELECT 1 FROM CHANGETABLE( CHANGES dbo.MASTERLN, ? ) AS ct
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 	CUSTID = SCUSTID 
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 	CUSTID = SCUSTID 
 FROM 	dbo.CUSTINFO
 WHERE EXISTS( 	SELECT 1 FROM CHANGETABLE( CHANGES dbo.MASTERLN, ? ) AS ct
 		WHERE ct.ORDNUM = CUSTINFO.ORDNUM
@@ -648,7 +647,7 @@ WHERE EXISTS( 	SELECT 1 FROM CHANGETABLE( CHANGES dbo.MASTERLN, ? ) AS ct
                     <property
                       dataType="System.String"
                       description="The mappings between the parameters in the SQL command and variables."
-                      name="ParameterMapping">"Parameter0:Input",{3C711F58-E313-484D-8EF5-4A5294019449};"Parameter1:Input",{ED8049FC-577C-411E-BFD2-EE31E97E2B86};"Parameter2:Input",{3C711F58-E313-484D-8EF5-4A5294019449};"Parameter3:Input",{ED8049FC-577C-411E-BFD2-EE31E97E2B86};</property>
+                      name="ParameterMapping">"Parameter0:Input",{A245E0AD-DC7D-442E-A78E-F5276905FA4D};"Parameter1:Input",{E38C0E1C-56E6-4565-A7F2-D4EC23FD18B1};"Parameter2:Input",{A245E0AD-DC7D-442E-A78E-F5276905FA4D};"Parameter3:Input",{E38C0E1C-56E6-4565-A7F2-D4EC23FD18B1};</property>
                   </properties>
                   <connections>
                     <connection
@@ -739,7 +738,7 @@ WHERE EXISTS( 	SELECT 1 FROM CHANGETABLE( CHANGES dbo.MASTERLN, ? ) AS ct
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1664,14 +1663,14 @@ WHERE EXISTS( 	SELECT 1 FROM CHANGETABLE( CHANGES dbo.MASTERLN, ? ) AS ct
               <paths>
                 <path
                   refId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes.Paths[OLE DB Source Output]"
-                  endId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes\Union All.Inputs[Union All Input 1]"
+                  endId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes\Union All.Inputs[Union All Input 4]"
                   name="OLE DB Source Output"
-                  startId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes\Springfield changed CMASTER.Outputs[OLE DB Source Output]" />
+                  startId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes\Springfield related CUSTINFO SCUSTID.Outputs[OLE DB Source Output]" />
                 <path
                   refId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes.Paths[OLE DB Source Output1]"
-                  endId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes\Union All.Inputs[Union All Input 2]"
+                  endId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes\Union All.Inputs[Union All Input 5]"
                   name="OLE DB Source Output"
-                  startId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes\Springfield related CUSTINFO BCUSTID.Outputs[OLE DB Source Output]" />
+                  startId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes\Springfield related MASTERLN SCUSTID.Outputs[OLE DB Source Output]" />
                 <path
                   refId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes.Paths[OLE DB Source Output2]"
                   endId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes\Union All.Inputs[Union All Input 3]"
@@ -1679,14 +1678,14 @@ WHERE EXISTS( 	SELECT 1 FROM CHANGETABLE( CHANGES dbo.MASTERLN, ? ) AS ct
                   startId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes\Springfield related MASTERLN BCUSTID.Outputs[OLE DB Source Output]" />
                 <path
                   refId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes.Paths[OLE DB Source Output3]"
-                  endId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes\Union All.Inputs[Union All Input 4]"
+                  endId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes\Union All.Inputs[Union All Input 1]"
                   name="OLE DB Source Output"
-                  startId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes\Springfield related CUSTINFO SCUSTID.Outputs[OLE DB Source Output]" />
+                  startId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes\Springfield changed CMASTER.Outputs[OLE DB Source Output]" />
                 <path
                   refId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes.Paths[OLE DB Source Output4]"
-                  endId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes\Union All.Inputs[Union All Input 5]"
+                  endId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes\Union All.Inputs[Union All Input 2]"
                   name="OLE DB Source Output"
-                  startId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes\Springfield related MASTERLN SCUSTID.Outputs[OLE DB Source Output]" />
+                  startId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes\Springfield related CUSTINFO BCUSTID.Outputs[OLE DB Source Output]" />
                 <path
                   refId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes.Paths[Sort Output]"
                   endId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes\Tripod stage CMASTER.Inputs[OLE DB Destination Input]"
@@ -1705,7 +1704,7 @@ WHERE EXISTS( 	SELECT 1 FROM CHANGETABLE( CHANGES dbo.MASTERLN, ? ) AS ct
           DTS:refId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CUSTINFO"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:DTSID="{6C1803EC-061F-4E1B-BDAE-610E718670C0}"
+          DTS:DTSID="{0E92253E-5AA5-4842-90AD-18C8024776C5}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
           DTS:ObjectName="DF - Load stage CUSTINFO"
@@ -1814,7 +1813,7 @@ WHERE EXISTS( 	SELECT 1 FROM CHANGETABLE( CHANGES dbo.MASTERLN, ? ) AS ct
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 	x.ORDNUM 
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 	x.ORDNUM 
 FROM        CHANGETABLE(CHANGES dbo.CUSTINFO, ? ) AS x 
 WHERE 	x.SYS_CHANGE_OPERATION != 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</property>
                     <property
@@ -1837,7 +1836,7 @@ WHERE 	x.SYS_CHANGE_OPERATION != 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</proper
                     <property
                       dataType="System.String"
                       description="The mappings between the parameters in the SQL command and variables."
-                      name="ParameterMapping">"Parameter0:Input",{3C711F58-E313-484D-8EF5-4A5294019449};"Parameter1:Input",{ED8049FC-577C-411E-BFD2-EE31E97E2B86};</property>
+                      name="ParameterMapping">"Parameter0:Input",{A245E0AD-DC7D-442E-A78E-F5276905FA4D};"Parameter1:Input",{E38C0E1C-56E6-4565-A7F2-D4EC23FD18B1};</property>
                   </properties>
                   <connections>
                     <connection
@@ -1928,7 +1927,7 @@ WHERE 	x.SYS_CHANGE_OPERATION != 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</proper
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 	x.ORDNUM
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 	x.ORDNUM
 FROM 	CHANGETABLE( CHANGES dbo.MASTERLN, ? ) AS x
 WHERE 	x.SYS_CHANGE_OPERATION != 'D' AND x.SYS_CHANGE_VERSION !&gt; ? ;</property>
                     <property
@@ -1951,7 +1950,7 @@ WHERE 	x.SYS_CHANGE_OPERATION != 'D' AND x.SYS_CHANGE_VERSION !&gt; ? ;</propert
                     <property
                       dataType="System.String"
                       description="The mappings between the parameters in the SQL command and variables."
-                      name="ParameterMapping">"Parameter0:Input",{3C711F58-E313-484D-8EF5-4A5294019449};"Parameter1:Input",{ED8049FC-577C-411E-BFD2-EE31E97E2B86};"Parameter2:Input",{3C711F58-E313-484D-8EF5-4A5294019449};"Parameter3:Input",{ED8049FC-577C-411E-BFD2-EE31E97E2B86};</property>
+                      name="ParameterMapping">"Parameter0:Input",{A245E0AD-DC7D-442E-A78E-F5276905FA4D};"Parameter1:Input",{E38C0E1C-56E6-4565-A7F2-D4EC23FD18B1};"Parameter2:Input",{A245E0AD-DC7D-442E-A78E-F5276905FA4D};"Parameter3:Input",{E38C0E1C-56E6-4565-A7F2-D4EC23FD18B1};</property>
                   </properties>
                   <connections>
                     <connection
@@ -2042,7 +2041,7 @@ WHERE 	x.SYS_CHANGE_OPERATION != 'D' AND x.SYS_CHANGE_VERSION !&gt; ? ;</propert
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2935,14 +2934,14 @@ WHERE 	x.SYS_CHANGE_OPERATION != 'D' AND x.SYS_CHANGE_VERSION !&gt; ? ;</propert
               <paths>
                 <path
                   refId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CUSTINFO.Paths[OLE DB Source Output]"
-                  endId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CUSTINFO\Union All.Inputs[Union All Input 1]"
-                  name="OLE DB Source Output"
-                  startId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CUSTINFO\Springfield related MASTERLN.Outputs[OLE DB Source Output]" />
-                <path
-                  refId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CUSTINFO.Paths[OLE DB Source Output1]"
                   endId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CUSTINFO\Union All.Inputs[Union All Input 2]"
                   name="OLE DB Source Output"
                   startId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CUSTINFO\Springfield changed CUSTINFO.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CUSTINFO.Paths[OLE DB Source Output1]"
+                  endId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CUSTINFO\Union All.Inputs[Union All Input 1]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CUSTINFO\Springfield related MASTERLN.Outputs[OLE DB Source Output]" />
                 <path
                   refId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CUSTINFO.Paths[Sort Output]"
                   endId="Package\SEQ - Extract Changed Data From Production\DF - Load stage CUSTINFO\stage CUSTINFO.Inputs[OLE DB Destination Input]"
@@ -2961,7 +2960,7 @@ WHERE 	x.SYS_CHANGE_OPERATION != 'D' AND x.SYS_CHANGE_VERSION !&gt; ? ;</propert
           DTS:refId="Package\SEQ - Extract Changed Data From Production\DF - Load stage MASTERLN"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:DTSID="{03A44FFF-78EF-4676-986D-397AC81D8298}"
+          DTS:DTSID="{2F4A105F-483B-45D6-A874-E82440AC3F8B}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
           DTS:ObjectName="DF - Load stage MASTERLN"
@@ -3102,7 +3101,7 @@ WHERE 	x.SYS_CHANGE_OPERATION != 'D' AND x.SYS_CHANGE_VERSION !&gt; ? ;</propert
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 		x.ORDNUM, x.[IN] 
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 		x.ORDNUM, x.[IN] 
 FROM 		CHANGETABLE(CHANGES dbo.MASTERLN, ? ) AS x 
 WHERE 		x.SYS_CHANGE_OPERATION != 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</property>
                     <property
@@ -3125,7 +3124,7 @@ WHERE 		x.SYS_CHANGE_OPERATION != 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</prope
                     <property
                       dataType="System.String"
                       description="The mappings between the parameters in the SQL command and variables."
-                      name="ParameterMapping">"Parameter0:Input",{3C711F58-E313-484D-8EF5-4A5294019449};"Parameter1:Input",{ED8049FC-577C-411E-BFD2-EE31E97E2B86};</property>
+                      name="ParameterMapping">"Parameter0:Input",{A245E0AD-DC7D-442E-A78E-F5276905FA4D};"Parameter1:Input",{E38C0E1C-56E6-4565-A7F2-D4EC23FD18B1};</property>
                   </properties>
                   <connections>
                     <connection
@@ -3237,7 +3236,7 @@ WHERE 		x.SYS_CHANGE_OPERATION != 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</prope
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 		MASTERLN.ORDNUM , 
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 		MASTERLN.ORDNUM , 
 		MASTERLN.[IN]
 FROM 		dbo.MASTERLN AS MASTERLN
 INNER JOIN	CHANGETABLE( CHANGES dbo.CUSTINFO, ? ) AS x
@@ -3263,7 +3262,7 @@ WHERE 		x.SYS_CHANGE_OPERATION != 'D' AND x.SYS_CHANGE_VERSION !&gt; ? ;</proper
                     <property
                       dataType="System.String"
                       description="The mappings between the parameters in the SQL command and variables."
-                      name="ParameterMapping">"Parameter0:Input",{3C711F58-E313-484D-8EF5-4A5294019449};"Parameter1:Input",{ED8049FC-577C-411E-BFD2-EE31E97E2B86};</property>
+                      name="ParameterMapping">"Parameter0:Input",{A245E0AD-DC7D-442E-A78E-F5276905FA4D};"Parameter1:Input",{E38C0E1C-56E6-4565-A7F2-D4EC23FD18B1};</property>
                   </properties>
                   <connections>
                     <connection
@@ -3375,7 +3374,7 @@ WHERE 		x.SYS_CHANGE_OPERATION != 'D' AND x.SYS_CHANGE_VERSION !&gt; ? ;</proper
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -3769,14 +3768,14 @@ WHERE 		x.SYS_CHANGE_OPERATION != 'D' AND x.SYS_CHANGE_VERSION !&gt; ? ;</proper
               <paths>
                 <path
                   refId="Package\SEQ - Extract Changed Data From Production\DF - Load stage MASTERLN.Paths[OLE DB Source Output]"
-                  endId="Package\SEQ - Extract Changed Data From Production\DF - Load stage MASTERLN\Union All.Inputs[Union All Input 1]"
-                  name="OLE DB Source Output"
-                  startId="Package\SEQ - Extract Changed Data From Production\DF - Load stage MASTERLN\Springfield related CUSTINFO.Outputs[OLE DB Source Output]" />
-                <path
-                  refId="Package\SEQ - Extract Changed Data From Production\DF - Load stage MASTERLN.Paths[OLE DB Source Output1]"
                   endId="Package\SEQ - Extract Changed Data From Production\DF - Load stage MASTERLN\Union All.Inputs[Union All Input 2]"
                   name="OLE DB Source Output"
                   startId="Package\SEQ - Extract Changed Data From Production\DF - Load stage MASTERLN\Springfield changed MASTERLN.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\SEQ - Extract Changed Data From Production\DF - Load stage MASTERLN.Paths[OLE DB Source Output1]"
+                  endId="Package\SEQ - Extract Changed Data From Production\DF - Load stage MASTERLN\Union All.Inputs[Union All Input 1]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQ - Extract Changed Data From Production\DF - Load stage MASTERLN\Springfield related CUSTINFO.Outputs[OLE DB Source Output]" />
                 <path
                   refId="Package\SEQ - Extract Changed Data From Production\DF - Load stage MASTERLN.Paths[Sort Output]"
                   endId="Package\SEQ - Extract Changed Data From Production\DF - Load stage MASTERLN\Tripod stage MASTERLN.Inputs[OLE DB Destination Input]"
@@ -3795,7 +3794,7 @@ WHERE 		x.SYS_CHANGE_OPERATION != 'D' AND x.SYS_CHANGE_VERSION !&gt; ? ;</proper
           DTS:refId="Package\SEQ - Extract Changed Data From Production\DF - Load stage parts"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:DTSID="{cb0a607d-cd97-4273-8605-41fb69cc572f}"
+          DTS:DTSID="{1B4B04E8-74EF-4F3E-947E-518C72F9BB62}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
           DTS:ObjectName="DF - Load stage parts"
@@ -3904,7 +3903,7 @@ WHERE 		x.SYS_CHANGE_OPERATION != 'D' AND x.SYS_CHANGE_VERSION !&gt; ? ;</proper
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT	x.SPRNUM 
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT	x.SPRNUM 
 FROM 	CHANGETABLE(CHANGES dbo.parts, ? ) AS x 
 WHERE 	x.SYS_CHANGE_OPERATION != 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</property>
                     <property
@@ -3927,7 +3926,7 @@ WHERE 	x.SYS_CHANGE_OPERATION != 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</proper
                     <property
                       dataType="System.String"
                       description="The mappings between the parameters in the SQL command and variables."
-                      name="ParameterMapping">"Parameter0:Input",{3C711F58-E313-484D-8EF5-4A5294019449};"Parameter1:Input",{ED8049FC-577C-411E-BFD2-EE31E97E2B86};</property>
+                      name="ParameterMapping">"Parameter0:Input",{A245E0AD-DC7D-442E-A78E-F5276905FA4D};"Parameter1:Input",{E38C0E1C-56E6-4565-A7F2-D4EC23FD18B1};</property>
                   </properties>
                   <connections>
                     <connection
@@ -4018,7 +4017,7 @@ WHERE 	x.SYS_CHANGE_OPERATION != 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</proper
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 	MASTERLN.SPRNUM
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 	MASTERLN.SPRNUM
 FROM 	dbo.MASTERLN AS MASTERLN
 INNER JOIN
 	CHANGETABLE( CHANGES dbo.CUSTINFO, ? ) AS x
@@ -4045,7 +4044,7 @@ WHERE
                     <property
                       dataType="System.String"
                       description="The mappings between the parameters in the SQL command and variables."
-                      name="ParameterMapping">"Parameter0:Input",{3C711F58-E313-484D-8EF5-4A5294019449};"Parameter1:Input",{ED8049FC-577C-411E-BFD2-EE31E97E2B86};</property>
+                      name="ParameterMapping">"Parameter0:Input",{A245E0AD-DC7D-442E-A78E-F5276905FA4D};"Parameter1:Input",{E38C0E1C-56E6-4565-A7F2-D4EC23FD18B1};</property>
                   </properties>
                   <connections>
                     <connection
@@ -4136,7 +4135,7 @@ WHERE
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 	MASTERLN.SPRNUM
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 	MASTERLN.SPRNUM
 FROM 	dbo.MASTERLN AS MASTERLN
 INNER JOIN
 	CHANGETABLE( CHANGES dbo.MASTERLN, ? ) AS x
@@ -4163,7 +4162,7 @@ WHERE
                     <property
                       dataType="System.String"
                       description="The mappings between the parameters in the SQL command and variables."
-                      name="ParameterMapping">"Parameter0:Input",{3C711F58-E313-484D-8EF5-4A5294019449};"Parameter1:Input",{ED8049FC-577C-411E-BFD2-EE31E97E2B86};</property>
+                      name="ParameterMapping">"Parameter0:Input",{A245E0AD-DC7D-442E-A78E-F5276905FA4D};"Parameter1:Input",{E38C0E1C-56E6-4565-A7F2-D4EC23FD18B1};</property>
                   </properties>
                   <connections>
                     <connection
@@ -4254,7 +4253,7 @@ WHERE
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -5217,9 +5216,9 @@ WHERE
               <paths>
                 <path
                   refId="Package\SEQ - Extract Changed Data From Production\DF - Load stage parts.Paths[OLE DB Source Output]"
-                  endId="Package\SEQ - Extract Changed Data From Production\DF - Load stage parts\Union All.Inputs[Union All Input 1]"
+                  endId="Package\SEQ - Extract Changed Data From Production\DF - Load stage parts\Union All.Inputs[Union All Input 3]"
                   name="OLE DB Source Output"
-                  startId="Package\SEQ - Extract Changed Data From Production\DF - Load stage parts\Springfield related MASTERLN.Outputs[OLE DB Source Output]" />
+                  startId="Package\SEQ - Extract Changed Data From Production\DF - Load stage parts\Springfield changed parts.Outputs[OLE DB Source Output]" />
                 <path
                   refId="Package\SEQ - Extract Changed Data From Production\DF - Load stage parts.Paths[OLE DB Source Output1]"
                   endId="Package\SEQ - Extract Changed Data From Production\DF - Load stage parts\Union All.Inputs[Union All Input 2]"
@@ -5227,9 +5226,9 @@ WHERE
                   startId="Package\SEQ - Extract Changed Data From Production\DF - Load stage parts\Springfield related CUSTINFO.Outputs[OLE DB Source Output]" />
                 <path
                   refId="Package\SEQ - Extract Changed Data From Production\DF - Load stage parts.Paths[OLE DB Source Output2]"
-                  endId="Package\SEQ - Extract Changed Data From Production\DF - Load stage parts\Union All.Inputs[Union All Input 3]"
+                  endId="Package\SEQ - Extract Changed Data From Production\DF - Load stage parts\Union All.Inputs[Union All Input 1]"
                   name="OLE DB Source Output"
-                  startId="Package\SEQ - Extract Changed Data From Production\DF - Load stage parts\Springfield changed parts.Outputs[OLE DB Source Output]" />
+                  startId="Package\SEQ - Extract Changed Data From Production\DF - Load stage parts\Springfield related MASTERLN.Outputs[OLE DB Source Output]" />
                 <path
                   refId="Package\SEQ - Extract Changed Data From Production\DF - Load stage parts.Paths[Sort Output]"
                   endId="Package\SEQ - Extract Changed Data From Production\DF - Load stage parts\Tripod stage parts.Inputs[OLE DB Destination Input]"
@@ -5248,7 +5247,7 @@ WHERE
           DTS:refId="Package\SEQ - Extract Changed Data From Production\SQL - Extract Springfield CMASTER"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{80343944-8bb5-4b30-acb1-063818993ac8}"
+          DTS:DTSID="{79435C1B-1F40-4B1D-858F-0050D5F7B876}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - Extract Springfield CMASTER"
@@ -5264,7 +5263,7 @@ WHERE
           DTS:refId="Package\SEQ - Extract Changed Data From Production\SQL - Extract Springfield CUSTINFO"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{ee18d63c-7531-4488-b5c4-d2f3be6cd69b}"
+          DTS:DTSID="{3DD98100-4F4C-4AC3-8E91-2A5FF946BC52}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - Extract Springfield CUSTINFO"
@@ -5280,7 +5279,7 @@ WHERE
           DTS:refId="Package\SEQ - Extract Changed Data From Production\SQL - Extract Springfield MASTERLN"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{0c7beb2a-53f1-4d9a-919a-e50195ec7e65}"
+          DTS:DTSID="{11FD525F-3E80-4868-A2EC-0D95A6496B7D}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - Extract Springfield MASTERLN"
@@ -5296,7 +5295,7 @@ WHERE
           DTS:refId="Package\SEQ - Extract Changed Data From Production\SQL - Extract Springfield parts"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{c0449bfd-ca2d-4d39-b322-6ad0f4effb2d}"
+          DTS:DTSID="{C0B8F7CB-F5A6-403B-AD9D-C817E80DD94C}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - Extract Springfield parts"
@@ -5313,7 +5312,7 @@ WHERE
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ - Extract Changed Data From Production.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
-          DTS:DTSID="{F9BF9667-C36D-4F46-8BBD-8DDAE015E0D6}"
+          DTS:DTSID="{A6922A5C-2C04-4170-9323-636C422203A6}"
           DTS:From="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
@@ -5321,7 +5320,7 @@ WHERE
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ - Extract Changed Data From Production.PrecedenceConstraints[Constraint 1]"
           DTS:CreationName=""
-          DTS:DTSID="{FB271F8F-FD68-4BDA-997E-63966145A590}"
+          DTS:DTSID="{A95B3997-49E4-45E4-8952-222EBD0225C7}"
           DTS:From="Package\SEQ - Extract Changed Data From Production\DF - Load stage CUSTINFO"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
@@ -5329,7 +5328,7 @@ WHERE
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ - Extract Changed Data From Production.PrecedenceConstraints[Constraint 2]"
           DTS:CreationName=""
-          DTS:DTSID="{D2846C6A-A8EA-4578-94C6-E21AD2C52973}"
+          DTS:DTSID="{8A9ACCA2-4C41-42AF-8933-9A7219AA8732}"
           DTS:From="Package\SEQ - Extract Changed Data From Production\DF - Load stage MASTERLN"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 2"
@@ -5337,7 +5336,7 @@ WHERE
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ - Extract Changed Data From Production.PrecedenceConstraints[Constraint 3]"
           DTS:CreationName=""
-          DTS:DTSID="{1075D6BB-389B-4784-8BEA-EE7A3CF1C770}"
+          DTS:DTSID="{176483DA-3448-476D-89AD-064603E8B11F}"
           DTS:From="Package\SEQ - Extract Changed Data From Production\DF - Load stage parts"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 3"
@@ -5348,7 +5347,7 @@ WHERE
       DTS:refId="Package\SEQ - Transform and Load Dimensions"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
-      DTS:DTSID="{230C9151-8434-4C1D-958E-8A4A40E898B5}"
+      DTS:DTSID="{3E11E857-B159-4D69-8D8F-20E8670FF0B2}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
       DTS:ObjectName="SEQ - Transform and Load Dimensions">
@@ -5358,7 +5357,7 @@ WHERE
           DTS:refId="Package\SEQ - Transform and Load Dimensions\DF - Load stage Customer"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:DTSID="{54c3afcd-7cd2-4730-80aa-eb6fc0da13ff}"
+          DTS:DTSID="{A651B9B7-0CB2-4EDF-B3DB-DF17CA1189EA}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
           DTS:ObjectName="DF - Load stage Customer"
@@ -5394,7 +5393,7 @@ WHERE
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -5569,7 +5568,7 @@ WHERE
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 	data.* 
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 	data.* 
 FROM 	stage.CMASTER AS CMASTER
 CROSS APPLY
 	stage.tvf_GetCustomerData( CMASTER.CUSTID ) AS data ;</property>
@@ -5761,7 +5760,7 @@ CROSS APPLY
           DTS:refId="Package\SEQ - Transform and Load Dimensions\DF - Load stage Part"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:DTSID="{45d0692f-4876-4114-8a2d-827151e024e1}"
+          DTS:DTSID="{2BA8B6B5-FFED-4254-BEA6-D4E1968F5EBC}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
           DTS:ObjectName="DF - Load stage Part"
@@ -5797,7 +5796,7 @@ CROSS APPLY
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -6337,7 +6336,7 @@ CROSS APPLY
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 	data.* 
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 	data.* 
 FROM 	stage.parts AS parts
 CROSS APPLY
 	stage.tvf_GetPartData( parts.SPRNUM ) AS data ;</property>
@@ -7156,7 +7155,7 @@ CROSS APPLY
           DTS:refId="Package\SEQ - Transform and Load Dimensions\dimension Customer insert"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{0272a35c-66ee-49b2-ba38-13e31f71724c}"
+          DTS:DTSID="{FFD987E8-B1D1-40A3-AEA1-37B99EEE3E2B}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="dimension Customer insert"
@@ -7172,7 +7171,7 @@ CROSS APPLY
           DTS:refId="Package\SEQ - Transform and Load Dimensions\dimension Customer update"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{5535EC4E-63F7-4C04-9845-924C0EF3133C}"
+          DTS:DTSID="{82E3EA9E-5FAC-4B5D-B83D-E77A261FE4DE}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="dimension Customer update"
@@ -7188,7 +7187,7 @@ CROSS APPLY
           DTS:refId="Package\SEQ - Transform and Load Dimensions\dimension Location insert"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:DTSID="{460A5FD2-4037-42C9-BC83-BDBC58FCF253}"
+          DTS:DTSID="{163441DB-DD1A-4BCC-BE0A-F0209B25A749}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
           DTS:ObjectName="dimension Location insert"
@@ -7225,7 +7224,7 @@ CROSS APPLY
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -7367,13 +7366,13 @@ CROSS APPLY
                       description="Specifies the SQL statement that generates the lookup table."
                       expressionType="Notify"
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dimension].[Location]</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dimension].[Location]</property>
                     <property
                       dataType="System.String"
                       description="Specifies a SQL statement that uses parameters to generate the lookup table."
                       expressionType="Notify"
                       name="SqlCommandParam"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dimension].[Location]) [refTable]
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dimension].[Location]) [refTable]
 where [refTable].[City] = ? and [refTable].[StateName] = ? and [refTable].[Country] = ?</property>
                     <property
                       dataType="System.Int32"
@@ -7557,7 +7556,7 @@ where [refTable].[City] = ? and [refTable].[StateName] = ? and [refTable].[Count
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">EXECUTE stage.sp_GetLocationData</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXECUTE stage.sp_GetLocationData</property>
                     <property
                       dataType="System.String"
                       description="The variable that contains the SQL command to be executed."
@@ -7712,7 +7711,7 @@ where [refTable].[City] = ? and [refTable].[StateName] = ? and [refTable].[Count
           DTS:refId="Package\SEQ - Transform and Load Dimensions\dimension Part insert"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{8a57bc24-35da-4155-9e9d-af214500a4e0}"
+          DTS:DTSID="{E27A4211-8F42-4D7F-B012-DB56CF66A3EA}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="dimension Part insert"
@@ -7728,7 +7727,7 @@ where [refTable].[City] = ? and [refTable].[StateName] = ? and [refTable].[Count
           DTS:refId="Package\SEQ - Transform and Load Dimensions\dimension Part update"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{94800b0e-566a-4d2c-8c7e-12dffaf4adee}"
+          DTS:DTSID="{3BA4BEB7-CD88-40DE-BD33-93FAEBF612D5}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="dimension Part update"
@@ -7745,7 +7744,7 @@ where [refTable].[City] = ? and [refTable].[StateName] = ? and [refTable].[Count
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ - Transform and Load Dimensions.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
-          DTS:DTSID="{2703CC1C-AAE3-4D20-82D0-2D618731CBCB}"
+          DTS:DTSID="{953C5986-90F9-462D-B2D0-2D9872053CA6}"
           DTS:From="Package\SEQ - Transform and Load Dimensions\DF - Load stage Part"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
@@ -7753,7 +7752,7 @@ where [refTable].[City] = ? and [refTable].[StateName] = ? and [refTable].[Count
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ - Transform and Load Dimensions.PrecedenceConstraints[Constraint 1]"
           DTS:CreationName=""
-          DTS:DTSID="{44B9607F-C93E-40B4-814D-615E96E29465}"
+          DTS:DTSID="{B3C3F0DC-1CD8-4CC3-9622-ACAAD6D04E8F}"
           DTS:From="Package\SEQ - Transform and Load Dimensions\dimension Part update"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
@@ -7761,7 +7760,7 @@ where [refTable].[City] = ? and [refTable].[StateName] = ? and [refTable].[Count
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ - Transform and Load Dimensions.PrecedenceConstraints[Constraint 2]"
           DTS:CreationName=""
-          DTS:DTSID="{6CA94F2F-CEE1-401C-B202-4AD98DEBA87D}"
+          DTS:DTSID="{8E56DCEF-C741-4C0E-8639-CFDF25BC0602}"
           DTS:From="Package\SEQ - Transform and Load Dimensions\DF - Load stage Customer"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 2"
@@ -7769,7 +7768,7 @@ where [refTable].[City] = ? and [refTable].[StateName] = ? and [refTable].[Count
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ - Transform and Load Dimensions.PrecedenceConstraints[Constraint 3]"
           DTS:CreationName=""
-          DTS:DTSID="{22F298BB-02E6-4322-AFA9-F4CBBACF8AFA}"
+          DTS:DTSID="{EC6DF377-17C3-426A-8EFC-0D3B722D68EC}"
           DTS:From="Package\SEQ - Transform and Load Dimensions\dimension Customer update"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 3"
@@ -7780,7 +7779,7 @@ where [refTable].[City] = ? and [refTable].[StateName] = ? and [refTable].[Count
       DTS:refId="Package\SEQ - Transform and Load Facts"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
-      DTS:DTSID="{886C2CF2-1A22-4696-9F43-56FE6F691F94}"
+      DTS:DTSID="{CD379A1E-6909-4B9A-B224-1B97D0F0281F}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
       DTS:ObjectName="SEQ - Transform and Load Facts">
@@ -7790,7 +7789,7 @@ where [refTable].[City] = ? and [refTable].[StateName] = ? and [refTable].[Count
           DTS:refId="Package\SEQ - Transform and Load Facts\DF - Load factInventory updates"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:DTSID="{82a95c97-da59-4eb7-9811-de061107cbb6}"
+          DTS:DTSID="{4346A8D1-2EF1-4160-B21B-057B6FA88F81}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
           DTS:ObjectName="DF - Load factInventory updates"
@@ -7826,7 +7825,7 @@ where [refTable].[City] = ? and [refTable].[StateName] = ? and [refTable].[Count
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">EXECUTE stage.sp_GetUpdatedFactInventoryData</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXECUTE stage.sp_GetUpdatedFactInventoryData</property>
                     <property
                       dataType="System.String"
                       description="The variable that contains the SQL command to be executed."
@@ -8174,7 +8173,7 @@ where [refTable].[City] = ? and [refTable].[StateName] = ? and [refTable].[Count
                       description="The SQL command to be executed."
                       expressionType="Notify"
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE 
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE 
 fact.Inventory 
  
 SET 
@@ -8510,7 +8509,7 @@ PartKey = ? AND InventoryDateKey = ? ; </property>
           DTS:refId="Package\SEQ - Transform and Load Facts\DF - Load stage CustomerOrder from MASTERLN"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:DTSID="{76e9936f-2b1b-44be-8ec6-d0a7e75311e2}"
+          DTS:DTSID="{4848AFB8-49BA-4533-94DA-E1FDD9027470}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
           DTS:ObjectName="DF - Load stage CustomerOrder from MASTERLN"
@@ -8547,7 +8546,7 @@ PartKey = ? AND InventoryDateKey = ? ; </property>
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -9020,7 +9019,7 @@ PartKey = ? AND InventoryDateKey = ? ; </property>
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">EXECUTE stage.sp_GetCustomerOrderFromMASTERLN ;</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXECUTE stage.sp_GetCustomerOrderFromMASTERLN ;</property>
                     <property
                       dataType="System.String"
                       description="The variable that contains the SQL command to be executed."
@@ -9500,7 +9499,7 @@ PartKey = ? AND InventoryDateKey = ? ; </property>
           DTS:refId="Package\SEQ - Transform and Load Facts\DF - process deleted CUSTINFO"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:DTSID="{54e2882a-ff4a-4c7c-84fa-f535ca692a3c}"
+          DTS:DTSID="{43267346-1530-42F0-A3BA-044DB6988090}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
           DTS:ObjectName="DF - process deleted CUSTINFO"
@@ -9530,7 +9529,7 @@ PartKey = ? AND InventoryDateKey = ? ; </property>
                       description="The SQL command to be executed."
                       expressionType="Notify"
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">DELETE 
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DELETE 
 fact.CustomerOrder
 
 WHERE 
@@ -9640,7 +9639,7 @@ OrderNumber = ? ;</property>
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 	x.ORDNUM
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 	x.ORDNUM
 FROM 	CHANGETABLE(CHANGES dbo.CUSTINFO, ? ) AS x 
 WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</property>
                     <property
@@ -9663,7 +9662,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
                     <property
                       dataType="System.String"
                       description="The mappings between the parameters in the SQL command and variables."
-                      name="ParameterMapping">"Parameter0:Input",{3C711F58-E313-484D-8EF5-4A5294019449};"Parameter1:Input",{ED8049FC-577C-411E-BFD2-EE31E97E2B86};</property>
+                      name="ParameterMapping">"Parameter0:Input",{A245E0AD-DC7D-442E-A78E-F5276905FA4D};"Parameter1:Input",{E38C0E1C-56E6-4565-A7F2-D4EC23FD18B1};</property>
                   </properties>
                   <connections>
                     <connection
@@ -9744,7 +9743,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
           DTS:refId="Package\SEQ - Transform and Load Facts\DF - process deleted MASTERLN"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:DTSID="{98210457-ded3-4aef-a561-5a8d32f71086}"
+          DTS:DTSID="{680959D2-4C40-483B-9E81-2EABAD77749B}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
           DTS:ObjectName="DF - process deleted MASTERLN"
@@ -9774,7 +9773,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
                       description="The SQL command to be executed."
                       expressionType="Notify"
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">DELETE 
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DELETE 
 fact.CustomerOrder
 
 WHERE 
@@ -9904,7 +9903,7 @@ OrderNumber = ? AND LineItemNumber = ? ;
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 	x.ORDNUM, x.[IN] 
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 	x.ORDNUM, x.[IN] 
 FROM 	CHANGETABLE(CHANGES dbo.MASTERLN, ? ) AS x 
 WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</property>
                     <property
@@ -9927,7 +9926,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
                     <property
                       dataType="System.String"
                       description="The mappings between the parameters in the SQL command and variables."
-                      name="ParameterMapping">"Parameter0:Input",{3C711F58-E313-484D-8EF5-4A5294019449};"Parameter1:Input",{ED8049FC-577C-411E-BFD2-EE31E97E2B86};</property>
+                      name="ParameterMapping">"Parameter0:Input",{A245E0AD-DC7D-442E-A78E-F5276905FA4D};"Parameter1:Input",{E38C0E1C-56E6-4565-A7F2-D4EC23FD18B1};</property>
                   </properties>
                   <connections>
                     <connection
@@ -10029,7 +10028,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
           DTS:refId="Package\SEQ - Transform and Load Facts\Load fact CustomerOrder"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{0d3fe7f6-93f2-4382-81b4-91c1f5d06a21}"
+          DTS:DTSID="{C125931D-E5A0-481C-8DBF-D403DE94D81F}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Load fact CustomerOrder"
@@ -10045,7 +10044,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
           DTS:refId="Package\SEQ - Transform and Load Facts\Update fact CustomerOrder with changes"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{dca0523e-a576-4d75-a187-a3dc5e6a6fb9}"
+          DTS:DTSID="{E155BCC4-054A-423A-9AE1-461EE34C953B}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Update fact CustomerOrder with changes"
@@ -10061,7 +10060,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
           DTS:refId="Package\SEQ - Transform and Load Facts\Update stage CustomerOrder from CUSTINFO"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{D414A974-712D-4387-9C14-6F076E21A642}"
+          DTS:DTSID="{A7CD0561-A11E-4198-B908-DA0F19760181}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Update stage CustomerOrder from CUSTINFO"
@@ -10077,7 +10076,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
           DTS:refId="Package\SEQ - Transform and Load Facts\Update stage CustomerOrder from Customer"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{f2c82112-d127-4eaa-ad76-3d451896db90}"
+          DTS:DTSID="{DAA9F88D-90E4-433C-A5EA-52602DAE2F90}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Update stage CustomerOrder from Customer"
@@ -10093,7 +10092,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
           DTS:refId="Package\SEQ - Transform and Load Facts\Update stage CustomerOrder from Location"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{3647a087-e396-4e4a-a1ce-4446a4b8bfcc}"
+          DTS:DTSID="{27498423-9924-423B-807B-DD55FBE7F68A}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Update stage CustomerOrder from Location"
@@ -10110,7 +10109,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ - Transform and Load Facts.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
-          DTS:DTSID="{45D225A6-73E7-4C0A-BDDB-5E57457A9DED}"
+          DTS:DTSID="{EDD9F52D-DD8E-4D07-A8DF-B252DF5A0018}"
           DTS:From="Package\SEQ - Transform and Load Facts\DF - Load stage CustomerOrder from MASTERLN"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
@@ -10118,7 +10117,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ - Transform and Load Facts.PrecedenceConstraints[Constraint 1]"
           DTS:CreationName=""
-          DTS:DTSID="{DD738C3A-E4F8-46D0-885B-CE2480C3F22C}"
+          DTS:DTSID="{69EDEA5A-7A6D-4787-A85E-D197BEA87339}"
           DTS:From="Package\SEQ - Transform and Load Facts\Update stage CustomerOrder from CUSTINFO"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
@@ -10126,7 +10125,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ - Transform and Load Facts.PrecedenceConstraints[Constraint 2]"
           DTS:CreationName=""
-          DTS:DTSID="{BD8BFE17-26C9-4B4C-A6AD-E659FE4EBCBA}"
+          DTS:DTSID="{1E7B536A-54F7-4231-A0D6-1D761B948CCB}"
           DTS:From="Package\SEQ - Transform and Load Facts\Update stage CustomerOrder from Customer"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 2"
@@ -10134,7 +10133,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ - Transform and Load Facts.PrecedenceConstraints[Constraint 4]"
           DTS:CreationName=""
-          DTS:DTSID="{C5B826BB-32B8-4082-9F6B-E72B7E4DB600}"
+          DTS:DTSID="{60929F17-5448-4D1A-A29D-4375BB3B9462}"
           DTS:From="Package\SEQ - Transform and Load Facts\Update stage CustomerOrder from Location"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 4"
@@ -10142,7 +10141,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ - Transform and Load Facts.PrecedenceConstraints[Constraint 5]"
           DTS:CreationName=""
-          DTS:DTSID="{3A93DC82-E0ED-4BAC-9AB2-B12E82E34325}"
+          DTS:DTSID="{0CF85699-6451-497B-A063-29E24F71505B}"
           DTS:From="Package\SEQ - Transform and Load Facts\DF - process deleted MASTERLN"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 5"
@@ -10150,7 +10149,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ - Transform and Load Facts.PrecedenceConstraints[Constraint 6]"
           DTS:CreationName=""
-          DTS:DTSID="{753AF878-F5E1-4A25-BBE1-D63298F7A49A}"
+          DTS:DTSID="{CA7E6630-1028-4AB9-B316-3ACFBDF98010}"
           DTS:From="Package\SEQ - Transform and Load Facts\DF - process deleted CUSTINFO"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 6"
@@ -10158,7 +10157,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ - Transform and Load Facts.PrecedenceConstraints[Constraint 7]"
           DTS:CreationName=""
-          DTS:DTSID="{725CF45C-62BB-4806-BB08-991F7E8FD062}"
+          DTS:DTSID="{02069D33-327E-46A6-B215-A501F1AA1990}"
           DTS:From="Package\SEQ - Transform and Load Facts\Update fact CustomerOrder with changes"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 7"
@@ -10169,7 +10168,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
       DTS:refId="Package\SQL - INSERT LastChangeTrackingVersion"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{DED83747-B9A0-402D-AA96-343435955A10}"
+      DTS:DTSID="{EE0C5FE4-1D8A-4508-8ECD-767F5391D3CD}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL - INSERT LastChangeTrackingVersion"
@@ -10193,7 +10192,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
       DTS:refId="Package\SQL - SELECT CHANGE_TRACKING_CURRENT_VERSION"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{29056804-C6F9-4A0C-B263-976DBF6B30A4}"
+      DTS:DTSID="{274E4A5D-199C-429B-93EC-A4BEAB64BDA8}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL - SELECT CHANGE_TRACKING_CURRENT_VERSION"
@@ -10215,7 +10214,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
       DTS:refId="Package\SQL - TRUNCATE StageData"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{b76fe6cc-e8d6-4835-9afb-6875aa639bfb}"
+      DTS:DTSID="{3BDA2A32-FECA-45C4-87D7-2FBDA768C5AA}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL - TRUNCATE StageData"
@@ -10232,7 +10231,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
       DTS:refId="Package\SQL- SELECT LastChangeTrackingVersion"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{85e492fa-481f-4ae3-b874-ae7b3e8df3fe}"
+      DTS:DTSID="{14AF7BF7-4BE2-4B21-A616-61257CD430B9}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL- SELECT LastChangeTrackingVersion"
@@ -10255,7 +10254,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{4D4CFD92-7838-4B10-AB09-FF6A0F0BE73E}"
+      DTS:DTSID="{B461E1A9-2602-4F6B-8F6C-1EF46A549993}"
       DTS:From="Package\SQL - SELECT CHANGE_TRACKING_CURRENT_VERSION"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
@@ -10263,7 +10262,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{B478FBB2-20F1-4D41-9CD2-3FF7447719D2}"
+      DTS:DTSID="{70A4DC2B-08DA-4C20-B685-CBC6A9CC3592}"
       DTS:EvalOp="3"
       DTS:Expression="@[User::ChangeTrackingCurrentVersion] &gt;  @[User::LastChangeTrackingVersion]"
       DTS:From="Package\SQL- SELECT LastChangeTrackingVersion"
@@ -10273,7 +10272,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{15C5222D-55C9-4747-BDA6-25F4DF8031CF}"
+      DTS:DTSID="{E10C4220-82D6-4597-A428-93D1E9E8310E}"
       DTS:From="Package\SQL - TRUNCATE StageData"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
@@ -10281,7 +10280,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
       DTS:CreationName=""
-      DTS:DTSID="{935901FE-3142-4A08-81B1-86E85D52C645}"
+      DTS:DTSID="{F6DDF373-C9CB-4BE6-AD19-69569483099D}"
       DTS:From="Package\SEQ - Transform and Load Dimensions"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"
@@ -10289,7 +10288,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
       DTS:CreationName=""
-      DTS:DTSID="{709666D6-71C3-4EC4-8951-6947AC4A39DE}"
+      DTS:DTSID="{60544B2E-3450-45D9-8F52-F5C265808B91}"
       DTS:From="Package\SEQ - Transform and Load Facts"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 4"
@@ -10297,7 +10296,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
       DTS:CreationName=""
-      DTS:DTSID="{81A15BA9-533F-4A42-9AFB-AFB22A66F08C}"
+      DTS:DTSID="{9BC8A301-1215-41BF-A826-F7CA8F516C53}"
       DTS:From="Package\SEQ - Extract Changed Data From Production"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 5"
@@ -10308,7 +10307,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
 <!--If you manually edit this section and make a mistake, you can delete it. -->
 <!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
 <Objects
-  Version="sql12">
+  Version="8">
   <!--Each node below will contain properties that do not affect runtime behavior.-->
   <Package
     design-time-name="Package">
@@ -10991,7 +10990,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
     design-time-name="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="266,42"
           Id="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes\Springfield related MASTERLN SCUSTID"
@@ -11043,9 +11042,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11067,81 +11064,63 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes.Paths[OLE DB Source Output4]"
-          TopLeft="1071.5,47.4999999999998">
+          TopLeft="464.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-285.166666666667,60.0000000000001"
+              EndConnector="284.166666666667,60"
               Start="0,0"
-              End="-285.166666666667,52.5000000000001">
+              End="284.166666666667,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.5301794453508" />
+                    End="0,31.5301794453507" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31.5301794453508"
-                    Point2="0,35.5301794453508"
-                    Point3="-4,35.5301794453508" />
+                    Point1="0,31.5301794453507"
+                    Point2="0,35.5301794453507"
+                    Point3="4,35.5301794453507" />
                   <mssgle:LineSegment
-                    End="-281.166666666667,35.5301794453508" />
+                    End="280.166666666667,35.5301794453507" />
                   <mssgle:CubicBezierSegment
-                    Point1="-281.166666666667,35.5301794453508"
-                    Point2="-285.166666666667,35.5301794453508"
-                    Point3="-285.166666666667,39.5301794453508" />
+                    Point1="280.166666666667,35.5301794453507"
+                    Point2="284.166666666667,35.5301794453507"
+                    Point3="284.166666666667,39.5301794453507" />
                   <mssgle:LineSegment
-                    End="-285.166666666667,52.5000000000001" />
+                    End="284.166666666667,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes.Paths[OLE DB Source Output3]"
-          TopLeft="1397.5,47.4999999999998">
+          TopLeft="767.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-592.333333333333,60.0000000000001"
+              EndConnector="0,60"
               Start="0,0"
-              End="-592.333333333333,52.5000000000001">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,39.5600000000001" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,39.5600000000001"
-                    Point2="0,43.5600000000001"
-                    Point3="-4,43.5600000000001" />
-                  <mssgle:LineSegment
-                    End="-588.333333333333,43.5600000000001" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-588.333333333333,43.5600000000001"
-                    Point2="-592.333333333333,43.5600000000001"
-                    Point3="-592.333333333333,47.5600000000001" />
-                  <mssgle:LineSegment
-                    End="-592.333333333333,52.5000000000001" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11175,69 +11154,75 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes.Paths[OLE DB Source Output1]"
-          TopLeft="464.5,47.4999999999999">
+          TopLeft="1071.5,47.4999999999998">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="284.166666666667,60"
+              EndConnector="-285.166666666667,60.0000000000001"
               Start="0,0"
-              End="284.166666666667,52.5">
+              End="-285.166666666667,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.5301794453507" />
+                    End="0,31.5301794453508" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31.5301794453507"
-                    Point2="0,35.5301794453507"
-                    Point3="4,35.5301794453507" />
+                    Point1="0,31.5301794453508"
+                    Point2="0,35.5301794453508"
+                    Point3="-4,35.5301794453508" />
                   <mssgle:LineSegment
-                    End="280.166666666667,35.5301794453507" />
+                    End="-281.166666666667,35.5301794453508" />
                   <mssgle:CubicBezierSegment
-                    Point1="280.166666666667,35.5301794453507"
-                    Point2="284.166666666667,35.5301794453507"
-                    Point3="284.166666666667,39.5301794453507" />
+                    Point1="-281.166666666667,35.5301794453508"
+                    Point2="-285.166666666667,35.5301794453508"
+                    Point3="-285.166666666667,39.5301794453508" />
                   <mssgle:LineSegment
-                    End="284.166666666667,52.5" />
+                    End="-285.166666666667,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ - Extract Changed Data From Production\DF - Load stage CMASTER changes.Paths[OLE DB Source Output]"
-          TopLeft="767.5,47.4999999999999">
+          TopLeft="1397.5,47.4999999999998">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="-592.333333333333,60.0000000000001"
               Start="0,0"
-              End="0,52.5">
+              End="-592.333333333333,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,39.5600000000001" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39.5600000000001"
+                    Point2="0,43.5600000000001"
+                    Point3="-4,43.5600000000001" />
+                  <mssgle:LineSegment
+                    End="-588.333333333333,43.5600000000001" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-588.333333333333,43.5600000000001"
+                    Point2="-592.333333333333,43.5600000000001"
+                    Point3="-592.333333333333,47.5600000000001" />
+                  <mssgle:LineSegment
+                    End="-592.333333333333,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -11300,30 +11285,30 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
     design-time-name="Package\SEQ - Extract Changed Data From Production\DF - Load stage CUSTINFO">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="158,42"
           Id="Package\SEQ - Extract Changed Data From Production\DF - Load stage CUSTINFO\stage CUSTINFO"
-          TopLeft="178,311.5" />
+          TopLeft="319.5,311.5" />
         <NodeLayout
           Size="220,42"
           Id="Package\SEQ - Extract Changed Data From Production\DF - Load stage CUSTINFO\Springfield related MASTERLN"
-          TopLeft="291,5.5" />
+          TopLeft="5.5,5.5" />
         <NodeLayout
           Size="225,42"
           Id="Package\SEQ - Extract Changed Data From Production\DF - Load stage CUSTINFO\Springfield changed CUSTINFO"
-          TopLeft="5.5,5.5" />
+          TopLeft="286,5.5" />
         <NodeLayout
           Size="121,42"
           Id="Package\SEQ - Extract Changed Data From Production\DF - Load stage CUSTINFO\Union All"
-          TopLeft="196.5,107.5" />
+          TopLeft="338,107.5" />
         <NodeLayout
           Size="154,42"
           Id="Package\SEQ - Extract Changed Data From Production\DF - Load stage CUSTINFO\Drop Duplicates"
-          TopLeft="180,209.5" />
+          TopLeft="321.5,209.5" />
         <EdgeLayout
           Id="Package\SEQ - Extract Changed Data From Production\DF - Load stage CUSTINFO.Paths[Union All Output 1]"
-          TopLeft="257,149.5">
+          TopLeft="398.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -11340,14 +11325,12 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ - Extract Changed Data From Production\DF - Load stage CUSTINFO.Paths[Sort Output]"
-          TopLeft="257,251.5">
+          TopLeft="398.5,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -11364,20 +11347,18 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ - Extract Changed Data From Production\DF - Load stage CUSTINFO.Paths[OLE DB Source Output1]"
-          TopLeft="118,47.5">
+          TopLeft="115.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="120.166666666667,60"
+              EndConnector="264.166666666667,60"
               Start="0,0"
-              End="120.166666666667,52.5">
+              End="264.166666666667,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -11388,32 +11369,30 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
                     Point2="0,35.5301794453507"
                     Point3="4,35.5301794453507" />
                   <mssgle:LineSegment
-                    End="116.166666666667,35.5301794453507" />
+                    End="260.166666666667,35.5301794453507" />
                   <mssgle:CubicBezierSegment
-                    Point1="116.166666666667,35.5301794453507"
-                    Point2="120.166666666667,35.5301794453507"
-                    Point3="120.166666666667,39.5301794453507" />
+                    Point1="260.166666666667,35.5301794453507"
+                    Point2="264.166666666667,35.5301794453507"
+                    Point3="264.166666666667,39.5301794453507" />
                   <mssgle:LineSegment
-                    End="120.166666666667,52.5" />
+                    End="264.166666666667,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ - Extract Changed Data From Production\DF - Load stage CUSTINFO.Paths[OLE DB Source Output]"
-          TopLeft="401,47.5">
+          TopLeft="398.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-125.166666666667,60"
+              EndConnector="18.8333333333333,60"
               Start="0,0"
-              End="-125.166666666667,52.5">
+              End="18.8333333333333,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -11422,23 +11401,21 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
                   <mssgle:CubicBezierSegment
                     Point1="0,31.5301794453507"
                     Point2="0,35.5301794453507"
-                    Point3="-4,35.5301794453507" />
+                    Point3="4,35.5301794453507" />
                   <mssgle:LineSegment
-                    End="-121.166666666667,35.5301794453507" />
+                    End="14.8333333333333,35.5301794453507" />
                   <mssgle:CubicBezierSegment
-                    Point1="-121.166666666667,35.5301794453507"
-                    Point2="-125.166666666667,35.5301794453507"
-                    Point3="-125.166666666667,39.5301794453507" />
+                    Point1="14.8333333333333,35.5301794453507"
+                    Point2="18.8333333333333,35.5301794453507"
+                    Point3="18.8333333333333,39.5301794453507" />
                   <mssgle:LineSegment
-                    End="-125.166666666667,52.5" />
+                    End="18.8333333333333,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -11547,7 +11524,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ - Extract Changed Data From Production\DF - Load stage MASTERLN.Paths[OLE DB Source Output1]"
+          Id="Package\SEQ - Extract Changed Data From Production\DF - Load stage MASTERLN.Paths[OLE DB Source Output]"
           TopLeft="119,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -11583,7 +11560,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ - Extract Changed Data From Production\DF - Load stage MASTERLN.Paths[OLE DB Source Output]"
+          Id="Package\SEQ - Extract Changed Data From Production\DF - Load stage MASTERLN.Paths[OLE DB Source Output1]"
           TopLeft="402,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -11702,7 +11679,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ - Extract Changed Data From Production\DF - Load stage parts.Paths[OLE DB Source Output2]"
+          Id="Package\SEQ - Extract Changed Data From Production\DF - Load stage parts.Paths[OLE DB Source Output]"
           TopLeft="105,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -11758,7 +11735,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ - Extract Changed Data From Production\DF - Load stage parts.Paths[OLE DB Source Output]"
+          Id="Package\SEQ - Extract Changed Data From Production\DF - Load stage parts.Paths[OLE DB Source Output2]"
           TopLeft="654,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -11857,7 +11834,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
     design-time-name="Package\SEQ - Transform and Load Dimensions\DF - Load stage Customer">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="180,42"
           Id="Package\SEQ - Transform and Load Dimensions\DF - Load stage Customer\tvf_GetCustomerData"
@@ -11885,9 +11862,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -12009,9 +11984,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -12047,7 +12020,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -12057,7 +12030,7 @@ WHERE 	x.SYS_CHANGE_OPERATION = 'D' AND x.SYS_CHANGE_VERSION ! &gt; ? ;</propert
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

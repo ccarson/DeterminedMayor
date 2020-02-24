@@ -27,8 +27,12 @@
     [DefectTagNumber] INT             DEFAULT ((0)) NOT NULL,
     [CreatedBy]       VARCHAR (4)     DEFAULT ('') NOT NULL,
     [CreatedDate]     DATETIME        DEFAULT (getdate()) NOT NULL,
+    [PONumber]        INT             CONSTRAINT [DF_FedTransImport_PONumber] DEFAULT ((0)) NOT NULL,
+    [POLine]          INT             CONSTRAINT [DF_FedTransImport_POLine] DEFAULT ((0)) NOT NULL,
     CONSTRAINT [FedTransImport_INDEX01] PRIMARY KEY CLUSTERED ([ID] ASC)
 );
+
+
 
 
 GO

@@ -19,8 +19,12 @@
     [LastLineNum]         SMALLINT       DEFAULT ((0)) NOT NULL,
     [CreatedBy]           VARCHAR (4)    DEFAULT ('') NOT NULL,
     [CreatedDate]         DATETIME       DEFAULT (getdate()) NOT NULL,
+    [RegisteredNFA]       CHAR (1)       DEFAULT ('N') NOT NULL,
+    [RegisteredNFADate]   DATETIME       DEFAULT ('1753/01/01') NOT NULL,
     CONSTRAINT [FedHeaderMain_INDEX01] PRIMARY KEY CLUSTERED ([ID] ASC)
 );
+
+
 
 
 GO

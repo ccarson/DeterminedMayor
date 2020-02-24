@@ -2,9 +2,11 @@
     [Recnum]    BIGINT        IDENTITY (1, 1) NOT NULL,
     [EmailID]   DECIMAL (8)   DEFAULT ((0)) NOT NULL,
     [AttachNum] DECIMAL (2)   DEFAULT ((0)) NOT NULL,
-    [FileName]  VARCHAR (100) DEFAULT (' ') NOT NULL,
+    [FileName]  VARCHAR (MAX) DEFAULT (' ') NOT NULL,
     CONSTRAINT [EMAILATT_INDEX01] PRIMARY KEY CLUSTERED ([EmailID] ASC, [AttachNum] ASC) WITH (FILLFACTOR = 70)
 );
+
+
 
 
 GO

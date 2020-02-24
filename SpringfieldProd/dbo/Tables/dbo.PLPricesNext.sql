@@ -10,10 +10,13 @@
     [Price]        NUMERIC (8, 2) NOT NULL,
     [OrdPrice]     NUMERIC (8, 2) NOT NULL,
     [SortBy]       SMALLINT       CONSTRAINT [DF__PLPricesN__SortB__72153A2A] DEFAULT ((0)) NOT NULL,
+    [PrintIt]      CHAR (1)       CONSTRAINT [DF_PLPricesNext_PrintIt] DEFAULT ('Y') NOT NULL,
     CONSTRAINT [PLPricesNext_INDEX01] PRIMARY KEY CLUSTERED ([PriceListID] ASC, [PriceType] ASC) WITH (FILLFACTOR = 70),
     CONSTRAINT [FK_PLPricesNext_PriceListID] FOREIGN KEY ([PriceListID]) REFERENCES [dbo].[PriceLstNext] ([ID]),
     CONSTRAINT [FK_PLPricesNext_PriceType] FOREIGN KEY ([PriceType]) REFERENCES [dbo].[PLTypes] ([PriceType])
 );
+
+
 
 
 GO

@@ -13,8 +13,10 @@
     [ProductDescription]   VARCHAR (100)  NULL,
     [NoteInformationField] VARCHAR (500)  NULL,
     [AcknowledgementType]  VARCHAR (2)    NULL,
+    [ItemScheduleDate]     DATETIME2 (7)  NULL,
     CONSTRAINT [PK_EDI855Detail] PRIMARY KEY CLUSTERED ([ID] ASC)
 );
+
 
 
 
@@ -26,4 +28,9 @@ CREATE UNIQUE NONCLUSTERED INDEX [EDI855Detail_INDEX02]
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [EDI855Detail_INDEX03]
     ON [dbo].[EDI855Detail]([LineSeqNumber] ASC, [ID] ASC);
+
+
+GO
+
+
 

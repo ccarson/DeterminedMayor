@@ -15,7 +15,7 @@
     [MasterTrackingID]     VARCHAR (50)    NULL,
     [PackageCount]         SMALLINT        NULL,
     [TotalCost]            NUMERIC (8, 2)  NULL,
-    [TotalWeight]          NUMERIC (6, 2)  NULL,
+    [TotalWeight]          NUMERIC (8, 2)  NULL,
     [InvoiceNum]           INT             NULL,
     [Phone]                VARCHAR (10)    NULL,
     [MasterTrackingIDType] VARCHAR (7)     NULL,
@@ -31,9 +31,13 @@
     [BillingAccountNum]    VARCHAR (9)     NULL,
     [CreatedBy]            VARCHAR (4)     CONSTRAINT [DF_ManifestDetail_CreatedBy] DEFAULT (' ') NOT NULL,
     [CreatedDate]          DATE            CONSTRAINT [DF_ManifestDetail_CreatedDate] DEFAULT ('1753-01-01') NOT NULL,
+    [PurchaseOrderNum]     NUMERIC (6)     CONSTRAINT [DF_ManifestDetail_PurchaseOrderNum] DEFAULT ((0)) NOT NULL,
+    [VendorID]             CHAR (8)        CONSTRAINT [DF_ManifestDetail_VendorID] DEFAULT ('') NOT NULL,
     CONSTRAINT [ManifestDetail_INDEX01] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (FILLFACTOR = 70),
     CONSTRAINT [FK_ManifestDetail_HeaderID] FOREIGN KEY ([HeaderID]) REFERENCES [dbo].[ManifestHeader] ([ID])
 );
+
+
 
 
 

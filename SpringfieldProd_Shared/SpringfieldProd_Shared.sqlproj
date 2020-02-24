@@ -224,5 +224,7 @@
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
+    <Build Include="dbo\Tables\dbo.OrderHeaderHistory.sql" />
+    <Build Include="dbo\Tables\dbo.OrderLineHistory.sql" />
   </ItemGroup>
 </Project>

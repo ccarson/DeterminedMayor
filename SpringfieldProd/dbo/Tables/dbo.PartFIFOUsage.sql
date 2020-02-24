@@ -18,6 +18,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [PartFIFOUsage_INDEX04]
     ON [dbo].[PartFIFOUsage]([PartNum] ASC, [UsageDate] ASC, [ID] ASC);
@@ -30,5 +32,10 @@ CREATE UNIQUE NONCLUSTERED INDEX [PartFIFOUsage_INDEX03]
 
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [PartFIFOUsage_INDEX02]
+    ON [dbo].[PartFIFOUsage]([PartFIFOReceivedID] ASC, [UsageDate] ASC, [ID] ASC);
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [PartFIFOUsage_INDEX05]
     ON [dbo].[PartFIFOUsage]([PartFIFOReceivedID] ASC, [UsageDate] ASC, [ID] ASC);
 

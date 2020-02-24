@@ -1,24 +1,24 @@
-﻿CREATE PROCEDURE [dbo].[sasp_MinShippingMethodForAllOrdered] @numOrder NUMERIC(12,2)
+﻿
+CREATE PROCEDURE [dbo].[sasp_MinShippingMethodForAllOrdered] @numOrder NUMERIC(12,2)
 AS
+BEGIN
   SELECT MIN(
-    CASE LEFT(p.RPT_GROUP, 2) 
-      WHEN 'XD' THEN '2' 
-      WHEN '19' THEN '2' 
-      ELSE 
-        (CASE p.RPT_GROUP 
-          WHEN 'CUST-P' THEN '2' 
-          WHEN 'REPAIR' THEN 
+    CASE WHEN p.RPT_GROUP LIKE '%-%P' THEN '2'
+      WHEN p.RPT_GROUP LIKE '%-%R' THEN 'G'
+      WHEN p.RPT_GROUP = 'REPAIR' THEN 
             (CASE p.SPRNUM 
               WHEN 'RP900G' THEN '2' 
               WHEN 'RP900I' THEN '2' 
               WHEN 'RP900Y' THEN '2' 
               WHEN 'RC900G' THEN '2' 
               WHEN 'RC900Y' THEN '2' 
+              WHEN 'RP900EP' THEN '2'
               ELSE 'G' END) 
-          ELSE 'G' END) 
-      END) 
-    FROM [MASTERLN] ml 
-      INNER JOIN [parts] p 
-        ON ml.SPRNUM = p.SPRNUM AND p.SERIAL_FLAG = 'Y' 
-    AND ml.ORDNUM = @numOrder
-    AND ml.QUAN > 0
+      ELSE 'G'
+    END) 
+  FROM [MASTERLN] ml 
+    INNER JOIN [parts] p 
+      ON ml.SPRNUM = p.SPRNUM AND p.SERIAL_FLAG = 'Y' 
+  AND ml.ORDNUM = @numOrder
+  AND ml.Quan > 0
+END

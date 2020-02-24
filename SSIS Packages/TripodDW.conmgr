@@ -1,12 +1,18 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:ObjectName="TripodDW"
   DTS:DTSID="{606ED0FF-D927-47C2-B063-BBDC7AEB79E3}"
   DTS:CreationName="OLEDB">
   <DTS:PropertyExpression
-    DTS:Name="ConnectionString">@[$Project::TripodDW_ConnectionString]</DTS:PropertyExpression>
+    DTS:Name="InitialCatalog">@[$Project::TripodDW_InitialCatalog]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="Password">@[$Project::TripodDW_Password]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="ServerName">@[$Project::TripodDW_ServerName]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="UserName">@[$Project::TripodDW_UserName]</DTS:PropertyExpression>
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="Data Source=CA-LAB;Initial Catalog=TripodDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Packet Size=32767;Application Name=Tripod ETL - TripodDW;MARS Connection=True;" />
+      DTS:ConnectionString="Data Source=SFARMORYSQL;User ID=chrisc;Initial Catalog=TripodDW;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;Packet Size=32767;Application Name=Tripod ETL - TripodDW;MARS Connection=True;" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>
